@@ -1,3 +1,4 @@
+import { InlineCards } from "@/blocks/InlineCards/InlineCards"
 import {
   BlocksFeature,
   EXPERIMENTAL_TableFeature,
@@ -6,9 +7,7 @@ import {
   UnorderedListFeature,
   UploadFeature,
 } from "@payloadcms/richtext-lexical"
-// import { MediaBlock } from "@/blocks/MediaBlock/MediaBlock"
 import { Field } from "payload"
-// import { InlineListBlock } from "@/blocks/InlineListBlock"
 
 type Props = {
   name: string
@@ -26,10 +25,9 @@ export const richTextField = ({ name, label, admin = {} }: Props): Field => ({
       return [
         UploadFeature(),
         HeadingFeature({ enabledHeadingSizes: ["h2", "h3", "h4"] }),
-        // BlocksFeature({ blocks: [MediaBlock, InlineListBlock] }),
-        BlocksFeature({ blocks: [] }),
+        BlocksFeature({ blocks: [InlineCards] }),
         UnorderedListFeature(),
-        EXPERIMENTAL_TableFeature(),
+        // EXPERIMENTAL_TableFeature(),
       ]
     },
   }),

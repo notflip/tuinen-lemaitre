@@ -1,3 +1,4 @@
+import { InlineCards } from "@/blocks/InlineCards/InlineCards"
 import {
   BlocksFeature,
   BoldFeature,
@@ -36,6 +37,7 @@ export const Feature: Block = {
           HeadingFeature({
             enabledHeadingSizes: ["h4", "h5"],
           }),
+          BlocksFeature({ blocks: [InlineCards] }),
         ],
       }),
     },

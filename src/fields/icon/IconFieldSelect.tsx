@@ -2,7 +2,7 @@
 
 import { useField } from "@payloadcms/ui"
 import { SelectInput, FieldLabel } from "@payloadcms/ui"
-import * as HiIcons from "react-icons/hi2" // Import Ant Design icons as an example
+import * as HiIcons from "react-icons/hi2"
 import { IconType } from "react-icons"
 import { SelectFieldClientComponent, SelectFieldClientProps } from "payload"
 

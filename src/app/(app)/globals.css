@@ -4,7 +4,11 @@
 :root {
   --background: hsl(0, 0%, 100%);
   --foreground: hsl(0, 0%, 13%);
-  --primary: hsl(104, 28%, 13%);
+  
+  --primary-300: hsl(92 25% 88%);
+  --primary-500: hsl(127 23% 40%);
+  --primary: hsl(104, 28%, 13%);  
+  
   --accent: hsl(131, 25%, 38%);
   --muted: hsl(0, 0%, 91%);
   --muted-alt: hsl(45, 34%, 90%);
@@ -18,6 +22,8 @@
   --color-foreground: var(--foreground);
   --color-border: var(--border);
   --color-primary: var(--primary);
+  --color-primary-300: var(--primary-300);
+  --color-primary-500: var(--primary-500);
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-muted-alt: var(--muted-alt);

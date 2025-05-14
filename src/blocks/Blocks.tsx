@@ -11,12 +11,10 @@ const Blocks: React.FC<BlocksProps> = (props) => {
       <>
         {blocks.map((block, index) => {
           const { blockType } = block
-          console.log(blockType)
-          
+
           if (blockType && blockType in blockComponents) {
-              // Use the generic parameter to ensure type safety
-              const Block = blockComponents[blockType] as BlockComponentType<typeof blockType>
-              console.log(Block)
+            // Use the generic parameter to ensure type safety
+            const Block = blockComponents[blockType] as BlockComponentType<typeof blockType>
 
             if (Block) {
               return index === 0 ? (

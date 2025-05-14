@@ -11,10 +11,9 @@ import {
 import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical"
 import { cn } from "@/lib/utils"
 
-// import type { InlineListBlock, MediaBlock } from "@payload-types"
-// import { MediaBlockComponent } from "@/blocks/MediaBlock/MediaBlockComponent"
-// import { InlineListBlockComponent } from "@/blocks/InlineListBlockComponent"
 import { JsonObject } from "payload"
+import { InlineCardsComponent } from "@/blocks/InlineCards/InlineCardsComponent"
+import { InlineCards } from "@payload-types"
 
 type NodeTypes = DefaultNodeTypes | SerializedEditorState<SerializedBlockNode>
 
@@ -42,7 +41,11 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) => ({
   ...defaultConverters,
   ...LinkJSXConverter({ internalDocToHref }),
-  blocks: {},
+  blocks: {
+    inlineCards: ({ node }: BlockNodeProps<InlineCards>) => (
+      <InlineCardsComponent {...node.fields} />
+    ),
+  },
 })
 
 type RichTextProps = {
