@@ -2,8 +2,8 @@
 
 import { Form as FormType } from "@payload-types"
 import { buildInitialFormState } from "@/components/form/buildInitialFormState"
-import AnimatedButton from "@/components/interface/AnimatedButton"
-import RichText from "@/components/RichText"
+import AnimatedButton from "@/components/interface/animated-button"
+import RichText from "@/components/rich-text"
 import { useRouter } from "next/navigation"
 import { Fragment, useState } from "react"
 import { useForm, FormProvider } from "react-hook-form"

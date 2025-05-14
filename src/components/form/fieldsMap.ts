@@ -1,7 +1,7 @@
-import { CheckboxField } from "@/components/form/CheckboxField"
-import { TextField } from "@/components/form/TextField"
-import { TextareaField } from "@/components/form/TextareaField"
-import { EmailField } from "@/components/form/EmailField"
+import { CheckboxField } from "@/components/form/checkbox-field"
+import { TextField } from "@/components/form/text-field"
+import { TextareaField } from "@/components/form/textarea-field"
+import { EmailField } from "@/components/form/email-field"
 
 export const fieldsMap = {
   text: TextField,

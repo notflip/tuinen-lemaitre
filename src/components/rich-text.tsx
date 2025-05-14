@@ -15,8 +15,6 @@ import { cn } from "@/lib/utils"
 // import { MediaBlockComponent } from "@/blocks/MediaBlock/MediaBlockComponent"
 // import { InlineListBlockComponent } from "@/blocks/InlineListBlockComponent"
 import { JsonObject } from "payload"
-import { InlineButtonComponent } from "@/blocks/InlineButton/InlineButtonComponent"
-import { InlineButton } from "@payload-types"
 
 type NodeTypes = DefaultNodeTypes | SerializedEditorState<SerializedBlockNode>
 
@@ -44,11 +42,7 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) => ({
   ...defaultConverters,
   ...LinkJSXConverter({ internalDocToHref }),
-  blocks: {
-    inlineButton: ({ node }: BlockNodeProps<InlineButton>) => (
-      <InlineButtonComponent {...node.fields} />
-    ),
-  },
+  blocks: {},
 })
 
 type RichTextProps = {

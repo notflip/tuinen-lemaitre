@@ -1,10 +1,10 @@
 import { getCachedGlobal } from "@/utils/getGlobals"
-import { CmsLink } from "./CmsLink"
+import { CmsLink } from "./cms-link"
 import Link from "next/link"
 import NewsletterForm from "./newsletter-form"
 import SocialMediaIcon from "./social-media-icon"
 import { Media } from "@payload-types"
-import { ImageBox } from "@/components/ImageBox"
+import { ImageBox } from "@/components/image-box"
 
 export async function Footer() {
   const siteSettings = await getCachedGlobal("settings")()

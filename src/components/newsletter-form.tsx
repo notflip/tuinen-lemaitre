@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight } from "lucide-react"
+import { HiArrowRight } from "react-icons/hi2"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 
@@ -68,7 +68,7 @@ export default function NewsletterForm() {
         >
           {isSubmitting ? "Aanmelden..." : "Aanmelden"}
           <div className="ml-2 relative flex items-center justify-center w-8 h-8 bg-white bg-opacity-30 rounded-full transform transition-transform duration-300 ease-in-out group-hover:translate-x-1">
-            <ArrowRight size={16} />
+            <HiArrowRight size={16} />
           </div>
         </button>
       </div>

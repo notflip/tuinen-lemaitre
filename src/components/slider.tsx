@@ -6,7 +6,7 @@ import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
 
-import { ArrowLeft, ArrowRight } from "lucide-react"
+import { HiArrowLeft, HiArrowRight } from "react-icons/hi2"
 
 import { useRef } from "react"
 import { NavigationOptions } from "swiper/types"
@@ -101,14 +101,14 @@ export const Slider: React.FC<SliderProps> = (props) => {
               className="bg-white rounded-full w-10 h-10 flex items-center justify-center"
               ref={prevRef}
             >
-              <ArrowLeft />
+              <HiArrowLeft />
             </button>
             <button
               aria-label="Next slide"
               className="bg-white rounded-full w-10 h-10 flex items-center justify-center"
               ref={nextRef}
             >
-              <ArrowRight />
+              <HiArrowRight />
             </button>
           </div>
         </div>

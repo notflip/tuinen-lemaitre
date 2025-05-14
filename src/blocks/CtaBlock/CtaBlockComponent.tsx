@@ -1,8 +1,8 @@
 import { BlockContainer } from "@/blocks/BlockContainer"
 import Avatars from "@/components/avatars"
-import { CmsLink } from "@/components/CmsLink"
-import AnimatedButton from "@/components/interface/AnimatedButton"
-import { Type4 } from "@/components/interface/Type4"
+import { CmsLink } from "@/components/cms-link"
+import AnimatedButton from "@/components/interface/animated-button"
+import { Type4 } from "@/components/interface/type4"
 import { CtaBlock } from "@payload-types"
 import { HiOutlineChat } from "react-icons/hi"
 

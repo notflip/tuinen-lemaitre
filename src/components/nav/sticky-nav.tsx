@@ -3,13 +3,13 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Media, NavigationMain } from "@payload-types"
-import DesktopNav from "@/components/DesktopNav"
-import { ImageBox } from "@/components/ImageBox"
-import AnimatedButton from "@/components/interface/AnimatedButton"
+import DesktopNav from "@/components/desktop-nav"
+import { ImageBox } from "@/components/image-box"
+import AnimatedButton from "@/components/interface/animated-button"
 import { HiOutlineChat } from "react-icons/hi"
-import MobileNavWithClipPath from "@/components/MobileNavWithClipPath"
-import { CmsLink } from "@/components/CmsLink"
-import { Type4 } from "@/components/interface/Type4"
+import MobileNavWithClipPath from "@/components/mobile-nav"
+import { CmsLink } from "@/components/cms-link"
+import { Type4 } from "@/components/interface/type4"
 
 type StickyNavbarProps = {
   items: NavigationMain["items"]

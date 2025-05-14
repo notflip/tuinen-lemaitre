@@ -4,14 +4,14 @@ import { Form } from "@/components/ui/form"
 import { ContactFormValues, getContactFormSchema } from "@/lib/contact-form.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { TextField } from "@/components/form/TextField"
-import { EmailField } from "@/components/form/EmailField"
-import { TextareaField } from "@/components/form/TextareaField"
-import { CheckboxField } from "@/components/form/CheckboxField"
+import { TextField } from "@/components/form/text-field"
+import { EmailField } from "@/components/form/email-field"
+import { TextareaField } from "@/components/form/textarea-field"
+import { CheckboxField } from "@/components/form/checkbox-field"
 import { useState } from "react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
-import AnimatedButton from "@/components/interface/AnimatedButton"
+import AnimatedButton from "@/components/interface/animated-button"
 
 export function ContactForm() {
   const [loading, setLoading] = useState<boolean>(false)

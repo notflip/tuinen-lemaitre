@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "motion/react"
 import { NavigationMain } from "@payload-types"
 import { LuChevronDown } from "react-icons/lu"
 import { cn } from "@/lib/utils"
-import { Type4 } from "@/components/interface/Type4"
+import { Type4 } from "@/components/interface/type4"
 
 export default function DesktopNav({ items }: { items: NavigationMain["items"] }) {
   return (

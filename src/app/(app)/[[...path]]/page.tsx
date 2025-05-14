@@ -1,4 +1,4 @@
-import { LivePreviewListener } from "@/components/LivePreviewListener"
+import { LivePreviewListener } from "@/components/live-preview-listener"
 import { draftMode } from "next/headers"
 import Blocks from "@/blocks/Blocks"
 import { getCachedDocumentByPath } from "@/utils/getDocumentPath"

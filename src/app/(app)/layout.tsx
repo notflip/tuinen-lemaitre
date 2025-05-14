@@ -1,8 +1,8 @@
 import "./globals.css"
 import { GoogleTagManager } from "@next/third-parties/google"
-import { AdminBar } from "@/components/AdminBar"
+import { AdminBar } from "@/components/admin-bar"
 import { draftMode } from "next/headers"
-import { Nav } from "@/components/Nav"
+import { Nav } from "@/components/nav"
 
 import { Footer } from "@/components/footer"
 import { Metadata } from "next"

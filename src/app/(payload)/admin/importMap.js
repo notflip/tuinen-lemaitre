@@ -35,7 +35,7 @@ import { MuxVideoGifCell as MuxVideoGifCell_c369a797e256de625eba826a6acb8608 } f
 import { ArrayRowLabel as ArrayRowLabel_a34117ba03a0e26ff25825aaffeb6215 } from '@/globals/ArrayRowLabel'
 import { ArrayRelationRowLabel as ArrayRelationRowLabel_5ca5034c39015de468c7dfb2117a25cd } from '@/globals/ArrayRelationRowLabel'
 import { ArrayRowTitle as ArrayRowTitle_96492d4250363eb4c3446b2f4058f70f } from '@/globals/ArrayRowTitle'
-import { default as default_1a7510af427896d367a49dbf838d2de6 } from '@/components/BeforeDashboard'
+import { default as default_1a7510af427896d367a49dbf838d2de6 } from '@/components/before-dashboard'
 
 export const importMap = {
   "@/fields/slug/SlugComponent#SlugComponent": SlugComponent_92cc057d0a2abb4f6cf0307edf59f986,

@@ -2,7 +2,7 @@ import { headers as getHeaders } from "next/headers"
 import { getPayload } from "payload"
 import config from "@payload-config"
 import React from "react"
-import { AdminBarView } from "@/components/AdminBarView"
+import { AdminBarView } from "@/components/admin-bar-view"
 
 type AdminBarProps = {
   logo?: any
