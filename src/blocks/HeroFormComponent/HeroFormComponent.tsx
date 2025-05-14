@@ -19,7 +19,7 @@ export const HeroFormComponent: React.FC<HeroForm> = (props) => {
           <Form form={form} />
         </div>
         {image && (
-          <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[400px] lg:max-w-[42rem]">
+          <div className="w-full lg:w-1/2 order-2 lg:order-1 relative min-h-[400px] lg:max-w-2xl">
             {image && (
               <ImageBox
                 fill

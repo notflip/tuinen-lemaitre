@@ -36,12 +36,12 @@ export default function MobileNavWithDrawer({ items }: { items: NavigationMain["
     <>
       <Drawer open={isOpen} onOpenChange={toggleDrawer}>
         <DrawerTrigger asChild>
-          <button className="lg:hidden z-[60] relative text-2xl">
+          <button className="lg:hidden z-60 relative text-2xl">
             {isOpen ? <LuX className="text-white" /> : <LuMenu className="" />}
           </button>
         </DrawerTrigger>
 
-        <DrawerContent className="border-none z-[998] fixed inset-0 bg-black overflow-y-auto  text-white p-6 pb-20">
+        <DrawerContent className="border-none z-998 fixed inset-0 bg-black overflow-y-auto  text-white p-6 pb-20">
           Content
         </DrawerContent>
       </Drawer>

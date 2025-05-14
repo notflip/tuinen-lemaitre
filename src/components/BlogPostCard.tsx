@@ -10,7 +10,7 @@ export default function BlogPostCard({ post }: { post: Post }) {
         <div className="w-full overflow-hidden">
           {post.heroImage && (
             <ImageBox
-              className="aspect-[3/2] size-full"
+              className="aspect-3/2 size-full"
               media={post.heroImage}
               sizes="600px"
             />

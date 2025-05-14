@@ -31,7 +31,7 @@ export const SliderComponent: React.FC<Slider> = (props) => {
           ) : null}
         </div>
       </div>
-      <div className="mt-[5rem]">
+      <div className="mt-20">
         <SliderEl items={items ?? []} />
       </div>
     </BlockContainer>

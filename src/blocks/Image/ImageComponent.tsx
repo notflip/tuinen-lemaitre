@@ -22,7 +22,7 @@ export const ImageComponent: React.FC<PayloadImage & SharedBlockProps> = (props)
       className={cn(
         bgGradientMap[nextBlock?.bgColor],
         bgGradientMapAfter[prevBlock?.bgColor],
-        // prevBgColor && "-mt-[3rem]",
+        // prevBgColor && "-mt-12",
       )}
     >
       <div className="relative h-[350px] md:h-[500px]">

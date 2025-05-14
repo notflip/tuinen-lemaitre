@@ -17,7 +17,7 @@ export const Card: React.FC<CardProps> = (props) => {
   return (
     <div className="bg-secondary rounded-[20px] overflow-hidden">
       {image && (
-        <div className="relative h-[24rem]">
+        <div className="relative h-96">
           <ImageBox
             fill
             media={image}

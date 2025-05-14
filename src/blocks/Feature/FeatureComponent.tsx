@@ -20,7 +20,7 @@ export const FeatureComponent: React.FC<Feature & SharedBlockProps> = (props) =>
       >
         <div className="relative order-2 lg:w-1/2 lg:order-1 ">
           {mediaType === "image" && image && (
-            <div className="h-[400px] lg:h-auto lg:min-h-[300px] lg:max-h-[600px] w-full lg:max-w-[42rem]">
+            <div className="h-[400px] lg:h-auto lg:min-h-[300px] lg:max-h-[600px] w-full lg:max-w-2xl">
               <ImageBox
                 fill
                 media={image}

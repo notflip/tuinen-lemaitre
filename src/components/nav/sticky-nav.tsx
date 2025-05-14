@@ -35,9 +35,9 @@ export default function StickyNavbar(props: StickyNavbarProps) {
     <header
       className={`${
         scrolledFromTop ? "h-16 lg:h-20 backdrop-filter border-b border-slate-100" : "h-24"
-      } transition-all fixed top-0 left-0 w-full z-[999] bg-white`}
+      } transition-all fixed top-0 left-0 w-full z-999 bg-white`}
     >
-      <div className="h-full mx-auto max-w-screen-2xl px-4 md:px-12 2xl:px-16">
+      <div className="h-full mx-auto max-w-(--breakpoint-2xl) px-4 md:px-12 2xl:px-16">
         <div className="h-full flex items-center justify-between gap-4 xl:gap-8 2xl:gap-16">
           <Link href="/" className="flex-none">
             <ImageBox

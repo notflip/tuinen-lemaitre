@@ -19,7 +19,7 @@ const animatedButtonVariants = cva(
         default: "bg-primary hover:bg-primary/90 text-white",
         foreground: "bg-foreground hover:bg-foreground/90 text-white",
         light: "bg-blue-50 hover:bg-primary/20 text-blue-950",
-        link: "bg-transparent px-0 py-2 underline underline-offset-[6px] hover:underline-offset-[8px]",
+        link: "bg-transparent px-0 py-2 underline underline-offset-[6px] hover:underline-offset-8",
       },
       hasAvatars: {
         true: "", // We will control it through compoundVariants

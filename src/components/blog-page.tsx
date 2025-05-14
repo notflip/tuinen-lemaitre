@@ -17,7 +17,7 @@ export async function BlogPage(props: BlogPageProps) {
   return (
     <>
       <section className="relative py-sm lg:py-lg">
-        <div className="mx-auto max-w-screen-2xl px-4 md:px-12 2xl:px-16">
+        <div className="mx-auto max-w-(--breakpoint-2xl) px-4 md:px-12 2xl:px-16">
           <div className="flex items-center pt-16 lg:pt-24">
             <div className="max-w-4xl">
               <div className="mb-8">
@@ -30,7 +30,7 @@ export async function BlogPage(props: BlogPageProps) {
         </div>
       </section>
       <section className="relative">
-        <div className="mx-auto max-w-screen-2xl px-4 md:px-12 2xl:px-16">
+        <div className="mx-auto max-w-(--breakpoint-2xl) px-4 md:px-12 2xl:px-16">
           <Suspense fallback={null}>
             <div className="container mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-8">

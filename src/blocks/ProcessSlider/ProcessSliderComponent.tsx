@@ -18,7 +18,7 @@ export const ProcessSliderComponent: React.FC<ProcessSlider> = (props) => {
           <h2 className="mb-6">{title}</h2>
         </div>
       </div>
-      <div className="mt-[5rem]">
+      <div className="mt-20">
         <SliderEl cardClassname="bg-beige-50" slidesPerView={2.1} items={items ?? []} />
       </div>
     </BlockContainer>

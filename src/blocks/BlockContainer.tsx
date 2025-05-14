@@ -61,7 +61,7 @@ export const BlockContainer: React.FC<BlockContainerProps> = (props) => {
         <pre>currColor: {JSON.stringify(bgColor)}</pre>
         <pre>nextColor: {JSON.stringify(nextBlock?.bgColor)}</pre>
       </div> */}
-      <div className={`${!fullWidth ? "mx-auto max-w-screen-2xl px-4 md:px-12 2xl:px-16" : ""}`}>
+      <div className={`${!fullWidth ? "mx-auto max-w-(--breakpoint-2xl) px-4 md:px-12 2xl:px-16" : ""}`}>
         {children}
       </div>
     </section>

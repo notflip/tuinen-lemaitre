@@ -26,7 +26,7 @@ export const AdminBarView: React.FC<AdminBarViewProps> = (props) => {
       >
         <a
           href={`/admin`}
-          className={`mr-2 flex-shrink-0 flex items-center h-5 no-underline text-white`}
+          className={`mr-2 shrink-0 flex items-center h-5 no-underline text-white`}
         >
           Dashboard
         </a>

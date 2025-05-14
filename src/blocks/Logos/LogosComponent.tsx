@@ -11,12 +11,12 @@ export const LogosComponent: React.FC<Logos> = (props) => {
 
   return (
     <BlockContainer fullWidth className="py-xs lg:py-sm" bgColor={bgColor} {...props}>
-      <div className="flex gap-[var(--marquee-gap)] overflow-hidden">
-        <div className="flex shrink-0 items-center justify-around gap-[var(--marquee-gap)] min-w-full animate-scroll-x">
+      <div className="flex gap-(--marquee-gap) overflow-hidden">
+        <div className="flex shrink-0 items-center justify-around gap-(--marquee-gap) min-w-full animate-scroll-x">
           {(items || []).map(({ image }, index) => (
-            <div className="p-[calc(var(--marquee-size)_/_10)]" key={index}>
+            <div className="p-[calc(var(--marquee-size)/10)]" key={index}>
               <ImageBox
-                className="w-[var(--marquee-size)]"
+                className="w-(--marquee-size)"
                 media={image}
                 sizes="200px"
                 disableBlurhash
@@ -24,11 +24,11 @@ export const LogosComponent: React.FC<Logos> = (props) => {
             </div>
           ))}
         </div>
-        <div className="flex shrink-0 items-center justify-around gap-[var(--marquee-gap)] min-w-full animate-scroll-x">
+        <div className="flex shrink-0 items-center justify-around gap-(--marquee-gap) min-w-full animate-scroll-x">
           {(items || []).map(({ image }, index) => (
-            <div className="p-[calc(var(--marquee-size)_/_10)]" key={index}>
+            <div className="p-[calc(var(--marquee-size)/10)]" key={index}>
               <ImageBox
-                className="w-[var(--marquee-size)]"
+                className="w-(--marquee-size)"
                 media={image}
                 sizes="200px"
                 disableBlurhash

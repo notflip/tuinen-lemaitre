@@ -5,8 +5,8 @@ export const ContentBlockComponent: React.FC<ContentBlock> = (props) => {
   const { content } = props
 
   return (
-    <section className="pt-[3rem] lg:pt-[6rem] pb-[6rem]">
-      <div className="mx-auto max-w-screen-2xl px-4 md:px-8 2xl:px-16">
+    <section className="pt-12 lg:pt-24 pb-24">
+      <div className="mx-auto max-w-(--breakpoint-2xl) px-4 md:px-8 2xl:px-16">
         {content && <RichText data={content} />}
       </div>
     </section>

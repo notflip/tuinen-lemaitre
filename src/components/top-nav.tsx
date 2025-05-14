@@ -11,7 +11,7 @@ export default function TopNav(props: Props) {
 
   return (
     <div className="bg-secondary">
-      <div className="mx-auto max-w-screen-2xl px-4 md:px-12 2xl:px-16 h-12">
+      <div className="mx-auto max-w-(--breakpoint-2xl) px-4 md:px-12 2xl:px-16 h-12">
         <div className="h-full flex items-center justify-between">
           <div className="flex items-center justify-between gap-6">
             {website_phone && (

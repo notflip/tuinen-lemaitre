@@ -137,7 +137,7 @@ const MegaMenuDropdown = ({ children, label }: FlyoutLinkProps) => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 15 }}
-            className="absolute max-w-screen-xl mx-auto left-[5%] right-[5%] top-36 bg-white border border-secondary shadow-lg rounded"
+            className="absolute max-w-(--breakpoint-xl) mx-auto left-[5%] right-[5%] top-36 bg-white border border-secondary shadow-lg rounded"
           >
             <div className="absolute -top-6 left-0 right-0 h-6" />
             {typeof children === "function" ? children({ setOpen }) : children}

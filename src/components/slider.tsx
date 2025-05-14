@@ -67,7 +67,7 @@ export const Slider: React.FC<SliderProps> = (props) => {
         {items &&
           items.map((item, index) => {
             return (
-              <SwiperSlide className={`p-8 rounded-[16px] !h-auto ${cardClassname}`} key={index}>
+              <SwiperSlide className={`p-8 rounded-[16px] h-auto! ${cardClassname}`} key={index}>
                 {item.icon && (
                   <div className="inline-flex rounded-full mb-8 p-4 bg-secondary">
                     <DynamicIcon iconName={item.icon} size={32} className="" />

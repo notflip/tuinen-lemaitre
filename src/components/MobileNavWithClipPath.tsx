@@ -79,7 +79,7 @@ export default function MobileNavWithClipPath({ items }: { items: NavigationMain
   return (
     <>
       <button
-        className={cn("z-[999] relative", isOpen ? "text-white" : "text-black")}
+        className={cn("z-999 relative", isOpen ? "text-white" : "text-black")}
         onClick={toggleDrawer}
       >
         {isOpen ? <HiXMark size={28} /> : <HiBars3 size={28} />}
@@ -88,7 +88,7 @@ export default function MobileNavWithClipPath({ items }: { items: NavigationMain
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="z-[998] fixed inset-0 bg-blue-950 text-white overflow-y-auto h-full py-4 px-6 will-change-transform"
+            className="z-998 fixed inset-0 bg-blue-950 text-white overflow-y-auto h-full py-4 px-6 will-change-transform"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
