@@ -24,7 +24,7 @@ export default function DesktopNav({ items, settings }: DesktopNavProps) {
           return (
             <li key={index}>
               <MenuLink {...item} className="flex items-center gap-1 font-medium whitespace-nowrap">
-                <div className="hover:bg-slate-50 py-1.5 px-3 rounded-lg">{item.label}</div>
+                <div className="hover:bg-accent/20 py-1.5 px-3 rounded-lg">{item.label}</div>
               </MenuLink>
             </li>
           )
@@ -39,7 +39,7 @@ export default function DesktopNav({ items, settings }: DesktopNavProps) {
                         <li key={index}>
                           <MenuLink
                             {...link}
-                            className="block font-medium py-2 px-4 hover:bg-black/5"
+                            className="block font-medium py-2 px-4 hover:bg-accent/20"
                             onClick={() => setOpen(false)} // Close dropdown on click
                           />
                         </li>
@@ -112,7 +112,7 @@ const ListDropdown = ({ children, label }: FlyoutLinkProps) => {
     >
       <Link
         href="#"
-        className="flex items-center gap-1 py-1.5 px-3 font-medium rounded-lg hover:bg-black/5"
+        className="flex items-center gap-1 py-1.5 px-3 font-medium rounded-lg hover:bg-accent/20"
       >
         {label}
         <LuChevronDown className={cn("transition", showFlyout ? "rotate-180" : "rotate-0")} />
@@ -124,7 +124,7 @@ const ListDropdown = ({ children, label }: FlyoutLinkProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 15 }}
             style={{ x: "-50%" }}
-            className="absolute left-1/2 top-14 bg-white border border-border rounded"
+            className="absolute left-1/2 top-14 bg-white border border-accent/10 rounded"
           >
             <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
             {typeof children === "function" ? children({ setOpen }) : children}
@@ -141,7 +141,7 @@ const MegaMenuDropdown = ({ children, label }: FlyoutLinkProps) => {
 
   return (
     <div onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-      <Link href="#" className="flex items-center gap-1 py-1.5 px-3 rounded-lg hover:bg-black/5">
+      <Link href="#" className="flex items-center gap-1 py-1.5 px-3 rounded-lg hover:bg-accent/20">
         {label}
         <LuChevronDown className={cn("transition", showFlyout ? "rotate-180" : "rotate-0")} />
       </Link>

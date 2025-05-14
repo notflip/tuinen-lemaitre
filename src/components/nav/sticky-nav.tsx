@@ -41,8 +41,8 @@ export default function StickyNavbar(props: StickyNavbarProps) {
             <ImageBox
               disableBlurhash
               media={settings.logo}
-              className="w-[160px]"
-              sizes="160px"
+              className="w-[180px]"
+              sizes="180px"
             />
           </Link>
           {/*Desktop View*/}

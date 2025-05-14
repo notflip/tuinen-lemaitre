@@ -2,15 +2,29 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: hsl(0 0% 100%);
-  --foreground: hsl(0 0% 3.9%);
-  --border: hsl(0, 0%, 90%);
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(0, 0%, 13%);
+  --primary: hsl(104, 28%, 13%);
+  --accent: hsl(131, 25%, 38%);
+  --muted: hsl(0, 0%, 91%);
+  --muted-alt: hsl(45, 34%, 90%);
+  --highlight: hsl(42, 25%, 96%);
+  --error: hsl(0, 100%, 95%);
+  --success: hsl(90, 56%, 84%);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-muted-alt: var(--muted-alt);
+  --color-highlight: var(--highlight);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-border: var(--muted-alt);
 }
 
 @layer base {
