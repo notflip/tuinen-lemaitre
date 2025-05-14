@@ -1,9 +1,11 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-:root {
+@theme {
   --green-950: 104 28% 13%;
   --beige-400: 38 27% 94%;
-
+}
+:root {
   /* Definitions */
   --background: 0 0 100%; /* white */
   --foreground: var(--green-950);

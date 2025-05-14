@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from "next/server"
 
 export async function middleware(request: NextRequest) {
   // Pass current path to downstream server components
-  const headers = new Headers(request.headers)
-  headers.set("x-current-path", request.nextUrl.pathname)
-  return NextResponse.next({ headers })
+//   const headers = new Headers(request.headers)
+//   headers.set("x-current-path", request.nextUrl.pathname)
+//   return NextResponse.next({ headers })
 }
 
 export const config = {
@@ -18,6 +18,6 @@ export const config = {
      * - admin (Admin routes)
      * - app/api
      */
-    "/((?!api|admin|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
+    // "/((?!api|admin|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
   ],
 }

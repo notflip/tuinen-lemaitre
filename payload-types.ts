@@ -71,8 +71,6 @@ export interface Config {
     cases: Case;
     redirects: Redirect;
     users: User;
-    posts: Post;
-    postCategories: PostCategory;
     media: Media;
     sharedBlocks: SharedBlock1;
     forms: Form;
@@ -87,8 +85,6 @@ export interface Config {
     cases: CasesSelect<false> | CasesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
-    posts: PostsSelect<false> | PostsSelect<true>;
-    postCategories: PostCategoriesSelect<false> | PostCategoriesSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     sharedBlocks: SharedBlocksSelect<false> | SharedBlocksSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
@@ -102,13 +98,11 @@ export interface Config {
   };
   globals: {
     settings: Setting;
-    blogSettings: BlogSetting;
     navigation_main: NavigationMain;
     footer: Footer;
   };
   globalsSelect: {
     settings: SettingsSelect<false> | SettingsSelect<true>;
-    blogSettings: BlogSettingsSelect<false> | BlogSettingsSelect<true>;
     navigation_main: NavigationMainSelect<false> | NavigationMainSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
   };
@@ -370,56 +364,6 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
- */
-export interface Post {
-  id: number;
-  /**
-   * ✋ Het wijzigen van de slug na publicatie kan bestaande links breken en zorgt ervoor dat bezoekers of zoekmachines de pagina niet meer kunnen vinden.
-   */
-  slug?: string | null;
-  title: string;
-  description: string;
-  category: number | PostCategory;
-  author: number | User;
-  publishedAt?: string | null;
-  heroImage: number | Media;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  readingTime?: number | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "postCategories".
- */
-export interface PostCategory {
-  id: number;
-  /**
-   * ✋ Het wijzigen van de slug na publicatie kan bestaande links breken en zorgt ervoor dat bezoekers of zoekmachines de pagina niet meer kunnen vinden.
-   */
-  slug?: string | null;
-  title: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "forms".
  */
 export interface Form {
@@ -589,14 +533,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'users';
         value: number | User;
-      } | null)
-    | ({
-        relationTo: 'posts';
-        value: number | Post;
-      } | null)
-    | ({
-        relationTo: 'postCategories';
-        value: number | PostCategory;
       } | null)
     | ({
         relationTo: 'media';
@@ -831,34 +767,6 @@ export interface UsersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts_select".
- */
-export interface PostsSelect<T extends boolean = true> {
-  slug?: T;
-  title?: T;
-  description?: T;
-  category?: T;
-  author?: T;
-  publishedAt?: T;
-  heroImage?: T;
-  content?: T;
-  readingTime?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "postCategories_select".
- */
-export interface PostCategoriesSelect<T extends boolean = true> {
-  slug?: T;
-  title?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
@@ -1078,13 +986,9 @@ export interface Setting {
     email: string;
     id?: string | null;
   }[];
-  website_phone: string;
+  website_phone?: string | null;
   logo: number | Media;
   company_info: string;
-  avatars: {
-    image?: (number | null) | Media;
-    id?: string | null;
-  }[];
   /**
    * Voeg hier de URL van je sociale media platformen toe. Bijvoorbeeld: https://www.instagram.com/naam-van-je-account
    */
@@ -1101,17 +1005,6 @@ export interface Setting {
      */
     image?: (number | null) | Media;
   };
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "blogSettings".
- */
-export interface BlogSetting {
-  id: number;
-  title: string;
-  description: string;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1227,12 +1120,6 @@ export interface SettingsSelect<T extends boolean = true> {
   website_phone?: T;
   logo?: T;
   company_info?: T;
-  avatars?:
-    | T
-    | {
-        image?: T;
-        id?: T;
-      };
   social_links?:
     | T
     | {
@@ -1245,17 +1132,6 @@ export interface SettingsSelect<T extends boolean = true> {
         description?: T;
         image?: T;
       };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "blogSettings_select".
- */
-export interface BlogSettingsSelect<T extends boolean = true> {
-  title?: T;
-  description?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

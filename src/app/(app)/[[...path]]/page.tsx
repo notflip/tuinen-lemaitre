@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: DocPageProps) {
 }
 
 // Component
-export default async function Page({ params }: { params: any }) {
+export default async function Page({ params }: { params: { path: string | Array<string> } }) {
   const settings = await getCachedGlobal("settings")()
   const { isEnabled: draft } = await draftMode()
 
@@ -67,7 +67,8 @@ export default async function Page({ params }: { params: any }) {
   const page = await getCachedDocumentByPath(path, "pages")
 
   if (!page) {
-    return <PayloadRedirects path={`/${path.join('/')}`} />
+    const redirectPath = Array.isArray(path) ? `/${path.join("/")}` : `/${path}`;
+    return <PayloadRedirects path={redirectPath} />
   }
 
   // JSONLD

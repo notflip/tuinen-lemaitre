@@ -18,13 +18,9 @@ export async function Footer() {
             <ImageBox
               disableBlurhash
               media={siteSettings.logo}
-              className="w-[120px] mb-6"
-              sizes="120px"
+              className="w-[160px] mb-6"
+              sizes="160px"
             />
-            <p className="text-blue-950 max-w-sm mb-6">
-              Een team van de juiste experts, die hun jarenlange kennis
-              van web, marketing en copywriting samenbrengen.
-            </p>
             <p className="whitespace-pre">{siteSettings.company_info}</p>
           </div>
 

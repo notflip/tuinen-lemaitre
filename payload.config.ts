@@ -12,8 +12,6 @@ import { seoPlugin } from "@payloadcms/plugin-seo"
 import Media from "@/collections/Media"
 import { Redirects } from "@/collections/Redirects"
 import { Users } from "@/collections/Users"
-import { Posts } from "@/collections/Posts"
-import { PostCategories } from "@/collections/PostCategories"
 import { BlogSettings } from "@/globals/BlogSettings"
 import { Footer } from "@/globals/Footer"
 import { SharedBlocks } from "@/collections/SharedBlocks"
@@ -27,7 +25,7 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     components: {
-      beforeDashboard: ["@/components/BeforeDashboard"],
+      beforeDashboard: ["@/components/before-dashboard"],
     },
 
     livePreview: {
@@ -68,20 +66,8 @@ export default buildConfig({
   }),
 
   // Define and configure your collections in this array
-  collections: [
-    Pages,
-    Cases,
-    Redirects,
-    Users,
-    Posts,
-    PostCategories,
-    Media,
-    SharedBlocks,
-    Forms,
-    Submissions,
-  ],
-
-  globals: [Settings, BlogSettings, NavigationMain, Footer],
+  collections: [Pages, Cases, Redirects, Users, Media, SharedBlocks, Forms, Submissions],
+  globals: [Settings, NavigationMain, Footer],
 
   plugins: [
     nestedDocsPlugin({

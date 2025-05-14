@@ -57,7 +57,6 @@ export const Settings: GlobalConfig = {
               type: "text",
               name: "website_phone",
               label: "Telefoonnummer",
-              required: true,
             },
             {
               name: "logo",
@@ -70,20 +69,6 @@ export const Settings: GlobalConfig = {
               name: "company_info",
               label: "Bedrijfsgegevens",
               required: true,
-            },
-            {
-              type: "array",
-              name: "avatars",
-              label: "Avatars",
-              required: true,
-              minRows: 2,
-              fields: [
-                {
-                  name: "image",
-                  type: "upload",
-                  relationTo: "media",
-                },
-              ],
             },
           ],
         },
