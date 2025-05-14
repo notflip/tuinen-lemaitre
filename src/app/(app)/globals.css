@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --green-950: 104 28% 13%;
+  --beige-400: 38 27% 94%;
+
+  /* Definitions */
+  --background: 0 0 100%; /* white */
+  --foreground: var(--green-950);
+
+
+  /* Other */
+  --card: 11 50% 90%;
+  --card-foreground: 11 5% 10%;
+  --popover: 11 100% 95%;
+  --popover-foreground: 11 100% 0%;
+  --muted: -27 30% 85%;
+
+  --accent: -27 30% 80%;
+  --accent-foreground: 11 5% 10%;
+  --destructive: 0 100% 30%;
+  --destructive-foreground: 11 5% 90%;
+  --border: var(--beige-100);
+  --input: var(--slate-200);
+  --ring: var(--blue-500);
+  --radius: 0.5rem;
+
+  /* Swiper */
+  --swiper-pagination-color: #000;
+  --swiper-pagination-bullet-inactive-color: #fff;
+  --swiper-pagination-bullet-opacity: 1;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-size: 10px;
+
+  /* Marquee */
+  --marquee-size: clamp(2.5rem, 0.25rem + 10vmin, 7.5rem);
+  --marquee-gap: calc(var(--marquee-size) / 2);
+  --marquee-duration: 60s;
+  --marquee-scroll-start: 0;
+  --marquee-scroll-end: calc(-100% - var(--marquee-gap));
+
+  /* Lexical */
+  .lexical-table-cell {
+    border-color: var(--green-950) !important;
+  }
+  .lexical-table-container th {
+    @apply bg-slate-50;
+  }
+  .lexical-table-container th > p {
+    @apply font-medium;
+  }
+  .lexical-table-container p {
+    color: var(--blue-950) !important;
+    @apply my-1;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1,
+  .h1 {
+    @apply text-heading-3 md:text-heading-2 xl:text-heading-1;
+  }
+  h2,
+  .h2 {
+    @apply text-heading-3 xl:text-heading-2;
+  }
+  h3,
+  .h3 {
+    @apply text-heading-4 xl:text-heading-3;
+  }
+  h4,
+  .h4 {
+    @apply text-heading-5 md:text-heading-4;
+  }
+  h5,
+  .h5 {
+    @apply text-heading-5;
+  }
+  p,
+  .p {
+    @apply text-base text-muted-foreground;
+  }
+}

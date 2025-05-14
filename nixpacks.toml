@@ -1,0 +1,14 @@
+[variables]
+NIXPACKS_NODE_VERSION = "20"
+
+[phases.install]
+cmds = [
+  'npm install -g corepack',
+  'corepack enable',
+  'corepack prepare pnpm@10.8.1 --activate',
+  'pnpm install'
+]
+
+[phases.build]
+dependsOn = ['install']
+cmds = ['pnpm payload migrate', 'pnpm seed', 'pnpm build']
