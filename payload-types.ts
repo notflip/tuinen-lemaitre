@@ -1016,8 +1016,8 @@ export interface NavigationMain {
   id: number;
   items?:
     | {
-        type: 'single' | 'list' | 'megamenu';
-        label: string;
+        type: 'single' | 'list' | 'megamenu' | 'socialMediaIcons';
+        label?: string | null;
         reference?: {
           relationTo: 'pages';
           value: number | Page;

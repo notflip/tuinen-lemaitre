@@ -3,14 +3,22 @@
 import { ReactNode, useState } from "react"
 import Link from "next/link"
 import { AnimatePresence, motion } from "motion/react"
-import { NavigationMain } from "@payload-types"
+import { NavigationMain, Setting } from "@payload-types"
 import { LuChevronDown } from "react-icons/lu"
 import { cn } from "@/lib/utils"
 import { Type4 } from "@/components/interface/type4"
+import SocialMediaIcon from "@/components/social-media-icon"
 
-export default function DesktopNav({ items }: { items: NavigationMain["items"] }) {
+type DesktopNavProps = {
+  items: NavigationMain["items"]
+  settings: Setting
+}
+
+export default function DesktopNav({ items, settings }: DesktopNavProps) {
+  const { social_links } = settings
+
   return (
-    <ul className="flex flex-wrap items-center gap-x-1 xl:gap-x-2">
+    <ul className="ml-32 flex flex-wrap items-center gap-x-1 xl:gap-x-2">
       {(items ?? []).map((item, index) => {
         if (item.type === "single") {
           return (
@@ -27,7 +35,7 @@ export default function DesktopNav({ items }: { items: NavigationMain["items"] }
         } else if (item.type === "list" && item.links) {
           return (
             <li key={item.id}>
-              <ListDropdown label={item.label}>
+              <ListDropdown label={item.label!}>
                 {({ setOpen }) => (
                   <ul className="text-nowrap">
                     {item.links &&
@@ -49,7 +57,7 @@ export default function DesktopNav({ items }: { items: NavigationMain["items"] }
         } else if (item.type === "megamenu" && item.columns) {
           return (
             <li key={item.id}>
-              <MegaMenuDropdown label={item.label}>
+              <MegaMenuDropdown label={item.label!}>
                 {({ setOpen }) => (
                   <div className="grid grid-cols-3 gap-12 p-4">
                     {(item.columns || []).map((column, index) => (
@@ -71,6 +79,18 @@ export default function DesktopNav({ items }: { items: NavigationMain["items"] }
                   </div>
                 )}
               </MegaMenuDropdown>
+            </li>
+          )
+        } else if (item.type === "socialMediaIcons") {
+          return (
+            <li key="socialMediaIcons" className="ml-auto">
+              <div className="flex space-x-4">
+                {(social_links || []).map((link, index) => (
+                  <div key={index}>
+                    <SocialMediaIcon url={link.url} size={20} />
+                  </div>
+                ))}
+              </div>
             </li>
           )
         }
@@ -110,7 +130,7 @@ const ListDropdown = ({ children, label }: FlyoutLinkProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 15 }}
             style={{ x: "-50%" }}
-            className="absolute left-1/2 top-14 bg-white border border-secondary shadow-lg rounded"
+            className="absolute left-1/2 top-14 bg-white border shadow-lg rounded"
           >
             <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
             {typeof children === "function" ? children({ setOpen }) : children}

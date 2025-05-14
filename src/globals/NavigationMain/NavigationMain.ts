@@ -40,6 +40,10 @@ export const NavigationMain: GlobalConfig = {
               label: "Megamenu",
               value: "megamenu",
             },
+            {
+              label: "Social Media Icons",
+              value: "socialMediaIcons",
+            },
           ],
           required: true,
         },
@@ -48,6 +52,9 @@ export const NavigationMain: GlobalConfig = {
           type: "text",
           required: true,
           maxLength: 30,
+          admin: {
+            condition: (_, { type }) => type !== "socialMediaIcons",
+          },
         },
         // Single Type
         {

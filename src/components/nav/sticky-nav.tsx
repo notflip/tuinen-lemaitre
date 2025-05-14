@@ -2,19 +2,17 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { Media, NavigationMain } from "@payload-types"
+import { NavigationMain, Setting } from "@payload-types"
 import DesktopNav from "@/components/desktop-nav"
 import { ImageBox } from "@/components/image-box"
-import AnimatedButton from "@/components/interface/animated-button"
 import { HiOutlineChat } from "react-icons/hi"
 import MobileNavWithClipPath from "@/components/mobile-nav"
-import { CmsLink } from "@/components/cms-link"
 import { Type4 } from "@/components/interface/type4"
 
 type StickyNavbarProps = {
   items: NavigationMain["items"]
   link: NavigationMain["link"]
-  settings: any
+  settings: Setting
 }
 
 export default function StickyNavbar(props: StickyNavbarProps) {
@@ -48,8 +46,8 @@ export default function StickyNavbar(props: StickyNavbarProps) {
             />
           </Link>
           {/*Desktop View*/}
-          <div className="hidden lg:block">
-            <DesktopNav items={items} />
+          <div className="hidden lg:block w-full">
+            <DesktopNav items={items} settings={settings} />
           </div>
           {/*Button*/}
           <div className="hidden lg:block">
