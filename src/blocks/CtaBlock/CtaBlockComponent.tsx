@@ -1,5 +1,5 @@
 import { BlockContainer } from "@/blocks/BlockContainer"
-import { Type4 } from "@/components/interface/type4"
+import { Type4 } from "@/components/type4"
 import { HiOutlineChat } from "react-icons/hi"
 import { CommonBlockProps, BlockTypeToPayloadType } from "@/blocks/types"
 import React from "react"

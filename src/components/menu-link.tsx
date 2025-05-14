@@ -3,7 +3,7 @@ import NextLink from "next/link"
 import { cn } from "@/lib/utils"
 
 type MenuLinkType = {
-  children: React.ReactNode
+  children?: React.ReactNode
   className?: string
   label?: string | null
   reference?: {
@@ -14,7 +14,7 @@ type MenuLinkType = {
 }
 
 export const MenuLink: React.FC<MenuLinkType> = (props) => {
-  const { reference, className, children, onClick } = props
+  const { reference, children, label, className, onClick } = props
 
   const href =
     typeof reference?.value === "object" && reference.value.slug
@@ -30,7 +30,7 @@ export const MenuLink: React.FC<MenuLinkType> = (props) => {
 
   return (
     <NextLink href={href} onClick={onClick} className={cn(className)}>
-      {children}
+      {children || label || "Untitled"}
     </NextLink>
   )
 }

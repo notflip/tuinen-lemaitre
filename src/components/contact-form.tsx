@@ -11,7 +11,7 @@ import { CheckboxField } from "@/components/form/checkbox-field"
 import { useState } from "react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
-import AnimatedButton from "@/components/interface/animated-button"
+import AnimatedButton from "@/components/animated-button"
 
 export function ContactForm() {
   const [loading, setLoading] = useState<boolean>(false)

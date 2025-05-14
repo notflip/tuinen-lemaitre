@@ -1,6 +1,6 @@
 import { ImageBox } from "@/components/image-box"
 import { Media } from "@payload-types"
-import AnimatedButton from "@/components/interface/animated-button"
+import AnimatedButton from "@/components/animated-button"
 import { CmsLink, CmsLinkType } from "@/components/cms-link"
 
 type CardProps = {

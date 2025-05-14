@@ -7,7 +7,7 @@ import DesktopNav from "@/components/desktop-nav"
 import { ImageBox } from "@/components/image-box"
 import { HiOutlineChat } from "react-icons/hi"
 import MobileNavWithClipPath from "@/components/mobile-nav"
-import { Type4 } from "@/components/interface/type4"
+import { Type4 } from "@/components/type4"
 
 type StickyNavbarProps = {
   items: NavigationMain["items"]

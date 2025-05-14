@@ -6,8 +6,8 @@ import { AnimatePresence, motion } from "motion/react"
 import { NavigationMain, Setting } from "@payload-types"
 import { LuChevronDown } from "react-icons/lu"
 import { cn } from "@/lib/utils"
-import { Type4 } from "@/components/interface/type4"
 import SocialMediaIcon from "@/components/social-media-icon"
+import { MenuLink } from "@/components/menu-link"
 
 type DesktopNavProps = {
   items: NavigationMain["items"]
@@ -23,13 +23,9 @@ export default function DesktopNav({ items, settings }: DesktopNavProps) {
         if (item.type === "single") {
           return (
             <li key={index}>
-              <Type4
-                variant="ghost"
-                link={{ type: "reference", reference: item.reference }}
-                className="flex items-center gap-1 font-medium whitespace-nowrap"
-              >
+              <MenuLink {...item} className="flex items-center gap-1 font-medium whitespace-nowrap">
                 <div className="hover:bg-slate-50 py-1.5 px-3 rounded-lg">{item.label}</div>
-              </Type4>
+              </MenuLink>
             </li>
           )
         } else if (item.type === "list" && item.links) {
@@ -41,9 +37,8 @@ export default function DesktopNav({ items, settings }: DesktopNavProps) {
                     {item.links &&
                       item.links.map((link, index) => (
                         <li key={index}>
-                          <Type4
-                            variant="ghost"
-                            link={{ type: "reference", ...link }}
+                          <MenuLink
+                            {...link}
                             className="block font-medium py-2 px-4 hover:bg-black/5"
                             onClick={() => setOpen(false)} // Close dropdown on click
                           />
@@ -66,9 +61,8 @@ export default function DesktopNav({ items, settings }: DesktopNavProps) {
                         {column.description && <p className="max-w-sm">{column.description}</p>}
                         {column.links.map((link, index) => (
                           <div className="mt-3" key={index}>
-                            <Type4
-                              variant="ghost"
-                              link={{ type: "reference", ...link }}
+                            <MenuLink
+                              {...link}
                               className="font-medium"
                               onClick={() => setOpen(false)}
                             />
@@ -130,7 +124,7 @@ const ListDropdown = ({ children, label }: FlyoutLinkProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 15 }}
             style={{ x: "-50%" }}
-            className="absolute left-1/2 top-14 bg-white border shadow-lg rounded"
+            className="absolute left-1/2 top-14 bg-white border border-border rounded"
           >
             <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
             {typeof children === "function" ? children({ setOpen }) : children}

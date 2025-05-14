@@ -1,42 +1,22 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-@theme {
-  --green-950: 104 28% 13%;
-  --beige-400: 38 27% 94%;
-}
 :root {
-  /* Definitions */
-  --background: 0 0 100%; /* white */
-  --foreground: var(--green-950);
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(0 0% 3.9%);
+  --border: hsl(0, 0%, 90%);
+}
 
-  /* Other */
-  --card: 11 50% 90%;
-  --card-foreground: 11 5% 10%;
-  --popover: 11 100% 95%;
-  --popover-foreground: 11 100% 0%;
-  --muted: -27 30% 85%;
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+}
 
-  --accent: -27 30% 80%;
-  --accent-foreground: 11 5% 10%;
-  --destructive: 0 100% 30%;
-  --destructive-foreground: 11 5% 90%;
-  --border: var(--beige-100);
-  --input: var(--slate-200);
-  --ring: var(--blue-500);
-  --radius: 0.5rem;
-
-  /* Swiper */
-  --swiper-pagination-color: #000;
-  --swiper-pagination-bullet-inactive-color: #fff;
-  --swiper-pagination-bullet-opacity: 1;
-  --swiper-pagination-bullet-inactive-opacity: 1;
-  --swiper-pagination-bullet-size: 10px;
-
-  /* Marquee */
-  --marquee-size: clamp(2.5rem, 0.25rem + 10vmin, 7.5rem);
-  --marquee-gap: calc(var(--marquee-size) / 2);
-  --marquee-duration: 60s;
-  --marquee-scroll-start: 0;
-  --marquee-scroll-end: calc(-100% - var(--marquee-gap));
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
