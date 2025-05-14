@@ -60,7 +60,7 @@ export default function StickyNavbar(props: StickyNavbarProps) {
           </div>
           {/* Mobile Menu */}
           <div className="lg:hidden">
-            <MobileNavWithClipPath items={items} />
+            <MobileNavWithClipPath items={items} settings={settings} />
           </div>
         </div>
       </div>

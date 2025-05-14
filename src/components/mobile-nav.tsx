@@ -3,11 +3,12 @@
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "motion/react"
 import { useScrollLock } from "usehooks-ts"
-import { NavigationMain } from "@payload-types"
+import { NavigationMain, Setting } from "@payload-types"
 import { MenuLink } from "@/components/menu-link"
 import { HiBars3, HiChevronDown, HiXMark } from "react-icons/hi2"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
+import SocialMediaIcon from "@/components/social-media-icon"
 
 /**
  * Renders a collapsible list of links or columns.
@@ -49,17 +50,24 @@ function CollapsibleList({ items, isOpen, toggle }: any) {
   )
 }
 
+type NavProps = {
+  items: NavigationMain["items"]
+  settings: Setting
+}
+
 /**
  * This mobile nav uses framer-motion and clip-path to show/hide the menu
  * @param items
  * @constructor
  */
-export default function MobileNavWithClipPath({ items }: { items: NavigationMain["items"] }) {
+export default function MobileNavWithClipPath({ items, settings }: NavProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [clicked, setClicked] = useState<number | null>(null)
   const [innerClicked, setInnerClicked] = useState<number | null>(null)
 
   const { lock, unlock } = useScrollLock()
+
+  const { social_links } = settings
 
   useEffect(() => {
     if (isOpen) {
@@ -88,13 +96,13 @@ export default function MobileNavWithClipPath({ items }: { items: NavigationMain
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="z-998 fixed inset-0 bg-blue-950 text-white overflow-y-auto h-full py-4 px-6 will-change-transform"
+            className="z-998 fixed inset-0 bg-primary text-white overflow-y-auto h-full py-4 px-6 will-change-transform"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.2 }}
           >
-            <div className="p-3 mb-8">Navigatie</div>
+            <div className="p-2 mb-8 opacity-50">Navigatie</div>
             <ul className="text-xl">
               <li>
                 <Link
@@ -178,6 +186,17 @@ export default function MobileNavWithClipPath({ items }: { items: NavigationMain
                             </li>
                           ))}
                         </motion.ul>
+                      )}
+
+                      {/* Social Media Icons Type */}
+                      {item.type === "socialMediaIcons" && (
+                        <div className="mt-12 flex space-x-2">
+                          {(social_links || []).map((link, index) => (
+                            <div key={index}>
+                              <SocialMediaIcon url={link.url} />
+                            </div>
+                          ))}
+                        </div>
                       )}
                     </li>
                   )

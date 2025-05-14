@@ -32,16 +32,17 @@ const getSocialIcon = (url: string, size: number) => {
 }
 
 interface SocialMediaIconProps {
-  size: number
+  size?: number
   url: string
 }
 
-const SocialMediaIcon: React.FC<SocialMediaIconProps> = ({ url, size }) => (
+const SocialMediaIcon: React.FC<SocialMediaIconProps> = ({ url, size = 20 }) => (
   <Link
     aria-label="Social link"
     href={url}
     target="_blank"
     rel="noopener noreferrer"
+    className="block rounded-full p-3 bg-muted/50 hover:bg-muted"
   >
     {getSocialIcon(url, size)}
   </Link>
