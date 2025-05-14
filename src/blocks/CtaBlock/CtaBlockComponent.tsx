@@ -1,12 +1,9 @@
 import { BlockContainer } from "@/blocks/BlockContainer"
-import Avatars from "@/components/avatars"
-import { CmsLink } from "@/components/cms-link"
-import AnimatedButton from "@/components/interface/animated-button"
 import { Type4 } from "@/components/interface/type4"
-import { CtaBlock } from "@payload-types"
 import { HiOutlineChat } from "react-icons/hi"
+import { BlockComponentType } from "@/blocks/types"
 
-export const CtaBlockComponent: React.FC<CtaBlock> = (props) => {
+export const CtaBlockComponent: BlockComponentType = (props) => {
   const { subtitle, title, text, bgColor, links } = props
 
   return (
@@ -18,7 +15,7 @@ export const CtaBlockComponent: React.FC<CtaBlock> = (props) => {
           <p className="text-white md:text-md">{text}</p>
         </div>
         <div className="mt-6 lg:inline-flex lg:flex-wrap lg:gap-4 space-y-2 lg:space-y-0">
-          {(links || []).map(({ link }, i) => {
+          {(links || []).map(({ link }: { link: { label: string } }, i: number) => {
             if (i === 0) {
               return (
                 <Type4 key={i} link={link}>

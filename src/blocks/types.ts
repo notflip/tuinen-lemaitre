@@ -8,13 +8,13 @@ export const blockComponents = {
 
 export type BlockType = keyof typeof blockComponents
 
-export interface SharedBlockProps {
+export interface CommonBlockProps {
   blockIndex?: number
-  prevBlock?: any
-  nextBlock?: any
+  prevBlock?: BlockItem | undefined
+  nextBlock?: BlockItem | undefined
 }
 
-export type BlockComponentType = React.ComponentType<SharedBlockProps & { [key: string]: any }>
+export type BlockComponentType = React.ComponentType<CommonBlockProps & { [key: string]: any }>
 
 export interface BlockItem {
   blockType: BlockType

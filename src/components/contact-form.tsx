@@ -75,7 +75,7 @@ export function ContactForm() {
         </Alert>
       )}
       {success && (
-        <Alert variant="success" className="mb-4">
+        <Alert className="mb-4">
           <AlertTitle>Succes</AlertTitle>
           <AlertDescription>{success}</AlertDescription>
         </Alert>

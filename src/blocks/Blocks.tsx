@@ -1,4 +1,4 @@
-import { blockComponents, BlocksProps, BlockType } from "@/blocks/types"
+import { blockComponents, BlocksProps, BlockType, BlockComponentType } from "@/blocks/types"
 import React from "react"
 
 const Blocks: React.FC<BlocksProps> = (props) => {
@@ -13,7 +13,7 @@ const Blocks: React.FC<BlocksProps> = (props) => {
           const { blockType } = block
 
           if (blockType && blockType in blockComponents) {
-            const Block = blockComponents[blockType as BlockType]
+            const Block = blockComponents[blockType as BlockType] as BlockComponentType
 
             if (Block) {
               return index === 0 ? (

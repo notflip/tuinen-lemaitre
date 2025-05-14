@@ -1,4 +1,3 @@
-import { Divide } from "lucide-react"
 import NextLink from "next/link"
 
 export type CmsLinkType = {

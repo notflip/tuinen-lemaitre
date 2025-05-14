@@ -1,10 +1,8 @@
 import { SharedBlock1 } from "@payload-types"
 import { CtaBlockComponent } from "@/blocks/CtaBlock/CtaBlockComponent"
-import { LogosComponent } from "@/blocks/Logos/LogosComponent"
 
 const sharedBlockComponents = {
   ctaBlock: CtaBlockComponent,
-  logos: LogosComponent,
 }
 
 export const SharedBlockComponent: React.FC<any> = (props) => {
