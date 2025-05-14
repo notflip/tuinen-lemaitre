@@ -14,7 +14,7 @@ export type Type4Interface = {
     url?: string | null
     label?: string | null
   }
-  variant?: "default" | "light" | "link" | "foreground" | "ghost"
+  variant?: "default" | "light" | "link" | "foreground"
   avatars?: boolean
   className?: string
   icon?: React.ReactNode
@@ -22,47 +22,24 @@ export type Type4Interface = {
 }
 
 const animatedButtonVariants = cva(
-  "group relative flex lg:inline-flex items-center px-5 py-2.5 justify-center gap-2 whitespace-nowrap rounded-full font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "group relative flex lg:inline-flex items-center px-4 py-2.5 justify-center gap-2 whitespace-nowrap rounded-full font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-primary hover:bg-primary/90 text-white",
-        foreground: "bg-foreground hover:bg-foreground/90 text-white",
+        default: "bg-primary hover:bg-primary/80 text-white",
+        foreground: "bg-foreground hover:bg-foreground/80 text-white",
         light: "bg-blue-50 hover:bg-blue-100 text-blue-950",
-        link: "bg-transparent px-0 py-2 underline underline-offset-[6px] hover:underline-offset-8",
-        ghost: "px-0",
-      },
-      hasAvatars: {
-        true: "",
-        false: "",
+        link: "hover:text-foreground/80",
       },
     },
-    compoundVariants: [
-      {
-        hasAvatars: true,
-        variant: "default",
-        className: "px-8",
-      },
-      {
-        hasAvatars: true,
-        variant: "foreground",
-        className: "px-8",
-      },
-      {
-        hasAvatars: true,
-        variant: "light",
-        className: "px-8",
-      },
-    ],
     defaultVariants: {
       variant: "default",
-      hasAvatars: false,
     },
   },
 )
 
 export const Type4: React.FC<React.PropsWithChildren<Type4Interface>> = (props) => {
-  const { link, onClick, variant, avatars, className } = props
+  const { link, onClick, variant, className } = props
 
   const { type, reference, url, newTab, label } = link
 
@@ -81,10 +58,9 @@ export const Type4: React.FC<React.PropsWithChildren<Type4Interface>> = (props) 
     <Link
       onClick={onClick}
       href={href}
-      className={cn(animatedButtonVariants({ variant, hasAvatars: Boolean(avatars) }), className)}
+      className={cn(animatedButtonVariants({ variant }), className)}
       {...newTabProps}
     >
-      {avatars && <Avatars />}
       {props.children ||
         label ||
         (reference?.value && typeof reference.value === "object" && reference.value.title) ||

@@ -1,8 +1,12 @@
 import { CtaBlockComponent } from "@/blocks/CtaBlock/CtaBlockComponent"
+import { FeatureComponent } from "@/blocks/Feature/FeatureComponent"
+import { HeroComponent } from "@/blocks/Hero/HeroComponent"
 import { SharedBlockComponent } from "@/blocks/SharedBlock/SharedBlockComponent"
-import { CtaBlock, SharedBlock } from "@payload-types"
+import { CtaBlock, Feature, Hero, SharedBlock } from "@payload-types"
 
 export const blockComponents = {
+  hero: HeroComponent,
+  feature: FeatureComponent,
   ctaBlock: CtaBlockComponent,
   shared: SharedBlockComponent,
 } as const
@@ -17,20 +21,23 @@ export interface CommonBlockProps {
 
 // Map block types to their respective payload types
 export type BlockTypeToPayloadType = {
-  ctaBlock: CtaBlock;
-  shared: SharedBlock;
+  hero: Hero
+  feature: Feature
+  ctaBlock: CtaBlock
+  shared: SharedBlock
 }
 
 // A more specific BlockItem type that knows about the structure of each block type
 export type BlockItem = {
   [K in BlockType]: {
-    blockType: K;
-  } & BlockTypeToPayloadType[K];
-}[BlockType];
+    blockType: K
+  } & BlockTypeToPayloadType[K]
+}[BlockType]
 
 // Type for the component that renders a specific block type
-export type BlockComponentType<T extends BlockType = BlockType> = 
-  React.ComponentType<CommonBlockProps & BlockTypeToPayloadType[T]>;
+export type BlockComponentType<T extends BlockType = BlockType> = React.ComponentType<
+  CommonBlockProps & BlockTypeToPayloadType[T]
+>
 
 export interface BlocksProps {
   blocks?: BlockItem[] | null

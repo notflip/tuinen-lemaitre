@@ -8,8 +8,9 @@ import { Footer } from "@/components/footer"
 import { Metadata } from "next"
 import { getCachedGlobal } from "@/utils/getGlobals"
 
-import { Work_Sans } from "next/font/google"
+import { Work_Sans, DM_Mono } from "next/font/google"
 const workSans = Work_Sans({ subsets: ["latin"], variable: "--font-workSans" })
+const dmMono = DM_Mono({ subsets: ["latin"], weight: "400", variable: "--font-dmMono" })
 
 export async function generateMetadata(): Promise<Metadata> {
   const siteSettings = await getCachedGlobal("settings")()
@@ -34,9 +35,8 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${workSans.variable} font-sans text-base text-foreground antialiased relative`}
+        className={`${workSans.variable} ${dmMono.variable} text-base text-foreground antialiased relative`}
       >
-        {/* <TopNav settings={websiteSettings} /> */}
         <Nav settings={websiteSettings} />
         {children}
         <AdminBar draft={isEnabled} />

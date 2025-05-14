@@ -67,7 +67,7 @@ export default async function Page({ params }: { params: { path: string | Array<
   const page = await getCachedDocumentByPath(path, "pages")
 
   if (!page) {
-    const redirectPath = Array.isArray(path) ? `/${path.join("/")}` : `/${path}`;
+    const redirectPath = Array.isArray(path) ? `/${path.join("/")}` : `/${path}`
     return <PayloadRedirects path={redirectPath} />
   }
 
@@ -85,9 +85,7 @@ export default async function Page({ params }: { params: { path: string | Array<
   return (
     <div>
       {draft && <LivePreviewListener />}
-
       <div>
-        {/*@ts-ignore*/}
         <Blocks blocks={page.blocks} />
       </div>
 

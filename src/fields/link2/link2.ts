@@ -1,6 +1,6 @@
 import type { Field, Validate } from "payload"
 
-export const link2 = (): Field => ({
+export const link2 = ({ disableNone = false } = {}): Field => ({
   name: "link",
   type: "group",
   label: "Link",
@@ -11,12 +11,18 @@ export const link2 = (): Field => ({
     {
       name: "type",
       type: "radio",
-      defaultValue: "none",
-      options: [
-        { label: "None", value: "none" },
-        { label: "Internal link", value: "reference" },
-        { label: "Custom URL", value: "custom" },
-      ],
+      defaultValue: disableNone ? "reference" : "none",
+      required: true,
+      options: disableNone
+        ? [
+            { label: "Internal link", value: "reference" },
+            { label: "Custom URL", value: "custom" },
+          ]
+        : [
+            { label: "None", value: "none" },
+            { label: "Internal link", value: "reference" },
+            { label: "Custom URL", value: "custom" },
+          ],
       admin: {
         layout: "horizontal",
         width: "50%",

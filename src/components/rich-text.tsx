@@ -55,7 +55,7 @@ export default function RichText(props: RichTextProps) {
   return (
     <RichTextReact
       converters={jsxConverters}
-      className={cn("prose xl:prose-lg")}
+      className={cn("prose xl:prose-xl")}
       data={data}
       {...rest}
     />

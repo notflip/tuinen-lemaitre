@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@plugin "@tailwindcss/typography";
+@plugin '@tailwindcss/typography';
 
 :root {
   --background: hsl(0, 0%, 100%);
@@ -25,6 +25,9 @@
   --color-success: var(--success);
   --color-error: var(--error);
   --color-border: var(--muted-alt);
+
+  --font-sans: var(--font-workSans);
+  --font-mono: var(--font-dmMono);
 }
 
 @layer base {
@@ -33,4 +36,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  ::selection {
+    background: var(--muted-alt);
+  }
+}
+
+@utility prose {
+  --tw-prose-body: var(--color-primary);
 }
