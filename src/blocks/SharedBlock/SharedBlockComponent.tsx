@@ -1,11 +1,15 @@
 import { SharedBlock1 } from "@payload-types"
 import { CtaBlockComponent } from "@/blocks/CtaBlock/CtaBlockComponent"
+import { CommonBlockProps, BlockTypeToPayloadType } from "@/blocks/types"
+import React from "react"
 
 const sharedBlockComponents = {
   ctaBlock: CtaBlockComponent,
-}
+} as const
 
-export const SharedBlockComponent: React.FC<any> = (props) => {
+type SharedBlockComponentProps = BlockTypeToPayloadType['shared'] & CommonBlockProps
+
+export const SharedBlockComponent: React.FC<SharedBlockComponentProps> = (props) => {
   const { block, prevBlock, nextBlock } = props
 
   if (!block) {
@@ -20,16 +24,22 @@ export const SharedBlockComponent: React.FC<any> = (props) => {
 
   const { blockType, ...rest } = blocks[0]
 
-  if (blockType) {
-    const Block = sharedBlockComponents[blockType]
+  if (blockType && blockType in sharedBlockComponents) {
+    const Block = sharedBlockComponents[blockType as keyof typeof sharedBlockComponents]
 
     if (Block) {
       return (
         <div>
-          {/*@ts-ignore*/}
-          <Block {...rest} prevBlock={prevBlock} nextBlock={nextBlock} />
+          <Block 
+            {...rest} 
+            blockType={blockType}
+            prevBlock={prevBlock} 
+            nextBlock={nextBlock} 
+          />
         </div>
       )
     }
   }
+  
+  return null
 }

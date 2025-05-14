@@ -1,9 +1,13 @@
 import { BlockContainer } from "@/blocks/BlockContainer"
 import { Type4 } from "@/components/interface/type4"
 import { HiOutlineChat } from "react-icons/hi"
-import { BlockComponentType } from "@/blocks/types"
+import { CommonBlockProps, BlockTypeToPayloadType } from "@/blocks/types"
+import React from "react"
 
-export const CtaBlockComponent: BlockComponentType = (props) => {
+// Use the mapped type from BlockTypeToPayloadType
+type CtaBlockComponentProps = BlockTypeToPayloadType['ctaBlock'] & CommonBlockProps
+
+export const CtaBlockComponent: React.FC<CtaBlockComponentProps> = (props) => {
   const { subtitle, title, text, bgColor, links } = props
 
   return (
@@ -15,18 +19,18 @@ export const CtaBlockComponent: BlockComponentType = (props) => {
           <p className="text-white md:text-md">{text}</p>
         </div>
         <div className="mt-6 lg:inline-flex lg:flex-wrap lg:gap-4 space-y-2 lg:space-y-0">
-          {(links || []).map(({ link }: { link: { label: string } }, i: number) => {
+          {(links || []).map(({ link }, i: number) => {
             if (i === 0) {
               return (
                 <Type4 key={i} link={link}>
-                  {link.label}
+                  {link?.label ?? ""}
                   <HiOutlineChat />
                 </Type4>
               )
             } else {
               return (
                 <Type4 key={i} link={link} variant="light" avatars>
-                  {link.label}
+                  {link?.label ?? ""}
                 </Type4>
               )
             }

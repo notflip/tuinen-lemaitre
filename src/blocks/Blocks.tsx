@@ -13,7 +13,8 @@ const Blocks: React.FC<BlocksProps> = (props) => {
           const { blockType } = block
 
           if (blockType && blockType in blockComponents) {
-            const Block = blockComponents[blockType as BlockType] as BlockComponentType
+            // Use the generic parameter to ensure type safety
+            const Block = blockComponents[blockType] as BlockComponentType<typeof blockType>
 
             if (Block) {
               return index === 0 ? (
@@ -41,6 +42,8 @@ const Blocks: React.FC<BlocksProps> = (props) => {
       </>
     )
   }
+  
+  return null // Add explicit return for when there are no blocks
 }
 
 export default Blocks

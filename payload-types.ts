@@ -77,7 +77,6 @@ export interface Config {
     sharedBlocks: SharedBlock1;
     forms: Form;
     submissions: Submission;
-    'mux-video': MuxVideo;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -85,7 +84,7 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
-    cases: CasesSelect1<false> | CasesSelect1<true>;
+    cases: CasesSelect<false> | CasesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
@@ -94,7 +93,6 @@ export interface Config {
     sharedBlocks: SharedBlocksSelect<false> | SharedBlocksSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     submissions: SubmissionsSelect<false> | SubmissionsSelect<true>;
-    'mux-video': MuxVideoSelect<false> | MuxVideoSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -157,34 +155,7 @@ export interface Page {
    * Dit is de titel van de pagina
    */
   title: string;
-  blocks?:
-    | (
-        | Cards
-        | Cases
-        | ContentBlock
-        | ContactForm
-        | CtaBlock
-        | Feature
-        | Image
-        | ImageGrid
-        | FeatureGrid
-        | FeatureRows
-        | FeatureList
-        | FeatureTestimonials
-        | FormBlock
-        | Hero
-        | HeroForm
-        | Logos
-        | Paragraph
-        | ProcessSlider
-        | Slider
-        | SharedBlock
-        | TallyEmbed
-        | Team
-        | Testimonials
-        | Video
-      )[]
-    | null;
+  blocks?: (CtaBlock | SharedBlock)[] | null;
   seo?: {
     title?: string | null;
     description?: string | null;
@@ -205,92 +176,6 @@ export interface Page {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Cards".
- */
-export interface Cards {
-  items?:
-    | {
-        icon: string;
-        title: string;
-        text: string;
-        reference?: {
-          relationTo: 'pages';
-          value: number | Page;
-        } | null;
-        id?: string | null;
-      }[]
-    | null;
-  bgColor?: 'beige' | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'cards';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Cases".
- */
-export interface Cases {
-  badge?: string | null;
-  title?: string | null;
-  link?: {
-    type?: ('none' | 'reference' | 'custom') | null;
-    newTab?: boolean | null;
-    reference?: {
-      relationTo: 'pages';
-      value: number | Page;
-    } | null;
-    url?: string | null;
-    label?: string | null;
-  };
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'cases';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ContentBlock".
- */
-export interface ContentBlock {
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'contentBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ContactForm".
- */
-export interface ContactForm {
-  link?: {
-    type?: ('none' | 'reference' | 'custom') | null;
-    newTab?: boolean | null;
-    reference?: {
-      relationTo: 'pages';
-      value: number | Page;
-    } | null;
-    url?: string | null;
-    label?: string | null;
-  };
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'contactForm';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -325,40 +210,24 @@ export interface CtaBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Feature".
+ * via the `definition` "SharedBlock".
  */
-export interface Feature {
-  /**
-   * Indien dit ingevuld is, komt deze kleine titel boven de hoofd titel in een kader staan
-   */
-  subtitle?: string | null;
-  title: string;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  mediaType: 'image' | 'video';
-  image?: (number | null) | Media;
-  video?: (number | null) | MuxVideo;
-  /**
-   * Vink dit aan indien de afbeelding niet de grootte van de container mag opnemen, bijvoorbeeld voor screenshots
-   */
-  imageNoFill?: boolean | null;
-  variant?: ('imageLeft' | 'imageRight') | null;
+export interface SharedBlock {
+  block: number | SharedBlock1;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'feature';
+  blockType: 'shared';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sharedBlocks".
+ */
+export interface SharedBlock1 {
+  id: number;
+  title?: string | null;
+  blocks: CtaBlock[];
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -397,56 +266,6 @@ export interface Media {
       filename?: string | null;
     };
   };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "mux-video".
- */
-export interface MuxVideo {
-  id: number;
-  /**
-   * A unique title for this video that will help you identify it later.
-   */
-  title: string;
-  assetId?: string | null;
-  duration?: number | null;
-  /**
-   * Pick a timestamp (in seconds) from the video to be used as the poster image. When unset, defaults to the middle of the video.
-   */
-  posterTimestamp?: number | null;
-  aspectRatio?: string | null;
-  maxWidth?: number | null;
-  maxHeight?: number | null;
-  playbackOptions?:
-    | {
-        playbackId?: string | null;
-        playbackPolicy?: ('signed' | 'public') | null;
-        playbackUrl?: string | null;
-        posterUrl?: string | null;
-        gifUrl?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Image".
- */
-export interface Image {
-  /**
-   * Dit veld is een landschap afbeelding, de afbeelding die je hier upload moet in een landschap formaat zijn
-   */
-  image: number | Media;
-  callout?: {
-    content?: string | null;
-    link?: (number | null) | Case;
-    image?: (number | null) | Media;
-  };
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'image';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -516,131 +335,88 @@ export interface Case {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ImageGrid".
+ * via the `definition` "redirects".
  */
-export interface ImageGrid {
-  items?:
-    | {
-        image?: (number | null) | Media;
-        id?: string | null;
-      }[]
-    | null;
-  bgColor?: 'beige' | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'imageGrid';
+export interface Redirect {
+  id: number;
+  /**
+   * Redirect pad, startende met een slash
+   */
+  from: string;
+  to: string;
+  type: '301' | '302';
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FeatureGrid".
+ * via the `definition` "users".
  */
-export interface FeatureGrid {
-  badge: string;
-  title: string;
-  items?:
-    | {
-        icon: string;
-        title: string;
-        text: string;
-        id?: string | null;
-      }[]
-    | null;
-  bgColor?: ('beige' | 'gray') | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'featureGrid';
+export interface User {
+  id: number;
+  name?: string | null;
+  avatar?: (number | null) | Media;
+  role: 'admin' | 'user';
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FeatureRows".
+ * via the `definition` "posts".
  */
-export interface FeatureRows {
-  badge: string;
+export interface Post {
+  id: number;
+  /**
+   * ✋ Het wijzigen van de slug na publicatie kan bestaande links breken en zorgt ervoor dat bezoekers of zoekmachines de pagina niet meer kunnen vinden.
+   */
+  slug?: string | null;
   title: string;
-  items?:
-    | {
-        icon: string;
-        title: string;
-        text: string;
-        id?: string | null;
-      }[]
-    | null;
-  bgColor?: ('beige' | 'gray') | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'featureRows';
+  description: string;
+  category: number | PostCategory;
+  author: number | User;
+  publishedAt?: string | null;
+  heroImage: number | Media;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  readingTime?: number | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FeatureList".
+ * via the `definition` "postCategories".
  */
-export interface FeatureList {
-  badge?: string | null;
+export interface PostCategory {
+  id: number;
+  /**
+   * ✋ Het wijzigen van de slug na publicatie kan bestaande links breken en zorgt ervoor dat bezoekers of zoekmachines de pagina niet meer kunnen vinden.
+   */
+  slug?: string | null;
   title: string;
-  link: {
-    type: 'reference' | 'custom';
-    newTab?: boolean | null;
-    reference?: {
-      relationTo: 'pages';
-      value: number | Page;
-    } | null;
-    url?: string | null;
-    label?: string | null;
-  };
-  items?:
-    | {
-        title: string;
-        text: string;
-        link: {
-          type: 'reference' | 'custom';
-          newTab?: boolean | null;
-          reference?: {
-            relationTo: 'pages';
-            value: number | Page;
-          } | null;
-          url?: string | null;
-          label?: string | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'featureList';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FeatureTestimonials".
- */
-export interface FeatureTestimonials {
-  badge: string;
-  title: string;
-  items?:
-    | {
-        text: string;
-        author_name: string;
-        author_company: string;
-        author_avatar: number | Media;
-        link?: (number | null) | Case;
-        id?: string | null;
-      }[]
-    | null;
-  bgColor?: 'black' | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'featureTestimonials';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FormBlock".
- */
-export interface FormBlock {
-  title: string;
-  text?: string | null;
-  form: number | Form;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'formBlock';
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -774,311 +550,6 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Hero".
- */
-export interface Hero {
-  title: string;
-  content: string;
-  links?:
-    | {
-        link: {
-          type: 'reference' | 'custom';
-          newTab?: boolean | null;
-          reference?: {
-            relationTo: 'pages';
-            value: number | Page;
-          } | null;
-          url?: string | null;
-          label?: string | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
-  textAlign?: ('left' | 'center') | null;
-  bgColor?: ('beige' | 'black') | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'hero';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "HeroForm".
- */
-export interface HeroForm {
-  title: string;
-  content?: string | null;
-  form: number | Form;
-  /**
-   * Deze afbeelding wordt rechts van het embedded formulier getoond, indien gekozen
-   */
-  image?: (number | null) | Media;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'heroForm';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Logos".
- */
-export interface Logos {
-  items?:
-    | {
-        image: number | Media;
-        id?: string | null;
-      }[]
-    | null;
-  bgColor?: 'beige' | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'logos';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Paragraph".
- */
-export interface Paragraph {
-  badge: string;
-  content: string;
-  bgColor?: 'beige' | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'paragraph';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ProcessSlider".
- */
-export interface ProcessSlider {
-  subtitle: string;
-  title: string;
-  items?:
-    | {
-        title: string;
-        content: string;
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'processSlider';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Slider".
- */
-export interface Slider {
-  subtitle: string;
-  title: string;
-  links?:
-    | {
-        link: {
-          type: 'reference' | 'custom';
-          newTab?: boolean | null;
-          reference?: {
-            relationTo: 'pages';
-            value: number | Page;
-          } | null;
-          url?: string | null;
-          label?: string | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
-  items?:
-    | {
-        icon: string;
-        title: string;
-        content: string;
-        id?: string | null;
-      }[]
-    | null;
-  bgColor?: 'beige' | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'slider';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "SharedBlock".
- */
-export interface SharedBlock {
-  block: number | SharedBlock1;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'shared';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "sharedBlocks".
- */
-export interface SharedBlock1 {
-  id: number;
-  title?: string | null;
-  blocks: (CtaBlock | Logos)[];
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TallyEmbed".
- */
-export interface TallyEmbed {
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'tallyEmbed';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Team".
- */
-export interface Team {
-  badge: string;
-  title: string;
-  content?: string | null;
-  links?:
-    | {
-        link: {
-          type: 'reference' | 'custom';
-          newTab?: boolean | null;
-          reference?: {
-            relationTo: 'pages';
-            value: number | Page;
-          } | null;
-          url?: string | null;
-          label?: string | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
-  members?:
-    | {
-        image?: (number | null) | Media;
-        id?: string | null;
-      }[]
-    | null;
-  showLine?: boolean | null;
-  bgColor?: 'beige' | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'team';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Testimonials".
- */
-export interface Testimonials {
-  badge: string;
-  title: string;
-  items?:
-    | {
-        name: string;
-        text: string;
-        image?: (number | null) | Media;
-        id?: string | null;
-      }[]
-    | null;
-  bgColor?: ('beige' | 'gray') | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'testimonials';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Video".
- */
-export interface Video {
-  video?: (number | null) | MuxVideo;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'video';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "redirects".
- */
-export interface Redirect {
-  id: number;
-  /**
-   * Redirect pad, startende met een slash
-   */
-  from: string;
-  to: string;
-  type: '301' | '302';
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
- */
-export interface User {
-  id: number;
-  name?: string | null;
-  avatar?: (number | null) | Media;
-  role: 'admin' | 'user';
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  password?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
- */
-export interface Post {
-  id: number;
-  /**
-   * ✋ Het wijzigen van de slug na publicatie kan bestaande links breken en zorgt ervoor dat bezoekers of zoekmachines de pagina niet meer kunnen vinden.
-   */
-  slug?: string | null;
-  title: string;
-  description: string;
-  category: number | PostCategory;
-  author: number | User;
-  publishedAt?: string | null;
-  heroImage: number | Media;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  readingTime?: number | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "postCategories".
- */
-export interface PostCategory {
-  id: number;
-  /**
-   * ✋ Het wijzigen van de slug na publicatie kan bestaande links breken en zorgt ervoor dat bezoekers of zoekmachines de pagina niet meer kunnen vinden.
-   */
-  slug?: string | null;
-  title: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "submissions".
  */
 export interface Submission {
@@ -1142,10 +613,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'submissions';
         value: number | Submission;
-      } | null)
-    | ({
-        relationTo: 'mux-video';
-        value: number | MuxVideo;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1201,30 +668,8 @@ export interface PagesSelect<T extends boolean = true> {
   blocks?:
     | T
     | {
-        cards?: T | CardsSelect<T>;
-        cases?: T | CasesSelect<T>;
-        contentBlock?: T | ContentBlockSelect<T>;
-        contactForm?: T | ContactFormSelect<T>;
         ctaBlock?: T | CtaBlockSelect<T>;
-        feature?: T | FeatureSelect<T>;
-        image?: T | ImageSelect<T>;
-        imageGrid?: T | ImageGridSelect<T>;
-        featureGrid?: T | FeatureGridSelect<T>;
-        featureRows?: T | FeatureRowsSelect<T>;
-        featureList?: T | FeatureListSelect<T>;
-        featureTestimonials?: T | FeatureTestimonialsSelect<T>;
-        formBlock?: T | FormBlockSelect<T>;
-        hero?: T | HeroSelect<T>;
-        heroForm?: T | HeroFormSelect<T>;
-        logos?: T | LogosSelect<T>;
-        paragraph?: T | ParagraphSelect<T>;
-        processSlider?: T | ProcessSliderSelect<T>;
-        slider?: T | SliderSelect<T>;
         shared?: T | SharedBlockSelect<T>;
-        tallyEmbed?: T | TallyEmbedSelect<T>;
-        team?: T | TeamSelect<T>;
-        testimonials?: T | TestimonialsSelect<T>;
-        video?: T | VideoSelect<T>;
       };
   seo?:
     | T
@@ -1245,69 +690,6 @@ export interface PagesSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Cards_select".
- */
-export interface CardsSelect<T extends boolean = true> {
-  items?:
-    | T
-    | {
-        icon?: T;
-        title?: T;
-        text?: T;
-        reference?: T;
-        id?: T;
-      };
-  bgColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Cases_select".
- */
-export interface CasesSelect<T extends boolean = true> {
-  badge?: T;
-  title?: T;
-  link?:
-    | T
-    | {
-        type?: T;
-        newTab?: T;
-        reference?: T;
-        url?: T;
-        label?: T;
-      };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ContentBlock_select".
- */
-export interface ContentBlockSelect<T extends boolean = true> {
-  content?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ContactForm_select".
- */
-export interface ContactFormSelect<T extends boolean = true> {
-  link?:
-    | T
-    | {
-        type?: T;
-        newTab?: T;
-        reference?: T;
-        url?: T;
-        label?: T;
-      };
-  id?: T;
-  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1337,272 +719,6 @@ export interface CtaBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Feature_select".
- */
-export interface FeatureSelect<T extends boolean = true> {
-  subtitle?: T;
-  title?: T;
-  content?: T;
-  mediaType?: T;
-  image?: T;
-  video?: T;
-  imageNoFill?: T;
-  variant?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Image_select".
- */
-export interface ImageSelect<T extends boolean = true> {
-  image?: T;
-  callout?:
-    | T
-    | {
-        content?: T;
-        link?: T;
-        image?: T;
-      };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ImageGrid_select".
- */
-export interface ImageGridSelect<T extends boolean = true> {
-  items?:
-    | T
-    | {
-        image?: T;
-        id?: T;
-      };
-  bgColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FeatureGrid_select".
- */
-export interface FeatureGridSelect<T extends boolean = true> {
-  badge?: T;
-  title?: T;
-  items?:
-    | T
-    | {
-        icon?: T;
-        title?: T;
-        text?: T;
-        id?: T;
-      };
-  bgColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FeatureRows_select".
- */
-export interface FeatureRowsSelect<T extends boolean = true> {
-  badge?: T;
-  title?: T;
-  items?:
-    | T
-    | {
-        icon?: T;
-        title?: T;
-        text?: T;
-        id?: T;
-      };
-  bgColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FeatureList_select".
- */
-export interface FeatureListSelect<T extends boolean = true> {
-  badge?: T;
-  title?: T;
-  link?:
-    | T
-    | {
-        type?: T;
-        newTab?: T;
-        reference?: T;
-        url?: T;
-        label?: T;
-      };
-  items?:
-    | T
-    | {
-        title?: T;
-        text?: T;
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-            };
-        id?: T;
-      };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FeatureTestimonials_select".
- */
-export interface FeatureTestimonialsSelect<T extends boolean = true> {
-  badge?: T;
-  title?: T;
-  items?:
-    | T
-    | {
-        text?: T;
-        author_name?: T;
-        author_company?: T;
-        author_avatar?: T;
-        link?: T;
-        id?: T;
-      };
-  bgColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FormBlock_select".
- */
-export interface FormBlockSelect<T extends boolean = true> {
-  title?: T;
-  text?: T;
-  form?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Hero_select".
- */
-export interface HeroSelect<T extends boolean = true> {
-  title?: T;
-  content?: T;
-  links?:
-    | T
-    | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-            };
-        id?: T;
-      };
-  textAlign?: T;
-  bgColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "HeroForm_select".
- */
-export interface HeroFormSelect<T extends boolean = true> {
-  title?: T;
-  content?: T;
-  form?: T;
-  image?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Logos_select".
- */
-export interface LogosSelect<T extends boolean = true> {
-  items?:
-    | T
-    | {
-        image?: T;
-        id?: T;
-      };
-  bgColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Paragraph_select".
- */
-export interface ParagraphSelect<T extends boolean = true> {
-  badge?: T;
-  content?: T;
-  bgColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ProcessSlider_select".
- */
-export interface ProcessSliderSelect<T extends boolean = true> {
-  subtitle?: T;
-  title?: T;
-  items?:
-    | T
-    | {
-        title?: T;
-        content?: T;
-        id?: T;
-      };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Slider_select".
- */
-export interface SliderSelect<T extends boolean = true> {
-  subtitle?: T;
-  title?: T;
-  links?:
-    | T
-    | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-            };
-        id?: T;
-      };
-  items?:
-    | T
-    | {
-        icon?: T;
-        title?: T;
-        content?: T;
-        id?: T;
-      };
-  bgColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "SharedBlock_select".
  */
 export interface SharedBlockSelect<T extends boolean = true> {
@@ -1612,78 +728,9 @@ export interface SharedBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TallyEmbed_select".
- */
-export interface TallyEmbedSelect<T extends boolean = true> {
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Team_select".
- */
-export interface TeamSelect<T extends boolean = true> {
-  badge?: T;
-  title?: T;
-  content?: T;
-  links?:
-    | T
-    | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-            };
-        id?: T;
-      };
-  members?:
-    | T
-    | {
-        image?: T;
-        id?: T;
-      };
-  showLine?: T;
-  bgColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Testimonials_select".
- */
-export interface TestimonialsSelect<T extends boolean = true> {
-  badge?: T;
-  title?: T;
-  items?:
-    | T
-    | {
-        name?: T;
-        text?: T;
-        image?: T;
-        id?: T;
-      };
-  bgColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Video_select".
- */
-export interface VideoSelect<T extends boolean = true> {
-  video?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "cases_select".
  */
-export interface CasesSelect1<T extends boolean = true> {
+export interface CasesSelect<T extends boolean = true> {
   slug?: T;
   title?: T;
   description?: T;
@@ -1863,7 +910,6 @@ export interface SharedBlocksSelect<T extends boolean = true> {
     | T
     | {
         ctaBlock?: T | CtaBlockSelect<T>;
-        logos?: T | LogosSelect<T>;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -1983,31 +1029,6 @@ export interface FormsSelect<T extends boolean = true> {
 export interface SubmissionsSelect<T extends boolean = true> {
   form?: T;
   data?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "mux-video_select".
- */
-export interface MuxVideoSelect<T extends boolean = true> {
-  title?: T;
-  assetId?: T;
-  duration?: T;
-  posterTimestamp?: T;
-  aspectRatio?: T;
-  maxWidth?: T;
-  maxHeight?: T;
-  playbackOptions?:
-    | T
-    | {
-        playbackId?: T;
-        playbackPolicy?: T;
-        playbackUrl?: T;
-        posterUrl?: T;
-        gifUrl?: T;
-        id?: T;
-      };
   updatedAt?: T;
   createdAt?: T;
 }
@@ -2317,25 +1338,6 @@ export interface FooterSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "InlineButton".
- */
-export interface InlineButton {
-  link?: {
-    type?: ('none' | 'reference' | 'custom') | null;
-    newTab?: boolean | null;
-    reference?: {
-      relationTo: 'pages';
-      value: number | Page;
-    } | null;
-    url?: string | null;
-    label?: string | null;
-  };
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'inlineButton';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

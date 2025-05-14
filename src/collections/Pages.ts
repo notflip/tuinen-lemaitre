@@ -10,28 +10,6 @@ import pathField from "@/fields/path/path"
 import { SharedBlock } from "@/blocks/SharedBlock/SharedBlock"
 import beforeDuplicate from "@/hooks/beforeDuplicateSlugged"
 import { revalidateDelete, revalidatePage } from "@/hooks/revalidatePage"
-import { Hero } from "@/blocks/HeroBlock/Hero"
-import { Image } from "@/blocks/Image/Image"
-import { Paragraph } from "@/blocks/Paragraph/Paragraph"
-import { Cards } from "@/blocks/Cards/Cards"
-import { Cases } from "@/blocks/Cases/Cases"
-import { FeatureRows } from "@/blocks/FeatureRows/FeatureRows"
-import FeatureList from "@/blocks/FeatureList/FeatureList"
-import Testimonials from "@/blocks/Testimonials/Testimonials"
-import { Team } from "@/blocks/Team/Team"
-import { Feature } from "@/blocks/Feature/Feature"
-import { Slider } from "@/blocks/Slider/Slider"
-import { ProcessSlider } from "@/blocks/ProcessSlider/ProcessSlider"
-import { Logos } from "@/blocks/Logos/Logos"
-import { FeatureTestimonials } from "@/blocks/FeatureTestimonials/FeatureTestimonials"
-import ContactForm from "@/blocks/ContactForm/ContactForm"
-import TallyEmbed from "@/blocks/TallyEmbed/TallyEmbed"
-import { FeatureGrid } from "@/blocks/FeatureGrid/FeatureGrid"
-import { HeroForm } from "@/blocks/HeroFormComponent/HeroForm"
-import ContentBlock from "@/blocks/ContentBlock/ContentBlock"
-import { FormBlock } from "@/blocks/Form/FormBlock"
-import { ImageGrid } from "@/blocks/ImageGrid/ImageGrid"
-import Video from "@/blocks/Video/Video"
 
 export const Pages: CollectionConfig<"pages"> = {
   slug: "pages",
@@ -111,32 +89,7 @@ export const Pages: CollectionConfig<"pages"> = {
             {
               name: "blocks",
               type: "blocks",
-              blocks: [
-                Cards,
-                Cases,
-                ContentBlock,
-                ContactForm,
-                CtaBlock,
-                Feature,
-                Image,
-                ImageGrid,
-                FeatureGrid,
-                FeatureRows,
-                FeatureList,
-                FeatureTestimonials,
-                FormBlock,
-                Hero,
-                HeroForm,
-                Logos,
-                Paragraph,
-                ProcessSlider,
-                Slider,
-                SharedBlock,
-                TallyEmbed,
-                Team,
-                Testimonials,
-                Video,
-              ],
+              blocks: [CtaBlock, SharedBlock],
             },
           ],
         },

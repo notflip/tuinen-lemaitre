@@ -8,7 +8,6 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/swiper/**/*.js",
   ],
-  darkMode: ["class"],
   theme: {
     colors: {
       beige: {
