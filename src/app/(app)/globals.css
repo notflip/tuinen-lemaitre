@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --green-950: 104 28% 13%;
@@ -9,7 +7,6 @@
   /* Definitions */
   --background: 0 0 100%; /* white */
   --foreground: var(--green-950);
-
 
   /* Other */
   --card: 11 50% 90%;
@@ -40,52 +37,4 @@
   --marquee-duration: 60s;
   --marquee-scroll-start: 0;
   --marquee-scroll-end: calc(-100% - var(--marquee-gap));
-
-  /* Lexical */
-  .lexical-table-cell {
-    border-color: var(--green-950) !important;
-  }
-  .lexical-table-container th {
-    @apply bg-slate-50;
-  }
-  .lexical-table-container th > p {
-    @apply font-medium;
-  }
-  .lexical-table-container p {
-    color: var(--blue-950) !important;
-    @apply my-1;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-  h1,
-  .h1 {
-    @apply text-heading-3 md:text-heading-2 xl:text-heading-1;
-  }
-  h2,
-  .h2 {
-    @apply text-heading-3 xl:text-heading-2;
-  }
-  h3,
-  .h3 {
-    @apply text-heading-4 xl:text-heading-3;
-  }
-  h4,
-  .h4 {
-    @apply text-heading-5 md:text-heading-4;
-  }
-  h5,
-  .h5 {
-    @apply text-heading-5;
-  }
-  p,
-  .p {
-    @apply text-base text-muted-foreground;
-  }
 }
