@@ -2,12 +2,12 @@
 
 import { useField } from "@payloadcms/ui"
 import { SelectInput, FieldLabel } from "@payloadcms/ui"
-import * as HiIcons from "react-icons/hi2"
+import * as TbIcons from "react-icons/tb"
 import { IconType } from "react-icons"
-import { SelectFieldClientComponent, SelectFieldClientProps } from "payload"
+import { SelectFieldClientProps } from "payload"
 
 // Combine all desired icon packs
-const icons: { [key: string]: IconType } = { ...HiIcons }
+const icons: { [key: string]: IconType } = { ...TbIcons }
 
 // Generate options for the select input
 const iconOptions = Object.keys(icons).map((key) => ({

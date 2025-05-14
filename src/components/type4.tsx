@@ -28,7 +28,7 @@ const animatedButtonVariants = cva(
       variant: {
         default: "bg-primary hover:bg-primary/80 text-white",
         foreground: "bg-foreground hover:bg-foreground/80 text-white",
-        light: "bg-blue-50 hover:bg-blue-100 text-blue-950",
+        light: "bg-primary/10 text-foreground hover:bg-primary/80 hover:text-white",
         link: "hover:text-foreground/80",
       },
     },

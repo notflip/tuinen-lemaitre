@@ -1,12 +1,14 @@
+import { CardsComponent } from "@/blocks/Cards/CardsComponent"
 import { CtaBlockComponent } from "@/blocks/CtaBlock/CtaBlockComponent"
 import { FeatureComponent } from "@/blocks/Feature/FeatureComponent"
 import { HeroComponent } from "@/blocks/Hero/HeroComponent"
 import { SharedBlockComponent } from "@/blocks/SharedBlock/SharedBlockComponent"
-import { CtaBlock, Feature, Hero, SharedBlock } from "@payload-types"
+import { Cards, CtaBlock, Feature, Hero, SharedBlock } from "@payload-types"
 
 export const blockComponents = {
   hero: HeroComponent,
   feature: FeatureComponent,
+  cards: CardsComponent,
   ctaBlock: CtaBlockComponent,
   shared: SharedBlockComponent,
 } as const
@@ -23,6 +25,7 @@ export interface CommonBlockProps {
 export type BlockTypeToPayloadType = {
   hero: Hero
   feature: Feature
+  cards: Cards
   ctaBlock: CtaBlock
   shared: SharedBlock
 }

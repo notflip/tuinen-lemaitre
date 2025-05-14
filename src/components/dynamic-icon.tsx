@@ -1,4 +1,4 @@
-import * as HiIcons from "react-icons/hi2"
+import * as TbIcons from "react-icons/tb"
 import type { IconType } from "react-icons"
 
 type DynamicIconProps = {
@@ -9,7 +9,7 @@ type DynamicIconProps = {
 }
 
 export function DynamicIcon({ iconName, ...props }: DynamicIconProps) {
-  const Icon = HiIcons[iconName as keyof typeof HiIcons] as IconType
+  const Icon = TbIcons[iconName as keyof typeof TbIcons] as IconType
 
   if (!Icon) return null
 

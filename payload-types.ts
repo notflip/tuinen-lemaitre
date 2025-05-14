@@ -149,7 +149,7 @@ export interface Page {
    * Dit is de titel van de pagina
    */
   title: string;
-  blocks?: (Hero | Feature | CtaBlock | SharedBlock)[] | null;
+  blocks?: (Hero | Feature | Cards | CtaBlock | SharedBlock)[] | null;
   seo?: {
     title?: string | null;
     description?: string | null;
@@ -266,6 +266,34 @@ export interface Feature {
   id?: string | null;
   blockName?: string | null;
   blockType: 'feature';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Cards".
+ */
+export interface Cards {
+  title: string;
+  items?:
+    | {
+        icon: string;
+        title: string;
+        text: string;
+        link: {
+          type: 'none' | 'reference' | 'custom';
+          newTab?: boolean | null;
+          reference?: {
+            relationTo: 'pages';
+            value: number | Page;
+          } | null;
+          url?: string | null;
+          label?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cards';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -664,6 +692,7 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         hero?: T | HeroSelect<T>;
         feature?: T | FeatureSelect<T>;
+        cards?: T | CardsSelect<T>;
         ctaBlock?: T | CtaBlockSelect<T>;
         shared?: T | SharedBlockSelect<T>;
       };
@@ -722,6 +751,32 @@ export interface FeatureSelect<T extends boolean = true> {
   content?: T;
   image?: T;
   variant?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Cards_select".
+ */
+export interface CardsSelect<T extends boolean = true> {
+  title?: T;
+  items?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        text?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

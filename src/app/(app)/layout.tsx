@@ -35,7 +35,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${workSans.variable} ${dmMono.variable} text-base text-foreground antialiased relative`}
+        className={`${workSans.variable} ${dmMono.variable} font-sans text-base text-foreground antialiased relative`}
       >
         <Nav settings={websiteSettings} />
         {children}

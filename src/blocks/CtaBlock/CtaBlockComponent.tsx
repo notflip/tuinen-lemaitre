@@ -29,7 +29,7 @@ export const CtaBlockComponent: React.FC<CtaBlockComponentProps> = (props) => {
               )
             } else {
               return (
-                <Type4 key={i} link={link} variant="light" avatars>
+                <Type4 key={i} link={link} variant="light">
                   {link?.label ?? ""}
                 </Type4>
               )

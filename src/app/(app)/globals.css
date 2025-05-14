@@ -4,11 +4,12 @@
 :root {
   --background: hsl(0, 0%, 100%);
   --foreground: hsl(0, 0%, 13%);
-  
+  --foreground-muted: hsl(111, 4%, 39%);
+
   --primary-300: hsl(92 25% 88%);
   --primary-500: hsl(127 23% 40%);
-  --primary: hsl(104, 28%, 13%);  
-  
+  --primary: hsl(104, 28%, 13%);
+
   --accent: hsl(131, 25%, 38%);
   --muted: hsl(0, 0%, 91%);
   --muted-alt: hsl(45, 34%, 90%);
@@ -20,6 +21,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+
   --color-border: var(--border);
   --color-primary: var(--primary);
   --color-primary-300: var(--primary-300);
@@ -44,6 +47,33 @@
   }
   ::selection {
     background: var(--muted-alt);
+  }
+}
+
+@layer components {
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: var(--tracking-tight);
+  }
+
+  h1 {
+      @apply text-6xl lg:text-7xl font-semibold leading-tight;
+  }
+
+  h3 {
+    @apply text-4xl lg:text-5xl font-bold leading-tight;
+  }
+
+  h4 {
+    @apply text-2xl lg:text-3xl font-semibold leading-tight;
+  }
+
+  p {
+    color: var(--color-foreground-muted);
+    letter-spacing: var(--leading-normal);
+    line-height: var(--tracking-tighter);
   }
 }
 
