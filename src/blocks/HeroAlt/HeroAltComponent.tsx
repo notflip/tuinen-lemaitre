@@ -9,7 +9,7 @@ export const HeroAltComponent: React.FC<HeroAlt> = (props) => {
   return (
     <BlockContainer {...props}>
       <div className="mb-16 lg:flex justify-between items-top">
-        <h2 className="max-w-lg">{title}</h2>
+        <h2 className="max-w-xl">{title}</h2>
         <div className="mt-8 lg:mt-0 lg:w-5/12 lg:ml-auto">
           <p>{content}</p>
           {links?.length ? (

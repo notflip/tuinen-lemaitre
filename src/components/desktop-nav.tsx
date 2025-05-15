@@ -116,7 +116,7 @@ const ListDropdown = ({ children, label }: FlyoutLinkProps) => {
       className="relative"
     >
       <Link
-        href="#"
+        href=""
         className="flex text-foreground items-center gap-1 py-1.5 px-3 font-medium rounded-lg hover:bg-accent/10"
       >
         {label}
@@ -146,7 +146,7 @@ const MegaMenuDropdown = ({ children, label }: FlyoutLinkProps) => {
 
   return (
     <div onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-      <Link href="#" className="flex items-center gap-1 py-1.5 px-3 rounded-lg hover:bg-accent/10">
+      <Link href="" className="flex items-center gap-1 py-1.5 px-3 rounded-lg hover:bg-accent/10">
         {label}
         <LuChevronDown className={cn("transition", showFlyout ? "rotate-180" : "rotate-0")} />
       </Link>
