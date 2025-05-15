@@ -13,6 +13,7 @@ import { revalidateDelete, revalidatePage } from "@/hooks/revalidatePage"
 import { Hero } from "@/blocks/Hero/Hero"
 import Feature from "@/blocks/Feature/Feature"
 import { Cards } from "@/blocks/Cards/Cards"
+import Projects from "@/blocks/Projects/Projects"
 
 export const Pages: CollectionConfig<"pages"> = {
   slug: "pages",
@@ -92,7 +93,7 @@ export const Pages: CollectionConfig<"pages"> = {
             {
               name: "blocks",
               type: "blocks",
-              blocks: [Hero, Feature, Cards, CtaBlock, SharedBlock],
+              blocks: [Hero, Feature, Cards, Projects, CtaBlock, SharedBlock],
             },
           ],
         },

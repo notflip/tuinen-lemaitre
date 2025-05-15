@@ -28,7 +28,7 @@ export const HeroComponent: React.FC<HeroComponentProps> = (props) => {
         </div>
         <div className="w-1/2">
           <h1 className="text-7xl font-bold tracking-tight mb-10">{title}</h1>
-          <p className="prose-xl max-w-lg mb-10">{content}</p>
+          <p className="max-w-lg mb-10">{content}</p>
           {links?.length ? (
             <div className="lg:inline-flex lg:flex-wrap lg:gap-2 space-y-2 lg:space-y-0">
               {(links || []).map(({ link }, i) => {

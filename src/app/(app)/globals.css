@@ -70,10 +70,14 @@
     @apply text-2xl lg:text-3xl font-semibold leading-tight;
   }
 
+  h5 {
+    @apply text-xl lg:text-2xl font-semibold;
+  }
+
   p {
+    @apply text-lg font-medium leading-relaxed;
     color: var(--color-foreground-muted);
-    letter-spacing: var(--leading-normal);
-    line-height: var(--tracking-tighter);
+    letter-spacing: var(--tracking-tight);
   }
 }
 

@@ -68,7 +68,7 @@ export interface Config {
   blocks: {};
   collections: {
     pages: Page;
-    cases: Case;
+    projects: Project;
     redirects: Redirect;
     users: User;
     media: Media;
@@ -82,7 +82,7 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
-    cases: CasesSelect<false> | CasesSelect<true>;
+    projects: ProjectsSelect1<false> | ProjectsSelect1<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
@@ -149,7 +149,7 @@ export interface Page {
    * Dit is de titel van de pagina
    */
   title: string;
-  blocks?: (Hero | Feature | Cards | CtaBlock | SharedBlock)[] | null;
+  blocks?: (Hero | Feature | Cards | Projects | CtaBlock | SharedBlock)[] | null;
   seo?: {
     title?: string | null;
     description?: string | null;
@@ -297,6 +297,34 @@ export interface Cards {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Projects".
+ */
+export interface Projects {
+  title: string;
+  projects?: (number | Project)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'projects';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects".
+ */
+export interface Project {
+  id: number;
+  /**
+   * ✋ Het wijzigen van de slug na publicatie kan bestaande links breken en zorgt ervoor dat bezoekers of zoekmachines de pagina niet meer kunnen vinden.
+   */
+  slug?: string | null;
+  title: string;
+  description: string;
+  image: number | Media;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CtaBlock".
  */
 export interface CtaBlock {
@@ -346,72 +374,6 @@ export interface SharedBlock1 {
   blocks: CtaBlock[];
   updatedAt: string;
   createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "cases".
- */
-export interface Case {
-  id: number;
-  /**
-   * ✋ Het wijzigen van de slug na publicatie kan bestaande links breken en zorgt ervoor dat bezoekers of zoekmachines de pagina niet meer kunnen vinden.
-   */
-  slug?: string | null;
-  title: string;
-  description: string;
-  image: number | Media;
-  callout?: {
-    content?: string | null;
-    image?: (number | null) | Media;
-  };
-  stats?: {
-    statistics?:
-      | {
-          icon: string;
-          amount: string;
-          text: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  problems: {
-    title: string;
-    content?: string | null;
-    problem_sentences?:
-      | {
-          text: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  results: {
-    title: string;
-    content?: string | null;
-    result_sentences?:
-      | {
-          text: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  images_group?: {
-    images?:
-      | {
-          image: number | Media;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  testimonial_group?: {
-    image?: (number | null) | Media;
-    text?: string | null;
-    author_name?: string | null;
-    author_company?: string | null;
-  };
-  tags?: ('copywriting' | 'webdevelopment' | 'webdesign' | 'marketing')[] | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -609,8 +571,8 @@ export interface PayloadLockedDocument {
         value: number | Page;
       } | null)
     | ({
-        relationTo: 'cases';
-        value: number | Case;
+        relationTo: 'projects';
+        value: number | Project;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -693,6 +655,7 @@ export interface PagesSelect<T extends boolean = true> {
         hero?: T | HeroSelect<T>;
         feature?: T | FeatureSelect<T>;
         cards?: T | CardsSelect<T>;
+        projects?: T | ProjectsSelect<T>;
         ctaBlock?: T | CtaBlockSelect<T>;
         shared?: T | SharedBlockSelect<T>;
       };
@@ -782,6 +745,16 @@ export interface CardsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Projects_select".
+ */
+export interface ProjectsSelect<T extends boolean = true> {
+  title?: T;
+  projects?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CtaBlock_select".
  */
 export interface CtaBlockSelect<T extends boolean = true> {
@@ -817,74 +790,13 @@ export interface SharedBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "cases_select".
+ * via the `definition` "projects_select".
  */
-export interface CasesSelect<T extends boolean = true> {
+export interface ProjectsSelect1<T extends boolean = true> {
   slug?: T;
   title?: T;
   description?: T;
   image?: T;
-  callout?:
-    | T
-    | {
-        content?: T;
-        image?: T;
-      };
-  stats?:
-    | T
-    | {
-        statistics?:
-          | T
-          | {
-              icon?: T;
-              amount?: T;
-              text?: T;
-              id?: T;
-            };
-      };
-  problems?:
-    | T
-    | {
-        title?: T;
-        content?: T;
-        problem_sentences?:
-          | T
-          | {
-              text?: T;
-              id?: T;
-            };
-      };
-  results?:
-    | T
-    | {
-        title?: T;
-        content?: T;
-        result_sentences?:
-          | T
-          | {
-              text?: T;
-              id?: T;
-            };
-      };
-  images_group?:
-    | T
-    | {
-        images?:
-          | T
-          | {
-              image?: T;
-              id?: T;
-            };
-      };
-  testimonial_group?:
-    | T
-    | {
-        image?: T;
-        text?: T;
-        author_name?: T;
-        author_company?: T;
-      };
-  tags?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;

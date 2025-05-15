@@ -29,8 +29,6 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const slug = value.slug
 
   switch (relationTo) {
-    case "cases":
-      return `/projecten/${slug}`
     case "pages":
       return `/${slug}`
     default:

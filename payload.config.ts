@@ -16,7 +16,7 @@ import { BlogSettings } from "@/globals/BlogSettings"
 import { Footer } from "@/globals/Footer"
 import { SharedBlocks } from "@/collections/SharedBlocks"
 import { Submissions } from "@/collections/Submissions"
-import { Cases } from "@/collections/Cases"
+import { Projects } from "@/collections/Projects"
 import { Forms } from "@/collections/forms/Forms"
 
 export default buildConfig({
@@ -66,7 +66,7 @@ export default buildConfig({
   }),
 
   // Define and configure your collections in this array
-  collections: [Pages, Cases, Redirects, Users, Media, SharedBlocks, Forms, Submissions],
+  collections: [Pages, Projects, Redirects, Users, Media, SharedBlocks, Forms, Submissions],
   globals: [Settings, NavigationMain, Footer],
 
   plugins: [
