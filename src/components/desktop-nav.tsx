@@ -23,8 +23,13 @@ export default function DesktopNav({ items, settings }: DesktopNavProps) {
         if (item.type === "single") {
           return (
             <li key={index}>
-              <MenuLink {...item} className="flex items-center gap-1 font-medium whitespace-nowrap">
-                <div className="hover:bg-accent/10 text-foreground py-1.5 px-3 rounded-lg">{item.label}</div>
+              <MenuLink
+                link={{ type: "reference", reference: item.reference }}
+                className="flex items-center gap-1 font-medium whitespace-nowrap"
+              >
+                <div className="hover:bg-accent/10 text-foreground py-1.5 px-3 rounded-lg">
+                  {item.label}
+                </div>
               </MenuLink>
             </li>
           )
@@ -38,7 +43,7 @@ export default function DesktopNav({ items, settings }: DesktopNavProps) {
                       item.links.map((link, index) => (
                         <li key={index}>
                           <MenuLink
-                            {...link}
+                            link={{ type: "reference", ...link }}
                             className="block text-foreground font-medium py-2 px-4 hover:bg-accent/10"
                             onClick={() => setOpen(false)} // Close dropdown on click
                           />
@@ -62,7 +67,7 @@ export default function DesktopNav({ items, settings }: DesktopNavProps) {
                         {column.links.map((link, index) => (
                           <div className="mt-3" key={index}>
                             <MenuLink
-                              {...link}
+                              link={{ type: "reference", ...link }}
                               className="font-medium"
                               onClick={() => setOpen(false)}
                             />

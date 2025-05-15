@@ -39,7 +39,7 @@ function CollapsibleList({ items, isOpen, toggle }: any) {
           <li key={item.id}>
             <MenuLink
               onClick={toggle}
-              reference={item.reference}
+              link={{ type: "reference", reference: item.reference }}
               className="p-2 flex items-center hover:bg-white/10 rounded-md cursor-pointer"
             >
               {item.label}
@@ -124,7 +124,7 @@ export default function MobileNavWithClipPath({ items, settings }: NavProps) {
                       {/* Normal Type */}
                       {item.type === "single" && (
                         <MenuLink
-                          reference={item.reference}
+                          link={{ type: "reference", reference: item.reference }}
                           className="flex items-center justify-between p-2 hover:bg-white/10 rounded-md cursor-pointer"
                           onClick={toggleDrawer}
                         >

@@ -16,6 +16,26 @@ export const Cards: Block = {
       required: true,
     },
     {
+      name: "columns",
+      type: "select",
+      options: [
+        {
+          label: "2 Columns",
+          value: "2",
+        },
+        {
+          label: "3 Columns",
+          value: "3",
+        },
+        {
+          label: "4 Columns",
+          value: "4",
+        },
+      ],
+      defaultValue: "2",
+      required: true,
+    },
+    {
       name: "items",
       type: "array",
       fields: [

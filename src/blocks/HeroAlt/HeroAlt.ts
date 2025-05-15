@@ -1,9 +1,9 @@
 import { link2 } from "@/fields/link2/link2"
 import type { Block } from "payload"
 
-export const Hero: Block = {
-  slug: "hero",
-  interfaceName: "Hero",
+export const HeroAlt: Block = {
+  slug: "heroAlt",
+  interfaceName: "HeroAlt",
   fields: [
     {
       name: "title",

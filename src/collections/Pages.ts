@@ -16,6 +16,8 @@ import { Cards } from "@/blocks/Cards/Cards"
 import Projects from "@/blocks/Projects/Projects"
 import { Process } from "@/blocks/Process/Process"
 import Testimonials from "@/blocks/Testimonials/Testimonials"
+import { HeroAlt } from "@/blocks/HeroAlt/HeroAlt"
+import Content from "@/blocks/Content/Content"
 
 export const Pages: CollectionConfig<"pages"> = {
   slug: "pages",
@@ -50,11 +52,12 @@ export const Pages: CollectionConfig<"pages"> = {
         })
       },
     },
-    preview: (data) =>
-      generatePreviewPath({
+    preview: (data) => {
+      return generatePreviewPath({
         collection: "pages",
-        value: data.value as string,
-      }),
+        value: data.path as string,
+      })
+    },
   },
   hooks: {
     beforeValidate: [beforeDuplicate],
@@ -95,7 +98,18 @@ export const Pages: CollectionConfig<"pages"> = {
             {
               name: "blocks",
               type: "blocks",
-              blocks: [Hero, Feature, Cards, Projects, Process, Testimonials, Cta, SharedBlock],
+              blocks: [
+                Hero,
+                HeroAlt,
+                Feature,
+                Cards,
+                Content,
+                Projects,
+                Process,
+                Testimonials,
+                Cta,
+                SharedBlock,
+              ],
             },
           ],
         },

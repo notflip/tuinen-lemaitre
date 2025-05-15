@@ -151,7 +151,9 @@ export interface Page {
    * Dit is de titel van de pagina
    */
   title: string;
-  blocks?: (Hero | Feature | Cards | Projects | Process | Testimonials | Cta | SharedBlock)[] | null;
+  blocks?:
+    | (Hero | HeroAlt | Feature | Cards | Content | Projects | Process | Testimonials | Cta | SharedBlock)[]
+    | null;
   seo?: {
     title?: string | null;
     description?: string | null;
@@ -240,6 +242,33 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroAlt".
+ */
+export interface HeroAlt {
+  title: string;
+  content: string;
+  image: number | Media;
+  links?:
+    | {
+        link: {
+          type: 'reference' | 'custom';
+          newTab?: boolean | null;
+          reference?: {
+            relationTo: 'pages';
+            value: number | Page;
+          } | null;
+          url?: string | null;
+          label?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'heroAlt';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "Feature".
  */
 export interface Feature {
@@ -275,6 +304,7 @@ export interface Feature {
  */
 export interface Cards {
   title: string;
+  columns: '2' | '3' | '4';
   items?:
     | {
         icon: string;
@@ -296,6 +326,30 @@ export interface Cards {
   id?: string | null;
   blockName?: string | null;
   blockType: 'cards';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Content".
+ */
+export interface Content {
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'content';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -698,8 +752,10 @@ export interface PagesSelect<T extends boolean = true> {
     | T
     | {
         hero?: T | HeroSelect<T>;
+        heroAlt?: T | HeroAltSelect<T>;
         feature?: T | FeatureSelect<T>;
         cards?: T | CardsSelect<T>;
+        content?: T | ContentSelect<T>;
         projects?: T | ProjectsSelect<T>;
         process?: T | ProcessSelect<T>;
         testimonials?: T | TestimonialsSelect<T>;
@@ -753,6 +809,31 @@ export interface HeroSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroAlt_select".
+ */
+export interface HeroAltSelect<T extends boolean = true> {
+  title?: T;
+  content?: T;
+  image?: T;
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "Feature_select".
  */
 export interface FeatureSelect<T extends boolean = true> {
@@ -770,6 +851,7 @@ export interface FeatureSelect<T extends boolean = true> {
  */
 export interface CardsSelect<T extends boolean = true> {
   title?: T;
+  columns?: T;
   items?:
     | T
     | {
@@ -787,6 +869,15 @@ export interface CardsSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Content_select".
+ */
+export interface ContentSelect<T extends boolean = true> {
+  content?: T;
   id?: T;
   blockName?: T;
 }

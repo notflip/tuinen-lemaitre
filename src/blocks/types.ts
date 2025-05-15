@@ -1,17 +1,32 @@
 import { CardsComponent } from "@/blocks/Cards/CardsComponent"
+import { ContentComponent } from "@/blocks/Content/ContentComponent"
 import { CtaComponent } from "@/blocks/Cta/CtaComponent"
 import { FeatureComponent } from "@/blocks/Feature/FeatureComponent"
 import { HeroComponent } from "@/blocks/Hero/HeroComponent"
+import { HeroAltComponent } from "@/blocks/HeroAlt/HeroAltComponent"
 import { ProcessComponent } from "@/blocks/Process/ProcessComponent"
 import { ProjectsComponent } from "@/blocks/Projects/ProjectsComponent"
 import { SharedBlockComponent } from "@/blocks/SharedBlock/SharedBlockComponent"
 import { TestimonialsComponent } from "@/blocks/Testimonials/TestimonialsComponent"
-import { Cards, Cta, Feature, Hero, Process, Projects, SharedBlock, Testimonials } from "@payload-types"
+import {
+  Cards,
+  Cta,
+  Content,
+  Feature,
+  Hero,
+  HeroAlt,
+  Process,
+  Projects,
+  SharedBlock,
+  Testimonials,
+} from "@payload-types"
 
 export const blockComponents = {
   hero: HeroComponent,
+  heroAlt: HeroAltComponent,
   feature: FeatureComponent,
   cards: CardsComponent,
+  content: ContentComponent,
   projects: ProjectsComponent,
   process: ProcessComponent,
   testimonials: TestimonialsComponent,
@@ -30,8 +45,10 @@ export interface CommonBlockProps {
 // Map block types to their respective payload types
 export type BlockTypeToPayloadType = {
   hero: Hero
+  heroAlt: HeroAlt
   feature: Feature
   cards: Cards
+  content: Content
   projects: Projects
   process: Process
   testimonials: Testimonials

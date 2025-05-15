@@ -62,6 +62,10 @@
     @apply text-6xl lg:text-7xl font-semibold leading-17;
   }
 
+  h2 {
+    @apply text-5xl lg:text-6xl font-bold leading-17;
+  }
+
   h3 {
     @apply text-4xl lg:text-5xl font-bold leading-tight;
   }

@@ -1,29 +1,32 @@
-import { Page } from "@payload-types"
 import NextLink from "next/link"
 import { cn } from "@/lib/utils"
 
 type MenuLinkType = {
+  link: {
+    type?: ("none" | "reference" | "custom") | null
+    newTab?: boolean | null
+    reference?: {
+      relationTo: "pages"
+      value: any
+    } | null
+    url?: string | null
+    label?: string | null
+  }
   children?: React.ReactNode
   className?: string
-  label?: string | null
-  reference?: {
-    relationTo: "pages"
-    value: Page | string | number
-  } | null
   onClick?: () => void
 }
 
 export const MenuLink: React.FC<MenuLinkType> = (props) => {
-  const { reference, children, label, className, onClick } = props
+  const { link, children, className, onClick } = props
+
+  const { type, reference, url, newTab, label } = link
 
   const href =
-    typeof reference?.value === "object" && reference.value.slug
-      ? `${reference?.relationTo !== "pages" ? `/${reference?.relationTo}` : ""}/${
-          reference.value.slug === "home" ? "" : reference.value.slug
-        }`
-      : null
+    type === "reference" && typeof reference?.value === "object" && reference.value.path
+      ? reference.value.path
+      : url || null
 
-  // Return null if href is not defined
   if (!href) {
     return null
   }
