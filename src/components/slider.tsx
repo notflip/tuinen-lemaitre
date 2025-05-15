@@ -64,7 +64,7 @@ export const Slider: React.FC<SliderProps> = (props) => {
         {items &&
           items.map((testimonial, index) => {
             return (
-              <SwiperSlide className={`p-16 rounded-lg ${cardClassname} text-foreground`} key={index}>
+              <SwiperSlide className={`p-4 md:p-8 lg:p-16 rounded-lg ${cardClassname} text-foreground`} key={index}>
                 <svg
                   width="28"
                   height="22"

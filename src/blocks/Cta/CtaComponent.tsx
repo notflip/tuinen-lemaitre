@@ -12,7 +12,7 @@ export const CtaComponent: React.FC<CtaComponentProps> = (props) => {
   const { subtitle, title, text, links } = props
 
   return (
-    <BlockContainer bgColor="bg-highlight" noPadding {...props}>
+    <BlockContainer bgColor="bg-highlight" {...props}>
       <div className="bg-highlight bg-[url(/bg.svg)] bg-cover">
         <div className="py-24 lg:py-32 text-center">
           <div className="max-w-5xl mx-auto">

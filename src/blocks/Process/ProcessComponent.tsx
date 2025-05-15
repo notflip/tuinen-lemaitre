@@ -12,9 +12,9 @@ export const ProcessComponent: React.FC<Process> = (props) => {
           <Badge showIcon={false} text={subtitle} />
         </div>
       )}
-      <div className="mb-12 flex justify-between items-top">
+      <div className="mb-12 lg:flex justify-between items-top">
         <h3 className="max-w-lg">{title}</h3>
-        <p className="w-1/2 ml-auto">{text}</p>
+        <p className="mt-8 lg:mt-0 lg:w-1/2 lg:ml-auto">{text}</p>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {(items || []).map((item, index) => (

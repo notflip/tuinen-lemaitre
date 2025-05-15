@@ -59,7 +59,7 @@
   }
 
   h1 {
-    @apply text-6xl lg:text-7xl font-semibold leading-20;
+    @apply text-6xl lg:text-7xl font-semibold leading-17;
   }
 
   h3 {

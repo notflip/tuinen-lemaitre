@@ -11,8 +11,8 @@ export const HeroComponent: React.FC<HeroComponentProps> = (props) => {
 
   return (
     <BlockContainer>
-      <div className="flex flex-col lg:flex-row items-stretch justify-between gap-8">
-        <div className="relative w-full lg:w-1/2 lg:max-w-xl order-2 lg:order-1">
+      <div className="flex flex-col md:flex-row items-stretch justify-between gap-8">
+        <div className="relative w-full md:w-1/2 md:max-w-xl order-2 md:order-1">
           {image && (
             <div className="w-full">
               <ImageBox
@@ -25,11 +25,11 @@ export const HeroComponent: React.FC<HeroComponentProps> = (props) => {
             </div>
           )}
         </div>
-        <div className="w-1/2">
+        <div className="w-full md:w-1/2">
           <h1 className="text-7xl font-bold tracking-tight mb-10">{title}</h1>
           <p className="max-w-lg mb-10">{content}</p>
           {links?.length ? (
-            <div className="lg:inline-flex lg:flex-wrap lg:gap-2 space-y-2 lg:space-y-0">
+            <div className="md:inline-flex md:flex-wrap md:gap-2 space-y-2 md:space-y-0">
               {(links || []).map(({ link }, i) => {
                 if (!link) return null
                 return (
