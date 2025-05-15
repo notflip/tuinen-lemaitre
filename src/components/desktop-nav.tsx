@@ -24,7 +24,7 @@ export default function DesktopNav({ items, settings }: DesktopNavProps) {
           return (
             <li key={index}>
               <MenuLink {...item} className="flex items-center gap-1 font-medium whitespace-nowrap">
-                <div className="hover:bg-accent/10 py-1.5 px-3 rounded-lg">{item.label}</div>
+                <div className="hover:bg-accent/10 text-foreground py-1.5 px-3 rounded-lg">{item.label}</div>
               </MenuLink>
             </li>
           )
@@ -39,7 +39,7 @@ export default function DesktopNav({ items, settings }: DesktopNavProps) {
                         <li key={index}>
                           <MenuLink
                             {...link}
-                            className="block font-medium py-2 px-4 hover:bg-accent/10"
+                            className="block text-foreground font-medium py-2 px-4 hover:bg-accent/10"
                             onClick={() => setOpen(false)} // Close dropdown on click
                           />
                         </li>
@@ -112,7 +112,7 @@ const ListDropdown = ({ children, label }: FlyoutLinkProps) => {
     >
       <Link
         href="#"
-        className="flex items-center gap-1 py-1.5 px-3 font-medium rounded-lg hover:bg-accent/10"
+        className="flex text-foreground items-center gap-1 py-1.5 px-3 font-medium rounded-lg hover:bg-accent/10"
       >
         {label}
         <LuChevronDown className={cn("transition", showFlyout ? "rotate-180" : "rotate-0")} />

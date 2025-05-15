@@ -79,10 +79,14 @@
     @apply text-lg lg:text-xl font-semibold;
   }
 
-  p {
+  p, a {
     @apply text-lg font-medium leading-relaxed;
     color: var(--color-foreground-muted);
     letter-spacing: var(--tracking-tight);
+  }
+
+  a {
+    @apply underline-offset-4;
   }
 }
 

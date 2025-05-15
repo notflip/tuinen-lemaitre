@@ -12,7 +12,7 @@ export const HeroComponent: React.FC<HeroComponentProps> = (props) => {
   return (
     <BlockContainer>
       <div className="flex flex-col lg:flex-row items-stretch justify-between gap-8">
-        <div className="relative order-2 lg:order-1">
+        <div className="relative w-full lg:w-1/2 lg:max-w-xl order-2 lg:order-1">
           {image && (
             <div className="w-full">
               <ImageBox
@@ -21,7 +21,6 @@ export const HeroComponent: React.FC<HeroComponentProps> = (props) => {
                 media={image}
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 objectFit="contain"
-                className="rounded-[16px]"
               />
             </div>
           )}

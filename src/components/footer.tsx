@@ -1,9 +1,7 @@
 import { getCachedGlobal } from "@/utils/getGlobals"
 import { CmsLink } from "./cms-link"
 import Link from "next/link"
-import NewsletterForm from "./newsletter-form"
 import SocialMediaIcon from "./social-media-icon"
-import { Media } from "@payload-types"
 import { ImageBox } from "@/components/image-box"
 
 export async function Footer() {
@@ -12,13 +10,13 @@ export async function Footer() {
 
   return (
     <footer className="pt-24 pb-12">
-      <div className="mx-auto max-w-(--breakpoint-2xl) px-4 md:px-12 2xl:px-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16">
-          <div className="lg:col-span-3">
+      <div className="mx-auto max-w-screen-2xl px-4 md:px-12 2xl:px-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
+          <div className="lg:col-span-2">
             <ImageBox
               disableBlurhash
               media={siteSettings.logo}
-              className="w-[160px] mb-6"
+              className="w-[160px] mb-12"
               sizes="160px"
             />
             <p className="whitespace-pre">{siteSettings.company_info}</p>
@@ -26,25 +24,19 @@ export async function Footer() {
 
           {(footer.columns || []).map((column, index) => (
             <div key={index}>
-              <h2 className="p text-foreground font-bold mb-3">
-                {column.title}
-              </h2>
+              <p className="font-semibold text-foreground mb-3">{column.title}</p>
               <ul className="space-y-3">
                 {(column.links || []).map(({ link }, index) => (
-                  <li key={index}>
-                    <CmsLink
-                      {...link}
-                      type="reference"
-                      className="hover:underline"
-                    />
+                  <li key={index} className="text-lg">
+                    <CmsLink {...link} type="reference" className="hover:underline" />
                   </li>
                 ))}
               </ul>
             </div>
           ))}
 
-          <div className="lg:text-right">
-            <h2 className="p text-foreground font-bold mb-3">Contact</h2>
+          <div className="lg:text-right lg:col-end-5">
+            <p className="text-foreground font-semibold mb-3">Contact</p>
             <ul className="space-y-3">
               {siteSettings.website_emails?.length > 0 && (
                 <li>
@@ -55,21 +47,26 @@ export async function Footer() {
               )}
               {siteSettings.website_phone && (
                 <li>
-                  <Link
-                    href={`tel:${siteSettings.website_phone.replace(/[^+\d]/g, "")}`}
-                  >
+                  <Link href={`tel:${siteSettings.website_phone.replace(/[^+\d]/g, "")}`}>
                     {siteSettings.website_phone}
                   </Link>
                 </li>
               )}
             </ul>
+            <div className="mt-8 flex space-x-2 justify-end">
+              {(siteSettings.social_links || []).map((link, index) => (
+                <div key={index}>
+                  <SocialMediaIcon url={link.url} size={24} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
         <div className="mt-12 border-t border-blue-50 text-blue-950">
           <div className="flex flex-col md:flex-row items-center justify-between pt-8">
-            <div className="flex items-center gap-8 text-sm">
-              <div className="text-sm">
+            <div className="flex items-center gap-8">
+              <div>
                 &copy; {new Date().getFullYear()} {siteSettings.website_title}
               </div>
               {footer.privacyPolicyLink && (
@@ -93,14 +90,6 @@ export async function Footer() {
                   reference={footer.termsAndConditionsLink}
                 />
               )}
-            </div>
-
-            <div className="flex space-x-4">
-              {(siteSettings.social_links || []).map((link, index) => (
-                <div className="bg-beige-50 p-4 rounded-full" key={index}>
-                  <SocialMediaIcon url={link.url} size={24} />
-                </div>
-              ))}
             </div>
           </div>
         </div>
