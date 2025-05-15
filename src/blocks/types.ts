@@ -2,15 +2,19 @@ import { CardsComponent } from "@/blocks/Cards/CardsComponent"
 import { CtaBlockComponent } from "@/blocks/CtaBlock/CtaBlockComponent"
 import { FeatureComponent } from "@/blocks/Feature/FeatureComponent"
 import { HeroComponent } from "@/blocks/Hero/HeroComponent"
+import { ProcessComponent } from "@/blocks/Process/ProcessComponent"
 import { ProjectsComponent } from "@/blocks/Projects/ProjectsComponent"
 import { SharedBlockComponent } from "@/blocks/SharedBlock/SharedBlockComponent"
-import { Cards, CtaBlock, Feature, Hero, Projects, SharedBlock } from "@payload-types"
+import { TestimonialsComponent } from "@/blocks/Testimonials/TestimonialsComponent"
+import { Cards, CtaBlock, Feature, Hero, Process, Projects, SharedBlock, Testimonials } from "@payload-types"
 
 export const blockComponents = {
   hero: HeroComponent,
   feature: FeatureComponent,
   cards: CardsComponent,
   projects: ProjectsComponent,
+  process: ProcessComponent,
+  testimonials: TestimonialsComponent,
   ctaBlock: CtaBlockComponent,
   shared: SharedBlockComponent,
 } as const
@@ -29,6 +33,8 @@ export type BlockTypeToPayloadType = {
   feature: Feature
   cards: Cards
   projects: Projects
+  process: Process
+  testimonials: Testimonials
   ctaBlock: CtaBlock
   shared: SharedBlock
 }

@@ -4,6 +4,21 @@ import config from "@payload-config"
 import { draftMode } from "next/headers"
 import { cache } from "react"
 
+// getTestimonials
+export async function getTestimonials() {
+  const payload = await getPayload({
+    config,
+  })
+
+  const result = await payload.find({
+    collection: "testimonials",
+    pagination: false,
+    sort: "-publishedAt",
+  })
+
+  return result.docs
+}
+
 // getPageByPath
 export async function getPageByPath(path: string) {
   const payload = await getPayload({
@@ -88,30 +103,6 @@ export async function getSitemap(): Promise<PaginatedDocs> {
     },
     select: {
       path: true,
-      updatedAt: true,
-    },
-  })
-}
-
-export async function getPostsSitemap(): Promise<PaginatedDocs> {
-  const payload = await getPayload({
-    config,
-  })
-
-  return await payload.find({
-    collection: "posts",
-    draft: false,
-    depth: 0,
-    limit: 1000,
-    pagination: false,
-    where: {
-      _status: {
-        equals: "published",
-      },
-    },
-    select: {
-      slug: true,
-      publishedAt: true,
       updatedAt: true,
     },
   })

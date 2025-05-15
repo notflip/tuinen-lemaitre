@@ -18,7 +18,7 @@ export const BlockContainer: React.FC<BlockContainerProps> = (props) => {
   return (
     <section className={cn("relative my-24 lg:my-32", className)}>
       <div
-        className={`${bgColor} ${!fullWidth ? "mx-auto max-w-screen-2xl" : "px-4 md:px-12 2xl:px-16"}`}
+        className={`px-4 md:px-12 2xl:px-16 ${bgColor} ${!fullWidth ? "mx-auto max-w-screen-2xl" : ""}`}
       >
         {children}
       </div>

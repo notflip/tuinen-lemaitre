@@ -16,7 +16,7 @@ export const ProjectsComponent: React.FC<Projects> = (props) => {
             }
             return (
               <div key={index}>
-                <div className=" relative h-[400px] rounded-[16px] overflow-hidden">
+                <div className="relative h-[400px] rounded-[16px] overflow-hidden">
                   {(project as Project).image && (
                     <ImageBox
                       fill

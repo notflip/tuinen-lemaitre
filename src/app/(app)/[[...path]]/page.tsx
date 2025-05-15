@@ -40,6 +40,9 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: DocPageProps) {
+  if (process.env.NODE_ENV === "development") {
+    return []
+  }
   const path = (await params).path || "home"
   const page = await getCachedDocumentByPath(path, "pages")
 
@@ -84,7 +87,7 @@ export default async function Page({ params }: { params: { path: string | Array<
 
   return (
     <div>
-      {draft && <LivePreviewListener />}
+      {/* {draft && <LivePreviewListener />} */}
       <div>
         <Blocks blocks={page.blocks} />
       </div>

@@ -16,6 +16,8 @@
   --highlight: hsl(38, 27%, 94%);
   --error: hsl(0, 100%, 95%);
   --success: hsl(90, 56%, 84%);
+
+  --swiper-pagination-color: var(--primary-500);
 }
 
 @theme inline {
@@ -59,7 +61,7 @@
   }
 
   h1 {
-      @apply text-6xl lg:text-7xl font-semibold leading-tight;
+    @apply text-6xl lg:text-7xl font-semibold leading-tight;
   }
 
   h3 {
@@ -72,6 +74,11 @@
 
   h5 {
     @apply text-xl lg:text-2xl font-semibold;
+  }
+
+  h6,
+  .h6 {
+    @apply text-lg lg:text-xl font-semibold;
   }
 
   p {

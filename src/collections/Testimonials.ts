@@ -1,11 +1,10 @@
 import { isAuthenticated } from "@/access/isAuthenticated"
 import { isAnyone } from "@/access/isAnyone"
 import { CollectionConfig } from "payload"
-import { slugField } from "@/fields/slug"
 import beforeDuplicate from "@/hooks/beforeDuplicateSlugged"
 
-export const Projects: CollectionConfig = {
-  slug: "projects",
+export const Testimonials: CollectionConfig = {
+  slug: "testimonials",
   access: {
     create: isAuthenticated,
     delete: isAuthenticated,
@@ -13,30 +12,20 @@ export const Projects: CollectionConfig = {
     update: isAuthenticated,
   },
   admin: {
-    useAsTitle: "title",
-    defaultColumns: ["title", "slug"],
+    defaultColumns: ["text"],
   },
   hooks: {
     beforeValidate: [beforeDuplicate],
   },
   fields: [
-    ...slugField("title"),
-    {
-      type: "text",
-      name: "title",
-      required: true,
-    },
     {
       type: "textarea",
-      name: "description",
+      name: "text",
       required: true,
-      maxLength: 350,
     },
     {
-      name: "image",
-      type: "upload",
-      relationTo: "media",
-      displayPreview: true,
+      type: "text",
+      name: "author",
       required: true,
     },
   ],

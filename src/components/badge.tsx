@@ -10,7 +10,7 @@ export default function Badge({ text, bgColor, showIcon = true }: BadgeProps) {
   return (
     <div
       className={cn(
-        "font-mono text-xs tracking-[0.3px] inline-flex gap-2 items-center px-3 py-1.5 rounded-full text-badge uppercase border",
+        "font-mono text-sm inline-flex gap-2 items-center px-3 py-1.5 rounded-full uppercase border",
         bgColor === "black" ? "border-white/20" : "border-foreground/20",
       )}
     >

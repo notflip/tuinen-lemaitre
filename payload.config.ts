@@ -18,6 +18,7 @@ import { SharedBlocks } from "@/collections/SharedBlocks"
 import { Submissions } from "@/collections/Submissions"
 import { Projects } from "@/collections/Projects"
 import { Forms } from "@/collections/forms/Forms"
+import { Testimonials } from "@/collections/Testimonials"
 
 export default buildConfig({
   editor: lexicalEditor(),
@@ -66,7 +67,17 @@ export default buildConfig({
   }),
 
   // Define and configure your collections in this array
-  collections: [Pages, Projects, Redirects, Users, Media, SharedBlocks, Forms, Submissions],
+  collections: [
+    Pages,
+    Projects,
+    Testimonials,
+    Redirects,
+    Users,
+    Media,
+    SharedBlocks,
+    Forms,
+    Submissions,
+  ],
   globals: [Settings, NavigationMain, Footer],
 
   plugins: [

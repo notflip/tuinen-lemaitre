@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     pages: Page;
     projects: Project;
+    testimonials: Testimonial;
     redirects: Redirect;
     users: User;
     media: Media;
@@ -83,6 +84,7 @@ export interface Config {
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
     projects: ProjectsSelect1<false> | ProjectsSelect1<true>;
+    testimonials: TestimonialsSelect1<false> | TestimonialsSelect1<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
@@ -149,7 +151,7 @@ export interface Page {
    * Dit is de titel van de pagina
    */
   title: string;
-  blocks?: (Hero | Feature | Cards | Projects | CtaBlock | SharedBlock)[] | null;
+  blocks?: (Hero | Feature | Cards | Projects | Process | Testimonials | CtaBlock | SharedBlock)[] | null;
   seo?: {
     title?: string | null;
     description?: string | null;
@@ -321,7 +323,36 @@ export interface Project {
   image: number | Media;
   updatedAt: string;
   createdAt: string;
-  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Process".
+ */
+export interface Process {
+  subtitle?: string | null;
+  title: string;
+  text: string;
+  items?:
+    | {
+        title: string;
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'process';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Testimonials".
+ */
+export interface Testimonials {
+  subtitle?: string | null;
+  title: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'testimonials';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -372,6 +403,17 @@ export interface SharedBlock1 {
   id: number;
   title?: string | null;
   blocks: CtaBlock[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: number;
+  text: string;
+  author: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -575,6 +617,10 @@ export interface PayloadLockedDocument {
         value: number | Project;
       } | null)
     | ({
+        relationTo: 'testimonials';
+        value: number | Testimonial;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: number | Redirect;
       } | null)
@@ -656,6 +702,8 @@ export interface PagesSelect<T extends boolean = true> {
         feature?: T | FeatureSelect<T>;
         cards?: T | CardsSelect<T>;
         projects?: T | ProjectsSelect<T>;
+        process?: T | ProcessSelect<T>;
+        testimonials?: T | TestimonialsSelect<T>;
         ctaBlock?: T | CtaBlockSelect<T>;
         shared?: T | SharedBlockSelect<T>;
       };
@@ -755,6 +803,34 @@ export interface ProjectsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Process_select".
+ */
+export interface ProcessSelect<T extends boolean = true> {
+  subtitle?: T;
+  title?: T;
+  text?: T;
+  items?:
+    | T
+    | {
+        title?: T;
+        text?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Testimonials_select".
+ */
+export interface TestimonialsSelect<T extends boolean = true> {
+  subtitle?: T;
+  title?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CtaBlock_select".
  */
 export interface CtaBlockSelect<T extends boolean = true> {
@@ -799,7 +875,16 @@ export interface ProjectsSelect1<T extends boolean = true> {
   image?: T;
   updatedAt?: T;
   createdAt?: T;
-  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials_select".
+ */
+export interface TestimonialsSelect1<T extends boolean = true> {
+  text?: T;
+  author?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
