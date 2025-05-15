@@ -87,7 +87,7 @@ export default function MobileNavWithClipPath({ items, settings }: NavProps) {
   return (
     <>
       <button
-        className={cn("z-999 relative", isOpen ? "text-white" : "text-black")}
+        className={cn("cursor-pointer z-999 relative", isOpen ? "text-white" : "text-black")}
         onClick={toggleDrawer}
       >
         {isOpen ? <HiXMark size={28} /> : <HiBars3 size={28} />}
@@ -96,13 +96,13 @@ export default function MobileNavWithClipPath({ items, settings }: NavProps) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="z-998 fixed inset-0 bg-primary text-white overflow-y-auto h-full py-4 px-6 will-change-transform"
+            className="z-998 fixed inset-0 bg-primary overflow-y-auto h-full py-4 px-6 will-change-transform font-medium [&_:is(a,p,span)]:text-xl [&_:is(a,p,span)]:text-white"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.2 }}
           >
-            <div className="p-2 mb-8 opacity-50">Navigatie</div>
+            <p className="p-2 mb-8 opacity-50">Navigatie</p>
             <ul className="text-xl">
               <li>
                 <Link

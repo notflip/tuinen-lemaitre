@@ -42,7 +42,7 @@ const SocialMediaIcon: React.FC<SocialMediaIconProps> = ({ url, size = 20 }) => 
     href={url}
     target="_blank"
     rel="noopener noreferrer"
-    className="block rounded-full p-4 bg-primary-300 text-foreground"
+    className="block rounded-full p-4 bg-primary-300 text-foreground!"
   >
     {getSocialIcon(url, size)}
   </Link>
