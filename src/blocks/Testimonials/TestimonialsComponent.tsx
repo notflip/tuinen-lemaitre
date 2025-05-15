@@ -10,7 +10,7 @@ export const TestimonialsComponent: React.FC<Testimonials> = async (props) => {
   const testimonials = await getTestimonials()
 
   return (
-    <BlockContainer {...props} fullWidth bgColor="bg-highlight" className="overflow-x-hidden">
+    <BlockContainer {...props} bgColor="bg-muted" className="overflow-x-hidden">
       <div className="py-24 lg:py-32">
         {subtitle && (
           <div className="mb-8">

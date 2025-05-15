@@ -6,7 +6,7 @@ export const ProjectsComponent: React.FC<Projects> = (props) => {
   const { title, projects } = props
 
   return (
-    <BlockContainer {...props} fullWidth bgColor="bg-primary">
+    <BlockContainer {...props} bgColor="bg-primary">
       <div className="py-24 lg:py-32">
         <h3 className="mb-16 text-white">{title}</h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

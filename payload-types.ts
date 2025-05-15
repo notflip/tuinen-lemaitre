@@ -151,7 +151,7 @@ export interface Page {
    * Dit is de titel van de pagina
    */
   title: string;
-  blocks?: (Hero | Feature | Cards | Projects | Process | Testimonials | CtaBlock | SharedBlock)[] | null;
+  blocks?: (Hero | Feature | Cards | Projects | Process | Testimonials | Cta | SharedBlock)[] | null;
   seo?: {
     title?: string | null;
     description?: string | null;
@@ -356,9 +356,9 @@ export interface Testimonials {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CtaBlock".
+ * via the `definition` "Cta".
  */
-export interface CtaBlock {
+export interface Cta {
   /**
    * Indien dit ingevuld is, komt deze kleine titel boven de hoofd titel in een kader staan
    */
@@ -380,10 +380,9 @@ export interface CtaBlock {
         id?: string | null;
       }[]
     | null;
-  bgColor?: 'blue' | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'ctaBlock';
+  blockType: 'cta';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -402,7 +401,7 @@ export interface SharedBlock {
 export interface SharedBlock1 {
   id: number;
   title?: string | null;
-  blocks: CtaBlock[];
+  blocks: Cta[];
   updatedAt: string;
   createdAt: string;
 }
@@ -704,7 +703,7 @@ export interface PagesSelect<T extends boolean = true> {
         projects?: T | ProjectsSelect<T>;
         process?: T | ProcessSelect<T>;
         testimonials?: T | TestimonialsSelect<T>;
-        ctaBlock?: T | CtaBlockSelect<T>;
+        cta?: T | CtaSelect<T>;
         shared?: T | SharedBlockSelect<T>;
       };
   seo?:
@@ -831,9 +830,9 @@ export interface TestimonialsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CtaBlock_select".
+ * via the `definition` "Cta_select".
  */
-export interface CtaBlockSelect<T extends boolean = true> {
+export interface CtaSelect<T extends boolean = true> {
   subtitle?: T;
   title?: T;
   text?: T;
@@ -851,7 +850,6 @@ export interface CtaBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
-  bgColor?: T;
   id?: T;
   blockName?: T;
 }
@@ -967,7 +965,7 @@ export interface SharedBlocksSelect<T extends boolean = true> {
   blocks?:
     | T
     | {
-        ctaBlock?: T | CtaBlockSelect<T>;
+        cta?: T | CtaSelect<T>;
       };
   updatedAt?: T;
   createdAt?: T;

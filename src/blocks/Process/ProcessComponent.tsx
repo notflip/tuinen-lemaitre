@@ -20,7 +20,7 @@ export const ProcessComponent: React.FC<Process> = (props) => {
         {(items || []).map((item, index) => (
           <div key={index} className="bg-highlight p-4 lg:p-8 rounded-lg">
             <div className="inline-block bg-success rounded-full px-3 py-1.5 font-mono font-medium uppercase">{`Stap ${index + 1}`}</div>
-            <h5 className="my-4">{item.title}</h5>
+            <h4 className="my-4">{item.title}</h4>
             <p className="max-w-md text-lg">{item.text}</p>
           </div>
         ))}

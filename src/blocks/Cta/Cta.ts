@@ -1,9 +1,9 @@
 import type { Block } from "payload"
 import { link } from "@/fields/link/link"
 
-export const CtaBlock: Block = {
-  slug: "ctaBlock",
-  interfaceName: "CtaBlock",
+export const Cta: Block = {
+  slug: "cta",
+  interfaceName: "Cta",
   fields: [
     {
       name: "subtitle",
@@ -31,20 +31,6 @@ export const CtaBlock: Block = {
       fields: [link()],
       maxRows: 2,
     },
-    {
-      name: "bgColor",
-      type: "select",
-      defaultValue: "blue",
-      admin: {
-        readOnly: true,
-      },
-      options: [
-        {
-          label: "Blue",
-          value: "blue",
-        },
-      ],
-    },
   ],
 }
-export default CtaBlock
+export default Cta

@@ -5,7 +5,7 @@ import { isAuthenticated } from "@/access/isAuthenticated"
 import { slugField } from "@/fields/slug"
 import { isAuthenticatedOrPublished } from "@/access/isAuthenticatedOrPublished"
 import { canDeletePage } from "@/access/canDeletePage"
-import CtaBlock from "@/blocks/CtaBlock/CtaBlock"
+import Cta from "@/blocks/Cta/Cta"
 import pathField from "@/fields/path/path"
 import { SharedBlock } from "@/blocks/SharedBlock/SharedBlock"
 import beforeDuplicate from "@/hooks/beforeDuplicateSlugged"
@@ -95,7 +95,7 @@ export const Pages: CollectionConfig<"pages"> = {
             {
               name: "blocks",
               type: "blocks",
-              blocks: [Hero, Feature, Cards, Projects, Process, Testimonials, CtaBlock, SharedBlock],
+              blocks: [Hero, Feature, Cards, Projects, Process, Testimonials, Cta, SharedBlock],
             },
           ],
         },
