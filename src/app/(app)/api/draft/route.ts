@@ -5,7 +5,6 @@ import config from "@payload-config"
 
 // Apply collection prefix mapping before redirecting
 const collectionPrefixMap: Partial<Record<CollectionSlug, string>> = {
-  posts: "/blog",
   pages: "",
 }
 

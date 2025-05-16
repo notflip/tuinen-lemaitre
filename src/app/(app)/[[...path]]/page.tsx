@@ -13,7 +13,7 @@ import { notFound } from "next/navigation"
 
 interface DocPageProps {
   params: Promise<{
-    path: string
+    path: string | Array<string>
   }>
 }
 
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: DocPageProps) {
 }
 
 // Component
-export default async function Page({ params }: { params: { path: string | Array<string> } }) {
+export default async function Page({ params }: DocPageProps) {
   const settings = await getCachedGlobal("settings")()
   const { isEnabled: draft } = await draftMode()
 
