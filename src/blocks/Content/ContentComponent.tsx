@@ -3,7 +3,11 @@ import RichText from "@/components/rich-text"
 import { BlockContainer } from "@/blocks/BlockContainer"
 
 export const ContentComponent: React.FC<Content> = (props) => {
-  const { content } = props
+  const { content, bgColor } = props
 
-  return <BlockContainer {...props}>{content && <RichText data={content} />}</BlockContainer>
+  return (
+    <BlockContainer bgColor={bgColor} {...props}>
+      <div className="py-24 lg:py-32">{content && <RichText data={content} />}</div>
+    </BlockContainer>
+  )
 }

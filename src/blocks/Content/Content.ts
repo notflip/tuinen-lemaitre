@@ -9,6 +9,23 @@ export const Content: Block = {
       name: "content",
       label: "Content",
     }),
+    {
+      name: "bgColor",
+      type: "select",
+      admin: {
+        isClearable: true,
+      },
+      options: [
+        {
+          label: "Gray",
+          value: "bg-muted",
+        },
+                {
+          label: "Beige",
+          value: "bg-highlight",
+        },
+      ],
+    },
   ],
 }
 export default Content
