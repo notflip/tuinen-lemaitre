@@ -1,5 +1,5 @@
 {
-  "id": "0a67f10f-498d-412a-9a0a-4380a30aa16c",
+  "id": "b4969beb-534e-4cc0-af61-e89241663dd6",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -943,13 +943,6 @@
         "content": {
           "name": "content",
           "type": "jsonb",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "bg_color": {
-          "name": "bg_color",
-          "type": "enum_pages_blocks_content_bg_color",
-          "typeSchema": "public",
           "primaryKey": false,
           "notNull": false
         },
@@ -3454,13 +3447,6 @@
         "content": {
           "name": "content",
           "type": "jsonb",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "bg_color": {
-          "name": "bg_color",
-          "type": "enum__pages_v_blocks_content_bg_color",
-          "typeSchema": "public",
           "primaryKey": false,
           "notNull": false
         },
@@ -9672,14 +9658,6 @@
         "4"
       ]
     },
-    "public.enum_pages_blocks_content_bg_color": {
-      "name": "enum_pages_blocks_content_bg_color",
-      "schema": "public",
-      "values": [
-        "bg-muted",
-        "bg-highlight"
-      ]
-    },
     "public.enum_pages_blocks_cta_links_link_type": {
       "name": "enum_pages_blocks_cta_links_link_type",
       "schema": "public",
@@ -9736,14 +9714,6 @@
         "2",
         "3",
         "4"
-      ]
-    },
-    "public.enum__pages_v_blocks_content_bg_color": {
-      "name": "enum__pages_v_blocks_content_bg_color",
-      "schema": "public",
-      "values": [
-        "bg-muted",
-        "bg-highlight"
       ]
     },
     "public.enum__pages_v_blocks_cta_links_link_type": {

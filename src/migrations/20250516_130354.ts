@@ -7,7 +7,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum_pages_blocks_feature_variant" AS ENUM('imageLeft', 'imageRight');
   CREATE TYPE "public"."enum_pages_blocks_cards_items_link_type" AS ENUM('none', 'reference', 'custom');
   CREATE TYPE "public"."enum_pages_blocks_cards_columns" AS ENUM('2', '3', '4');
-  CREATE TYPE "public"."enum_pages_blocks_content_bg_color" AS ENUM('bg-muted', 'bg-highlight');
   CREATE TYPE "public"."enum_pages_blocks_cta_links_link_type" AS ENUM('reference', 'custom');
   CREATE TYPE "public"."enum_pages_status" AS ENUM('draft', 'published');
   CREATE TYPE "public"."enum__pages_v_blocks_hero_links_link_type" AS ENUM('reference', 'custom');
@@ -15,7 +14,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__pages_v_blocks_feature_variant" AS ENUM('imageLeft', 'imageRight');
   CREATE TYPE "public"."enum__pages_v_blocks_cards_items_link_type" AS ENUM('none', 'reference', 'custom');
   CREATE TYPE "public"."enum__pages_v_blocks_cards_columns" AS ENUM('2', '3', '4');
-  CREATE TYPE "public"."enum__pages_v_blocks_content_bg_color" AS ENUM('bg-muted', 'bg-highlight');
   CREATE TYPE "public"."enum__pages_v_blocks_cta_links_link_type" AS ENUM('reference', 'custom');
   CREATE TYPE "public"."enum__pages_v_version_status" AS ENUM('draft', 'published');
   CREATE TYPE "public"."enum_redirects_type" AS ENUM('301', '302');
@@ -110,7 +108,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_path" text NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
   	"content" jsonb,
-  	"bg_color" "enum_pages_blocks_content_bg_color",
   	"block_name" varchar
   );
   
@@ -317,7 +314,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_path" text NOT NULL,
   	"id" serial PRIMARY KEY NOT NULL,
   	"content" jsonb,
-  	"bg_color" "enum__pages_v_blocks_content_bg_color",
   	"_uuid" varchar,
   	"block_name" varchar
   );
@@ -1761,7 +1757,6 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum_pages_blocks_feature_variant";
   DROP TYPE "public"."enum_pages_blocks_cards_items_link_type";
   DROP TYPE "public"."enum_pages_blocks_cards_columns";
-  DROP TYPE "public"."enum_pages_blocks_content_bg_color";
   DROP TYPE "public"."enum_pages_blocks_cta_links_link_type";
   DROP TYPE "public"."enum_pages_status";
   DROP TYPE "public"."enum__pages_v_blocks_hero_links_link_type";
@@ -1769,7 +1764,6 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum__pages_v_blocks_feature_variant";
   DROP TYPE "public"."enum__pages_v_blocks_cards_items_link_type";
   DROP TYPE "public"."enum__pages_v_blocks_cards_columns";
-  DROP TYPE "public"."enum__pages_v_blocks_content_bg_color";
   DROP TYPE "public"."enum__pages_v_blocks_cta_links_link_type";
   DROP TYPE "public"."enum__pages_v_version_status";
   DROP TYPE "public"."enum_redirects_type";

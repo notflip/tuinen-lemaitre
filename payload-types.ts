@@ -348,7 +348,6 @@ export interface Content {
     };
     [k: string]: unknown;
   } | null;
-  bgColor?: ('bg-muted' | 'bg-highlight') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'content';
@@ -894,7 +893,6 @@ export interface CardsSelect<T extends boolean = true> {
  */
 export interface ContentSelect<T extends boolean = true> {
   content?: T;
-  bgColor?: T;
   id?: T;
   blockName?: T;
 }
