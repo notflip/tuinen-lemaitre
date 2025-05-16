@@ -22,6 +22,10 @@ export const Hero: Block = {
       required: true,
     },
     {
+      name: "containImage",
+      type: "checkbox",
+    },
+    {
       name: "links",
       type: "array",
       admin: {

@@ -13,7 +13,8 @@
   --accent: hsl(131, 25%, 38%);
   --muted: hsl(40, 18%, 97%);
   --highlight: hsl(37, 27%, 94%);
-  --error: hsl(0, 100%, 95%);
+  --beige-500: hsl(37 38% 76%);
+  --destructive: hsl(0, 34%, 54%);
   --success: hsl(90, 56%, 84%);
 
   --swiper-pagination-color: var(--primary-500);
@@ -31,8 +32,9 @@
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-highlight: var(--highlight);
+  --color-beige-500: var(--beige-500);
   --color-success: var(--success);
-  --color-error: var(--error);
+  --color-destructive: var(--destructive);
   --color-border: var(--muted);
 
   --font-sans: var(--font-workSans);
@@ -70,11 +72,11 @@
     @apply text-4xl lg:text-5xl font-bold leading-tight;
   }
 
-  h4 {
+  h4, .h4 {
     @apply text-2xl lg:text-3xl font-semibold leading-tight;
   }
 
-  h5 {
+  h5, .h5 {
     @apply text-xl lg:text-2xl font-semibold;
   }
 

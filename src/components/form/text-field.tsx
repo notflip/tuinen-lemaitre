@@ -18,7 +18,10 @@ export const TextField = ({
       }}
       render={({ field, fieldState: { error } }) => (
         <FormItem>
-          <FormLabel>{label}</FormLabel>
+          <FormLabel>
+            {label}
+            {requiredFromProps && <span className="text-xs">*</span>}
+          </FormLabel>
           <FormControl>
             <Input placeholder={defaultValue} {...field} />
           </FormControl>

@@ -108,7 +108,7 @@ export const Form: React.FC<FormProps> = ({ form }) => {
                 id="form"
                 key={formID}
                 onSubmit={handleSubmit(onSubmit)}
-                className="max-w-xl space-y-4 scroll-mt-[300px]"
+                className="max-w-xl space-y-6 scroll-mt-[300px]"
               >
                 {fields.map((field, i) => {
                   //@ts-ignore

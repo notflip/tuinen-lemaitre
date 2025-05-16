@@ -24,7 +24,9 @@ export const MenuLink: React.FC<MenuLinkType> = (props) => {
 
   const href =
     type === "reference" && typeof reference?.value === "object" && reference.value.path
-      ? reference.value.path
+      ? reference.value.path === "/home"
+        ? "/"
+        : reference.value.path
       : url || null
 
   if (!href) {

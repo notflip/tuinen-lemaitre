@@ -1,10 +1,4 @@
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Textarea } from "@/components/ui/textarea"
 
 export const TextareaField = ({
@@ -12,6 +6,7 @@ export const TextareaField = ({
   label,
   defaultValue,
   control,
+  required: requiredFromProps,
   placeholder,
 }: any) => {
   return (
@@ -20,13 +15,12 @@ export const TextareaField = ({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{label}</FormLabel>
+          <FormLabel>
+            {label}
+            {requiredFromProps && <span className="text-xs">*</span>}
+          </FormLabel>
           <FormControl>
-            <Textarea
-              placeholder={placeholder}
-              className="resize-none"
-              {...field}
-            />
+            <Textarea placeholder={placeholder} className="resize-none" {...field} />
           </FormControl>
           <FormMessage />
         </FormItem>

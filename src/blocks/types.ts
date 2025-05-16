@@ -1,4 +1,5 @@
 import { CardsComponent } from "@/blocks/Cards/CardsComponent"
+import { ContactComponent } from "@/blocks/Contact/ContactComponent"
 import { ContentComponent } from "@/blocks/Content/ContentComponent"
 import { CtaComponent } from "@/blocks/Cta/CtaComponent"
 import { FeatureComponent } from "@/blocks/Feature/FeatureComponent"
@@ -19,6 +20,7 @@ import {
   Projects,
   SharedBlock,
   Testimonials,
+  Contact,
 } from "@payload-types"
 
 export const blockComponents = {
@@ -27,6 +29,7 @@ export const blockComponents = {
   feature: FeatureComponent,
   cards: CardsComponent,
   content: ContentComponent,
+  contact: ContactComponent,
   projects: ProjectsComponent,
   process: ProcessComponent,
   testimonials: TestimonialsComponent,
@@ -49,6 +52,7 @@ export type BlockTypeToPayloadType = {
   feature: Feature
   cards: Cards
   content: Content
+  contact: Contact,
   projects: Projects
   process: Process
   testimonials: Testimonials

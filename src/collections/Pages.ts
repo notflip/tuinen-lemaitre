@@ -18,6 +18,7 @@ import { Process } from "@/blocks/Process/Process"
 import Testimonials from "@/blocks/Testimonials/Testimonials"
 import { HeroAlt } from "@/blocks/HeroAlt/HeroAlt"
 import Content from "@/blocks/Content/Content"
+import { Contact } from "@/blocks/Contact/Contact"
 
 export const Pages: CollectionConfig<"pages"> = {
   slug: "pages",
@@ -104,6 +105,7 @@ export const Pages: CollectionConfig<"pages"> = {
                 Feature,
                 Cards,
                 Content,
+                Contact,
                 Projects,
                 Process,
                 Testimonials,

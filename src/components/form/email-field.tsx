@@ -25,7 +25,10 @@ export const EmailField = ({
       }}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{label}</FormLabel>
+          <FormLabel>
+            {label}
+            {requiredFromProps && <span className="text-xs">*</span>}
+          </FormLabel>
           <FormControl>
             <Input placeholder={defaultValue} {...field} />
           </FormControl>

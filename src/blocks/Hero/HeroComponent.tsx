@@ -7,20 +7,22 @@ import { HiChevronRight } from "react-icons/hi2"
 type HeroComponentProps = BlockTypeToPayloadType["hero"] & CommonBlockProps
 
 export const HeroComponent: React.FC<HeroComponentProps> = (props) => {
-  const { title, content, image, links } = props
+  const { title, content, image, containImage, links } = props
 
   return (
     <BlockContainer>
       <div className="flex flex-col md:flex-row items-stretch justify-between gap-8">
-        <div className="relative w-full md:w-1/2 md:max-w-xl order-2 md:order-1">
+        <div className=" w-full md:w-1/2 md:max-w-xl order-2 md:order-1">
           {image && (
-            <div className="w-full">
+            <div className="relative h-[400px] lg:h-auto lg:min-h-[500px] lg:max-h-[700px] w-full">
               <ImageBox
+                fill={containImage ? false : true}
                 disableBlurhash
                 lazyload={false}
                 media={image}
                 sizes="(max-width: 1024px) 100vw, 40vw"
-                objectFit="contain"
+                className="rounded-lg"
+                objectFit={containImage ? "contain" : "cover"}
               />
             </div>
           )}

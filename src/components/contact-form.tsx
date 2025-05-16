@@ -85,7 +85,7 @@ export function ContactForm() {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-6"
+            className="space-y-6 bg-muted p-8 rounded-2xl"
             method="POST"
           >
             <TextField label="Naam" control={form.control} name="naam" />

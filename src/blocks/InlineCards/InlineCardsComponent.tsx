@@ -9,7 +9,7 @@ export const InlineCardsComponent: React.FC<InlineCards> = (props) => {
       {(items || []).map((item, index) => (
         <div
           key={index}
-          className="bg-primary-300 text-foreground rounded-xl flex gap-4 items-center p-4"
+          className="bg-primary-300 text-foreground rounded-lg flex gap-4 items-center p-4"
         >
           <div className="bg-primary-500 p-2 rounded-full">
             <DynamicIcon iconName={item.icon} size={32} className="shrink-0 text-white" />

@@ -38,7 +38,7 @@ export default function DesktopNav({ items, settings }: DesktopNavProps) {
             <li key={item.id}>
               <ListDropdown label={item.label!}>
                 {({ setOpen }) => (
-                  <ul className="text-nowrap rounded-xl overflow-hidden">
+                  <ul className="text-nowrap rounded-lg overflow-hidden">
                     {item.links &&
                       item.links.map((link, index) => (
                         <li key={index}>
@@ -129,7 +129,7 @@ const ListDropdown = ({ children, label }: FlyoutLinkProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 15 }}
             style={{ x: "-50%" }}
-            className="absolute left-1/2 top-14 bg-white border border-accent/40 rounded-xl"
+            className="absolute left-1/2 top-14 bg-white border border-accent/40 rounded-lg"
           >
             <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
             {typeof children === "function" ? children({ setOpen }) : children}

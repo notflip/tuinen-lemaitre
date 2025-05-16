@@ -25,7 +25,9 @@ export const CmsLink: React.FC<React.PropsWithChildren<CmsLinkType>> = (props) =
   // Determine href based on reference or fallback to url
   const href =
     type === "reference" && typeof reference?.value === "object" && reference.value.path
-      ? reference.value.path
+      ? reference.value.path === "/home"
+        ? "/"
+        : reference.value.path
       : url || null
 
   if (!href) {
