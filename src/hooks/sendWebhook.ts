@@ -36,19 +36,6 @@ export const SendWebhook: CollectionAfterChangeHook<Submission> = async ({
       console.error("Error calling submission webhook:", err)
       throw new APIError("Failed to notify webhook of new submission.")
     }
-
-    if (!website_emails?.length) {
-      throw new APIError(
-        "Not a single website email address is available to send form submission to.",
-      )
-    }
-
-    await payload.sendEmail({
-      to: website_emails.map((m) => m.email),
-      from: process.env.MAIL_FROM,
-      subject: "💌 Contactaanvraag via website",
-      html: await RenderedEmail({ doc }),
-    })
   }
 
   return doc
