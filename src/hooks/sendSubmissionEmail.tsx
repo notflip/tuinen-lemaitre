@@ -23,7 +23,7 @@ export const SendSubmissionEmail: CollectionAfterChangeHook<Submission> = async 
       to: website_emails.map((m) => m.email),
       from: process.env.MAIL_FROM,
       subject: "Aanvraag voor afspraak",
-      html: await render(<SubmissionEmail {...doc} />),
+      html: await render(<SubmissionEmail doc={doc} />),
     })
   }
 
