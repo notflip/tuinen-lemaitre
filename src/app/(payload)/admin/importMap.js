@@ -29,6 +29,8 @@ import { InlineToolbarFeatureClient as InlineToolbarFeatureClient_e70f5e05f09f93
 import { MetaTitleComponent as MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaImageComponent as MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
+import { FolderTableCell as FolderTableCell_ab83ff7e88da8d3530831f296ec4756a } from '@payloadcms/ui/rsc'
+import { FolderEditField as FolderEditField_ab83ff7e88da8d3530831f296ec4756a } from '@payloadcms/ui/rsc'
 import { ArrayRowLabel as ArrayRowLabel_a34117ba03a0e26ff25825aaffeb6215 } from '@/globals/ArrayRowLabel'
 import { ArrayRelationRowLabel as ArrayRelationRowLabel_5ca5034c39015de468c7dfb2117a25cd } from '@/globals/ArrayRelationRowLabel'
 import { ArrayRowTitle as ArrayRowTitle_96492d4250363eb4c3446b2f4058f70f } from '@/globals/ArrayRowTitle'
@@ -66,6 +68,8 @@ export const importMap = {
   "@payloadcms/plugin-seo/client#MetaTitleComponent": MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaDescriptionComponent": MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaImageComponent": MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860,
+  "@payloadcms/ui/rsc#FolderTableCell": FolderTableCell_ab83ff7e88da8d3530831f296ec4756a,
+  "@payloadcms/ui/rsc#FolderEditField": FolderEditField_ab83ff7e88da8d3530831f296ec4756a,
   "@/globals/ArrayRowLabel#ArrayRowLabel": ArrayRowLabel_a34117ba03a0e26ff25825aaffeb6215,
   "@/globals/ArrayRelationRowLabel#ArrayRelationRowLabel": ArrayRelationRowLabel_5ca5034c39015de468c7dfb2117a25cd,
   "@/globals/ArrayRowTitle#ArrayRowTitle": ArrayRowTitle_96492d4250363eb4c3446b2f4058f70f,

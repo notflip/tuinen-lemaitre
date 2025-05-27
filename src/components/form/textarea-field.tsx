@@ -13,6 +13,9 @@ export const TextareaField = ({
     <FormField
       control={control}
       name={name}
+      rules={{
+        required: requiredFromProps && "Dit veld is verplicht",
+      }}
       render={({ field }) => (
         <FormItem>
           <FormLabel>
