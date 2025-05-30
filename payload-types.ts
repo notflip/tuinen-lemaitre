@@ -215,6 +215,7 @@ export interface Hero {
  */
 export interface Media {
   id: number;
+  caption?: string | null;
   alt?: string | null;
   blurhash?: string | null;
   folder?: (number | null) | FolderInterface;
@@ -1073,6 +1074,7 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
+  caption?: T;
   alt?: T;
   blurhash?: T;
   folder?: T;

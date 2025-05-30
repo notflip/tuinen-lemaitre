@@ -37,6 +37,12 @@ export const Media: CollectionConfig = {
   },
   fields: [
     {
+      name: "caption",
+      type: "text",
+      label: "Tekst onder afbeelding",
+      maxLength: 100,
+    },
+    {
       name: "alt",
       type: "text",
       label: "Alt Text",

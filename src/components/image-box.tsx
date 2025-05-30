@@ -11,6 +11,7 @@ interface ImageBoxProps extends React.HTMLAttributes<HTMLDivElement> {
   quality?: number
   sizes?: string
   disableBlurhash?: boolean
+  caption?: string
 }
 
 export const ImageBox: React.FC<ImageBoxProps> = ({
@@ -22,6 +23,7 @@ export const ImageBox: React.FC<ImageBoxProps> = ({
   lazyload = true,
   quality = 85,
   disableBlurhash = false,
+  caption,
   ...rest
 }) => {
   if (!media || typeof media === "number") {
@@ -39,22 +41,29 @@ export const ImageBox: React.FC<ImageBoxProps> = ({
       : ""
 
   return (
-    <Image
-      src={`${media.url!}?${media.updatedAt}`}
-      alt={media.alt ?? ""}
-      quality={quality}
-      fill={fill}
-      width={!fill ? width : undefined}
-      height={!fill ? height : undefined}
-      sizes={sizes}
-      loading={lazyload ? "lazy" : "eager"}
-      style={{
-        objectFit,
-        objectPosition: setObjectPosition,
-      }}
-      placeholder={!disableBlurhash && media.blurhash ? "blur" : "empty"}
-      blurDataURL={(!disableBlurhash && media.blurhash) || undefined}
-      {...rest}
-    />
+    <>
+      <Image
+        src={`${media.url!}?${media.updatedAt}`}
+        alt={media.alt ?? ""}
+        quality={quality}
+        fill={fill}
+        width={!fill ? width : undefined}
+        height={!fill ? height : undefined}
+        sizes={sizes}
+        loading={lazyload ? "lazy" : "eager"}
+        style={{
+          objectFit,
+          objectPosition: setObjectPosition,
+        }}
+        placeholder={!disableBlurhash && media.blurhash ? "blur" : "empty"}
+        blurDataURL={(!disableBlurhash && media.blurhash) || undefined}
+        {...rest}
+      />
+      {media.caption && (
+        <div className="absolute bottom-2 right-2 px-2 py-1 rounded-lg bg-black/50 text-white">
+          {media.caption}
+        </div>
+      )}
+    </>
   )
 }

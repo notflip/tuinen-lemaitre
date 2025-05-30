@@ -42,8 +42,8 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         <AdminBar draft={isEnabled} />
         <Footer />
       </body>
-      {process.env.NODE_ENV === "production" && (
-        <GoogleTagManager gtmId={process.env.GTM_ID ?? ""} />
+      {process.env.NODE_ENV === "production" && process.env.GTM_ID && (
+        <GoogleTagManager gtmId={process.env.GTM_ID} />
       )}
     </html>
   )
