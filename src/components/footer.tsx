@@ -64,33 +64,35 @@ export async function Footer() {
         </div>
 
         <div className="mt-12 border-t border-blue-50 text-blue-950">
-          <div className="flex flex-col md:flex-row items-center justify-between pt-8">
-            <div className="flex items-center gap-8">
-              <div>
-                &copy; {new Date().getFullYear()} {siteSettings.website_title}
-              </div>
-              {footer.privacyPolicyLink && (
-                <CmsLink
-                  label="Privacy Policy"
-                  type="reference"
-                  reference={footer.privacyPolicyLink}
-                />
-              )}
-              {footer.cookiePolicyLink && (
-                <CmsLink
-                  label="Cookie Policy"
-                  type="reference"
-                  reference={footer.cookiePolicyLink}
-                />
-              )}
-              {footer.termsAndConditionsLink && (
-                <CmsLink
-                  label="Terms and conditions"
-                  type="reference"
-                  reference={footer.termsAndConditionsLink}
-                />
-              )}
+          <div className="flex flex-col md:flex-row items-center justify-between pt-8 gap-16">
+            <div className="text-base">
+              &copy; {new Date().getFullYear()} {siteSettings.website_title}
             </div>
+            {footer.privacyPolicyLink && (
+              <CmsLink
+                label="Privacy Policy"
+                type="reference"
+                reference={footer.privacyPolicyLink}
+                className="text-base"
+              />
+            )}
+            {footer.cookiePolicyLink && (
+              <CmsLink
+                label="Cookie Policy"
+                type="reference"
+                reference={footer.cookiePolicyLink}
+                className="text-base"
+              />
+            )}
+            {footer.termsAndConditionsLink && (
+              <CmsLink
+                label="Terms and conditions"
+                type="reference"
+                reference={footer.termsAndConditionsLink}
+                className="text-base"
+              />
+            )}
+            <div className="ml-auto">Website by <a target="_blank" className="text-base underline underline-offset-4" href="https://studiomonty.be">Studiomonty.be</a></div>
           </div>
         </div>
       </div>
