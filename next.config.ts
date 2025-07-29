@@ -10,6 +10,16 @@ const nextConfig: NextConfig = {
       "@react-email/tailwind",
     ],
   },
+  
+  async redirects() {
+    return [
+      {
+        source: "/:path*/page",
+        destination: "/:path*/page/1",
+        permanent: true,
+      },
+    ]
+  },
 
   images: {
     dangerouslyAllowSVG: true,

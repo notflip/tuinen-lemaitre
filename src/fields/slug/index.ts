@@ -2,16 +2,9 @@ import type { TextField } from "payload"
 
 import { generateSlugHook } from "@/fields/slug/generateSlugHook"
 
-type Overrides = {
-  slugOverrides?: Partial<TextField>
-}
-
 type Slug = (fieldToUse?: string) => [TextField]
 
-export const slugField: Slug = (
-  fieldToUse = "title",
-  overrides: Overrides = {},
-) => {
+export const slugField: Slug = (fieldToUse = "title") => {
   const slugField: TextField = {
     name: "slug",
     type: "text",

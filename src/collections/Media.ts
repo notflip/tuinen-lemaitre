@@ -46,6 +46,9 @@ export const Media: CollectionConfig = {
       name: "alt",
       type: "text",
       label: "Alt Text",
+      admin: {
+        description: "Beschrijf dat de afbeelding toont, dit is goed voor de SEO score en accessibility."
+      }
     },
     {
       name: "blurhash",

@@ -57,6 +57,7 @@ export const ImageBox: React.FC<ImageBoxProps> = ({
         }}
         placeholder={!disableBlurhash && media.blurhash ? "blur" : "empty"}
         blurDataURL={(!disableBlurhash && media.blurhash) || undefined}
+        className="pointer-events-none"
         {...rest}
       />
       {media.caption && (

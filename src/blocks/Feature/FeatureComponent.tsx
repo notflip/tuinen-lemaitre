@@ -17,7 +17,7 @@ export const FeatureComponent: React.FC<HeroComponentProps> = (props) => {
           "lg:flex-row-reverse": variant === "imageLeft",
         })}
       >
-        <div className="relative order-2 lg:w-1/2 lg:order-1 ">
+        <div className="relative order-2 lg:w-1/2 lg:order-1">
           {image && (
             <div className="h-[400px] lg:h-auto lg:min-h-[500px] lg:max-h-[700px] w-full">
               <ImageBox
