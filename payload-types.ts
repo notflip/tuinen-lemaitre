@@ -216,6 +216,9 @@ export interface Hero {
 export interface Media {
   id: number;
   caption?: string | null;
+  /**
+   * Beschrijf dat de afbeelding toont, dit is goed voor de SEO score en accessibility.
+   */
   alt?: string | null;
   blurhash?: string | null;
   folder?: (number | null) | FolderInterface;

@@ -49,7 +49,7 @@ export const Pages: CollectionConfig<"pages"> = {
       url: ({ data }) => {
         return generatePreviewPath({
           collection: "pages",
-          value: data.path,
+          value: data.path as string,
         })
       },
     },
