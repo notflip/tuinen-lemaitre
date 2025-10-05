@@ -84,7 +84,7 @@ export default async function Page({ params }: DocPageProps) {
 
   return (
     <div>
-      {/* {draft && <LivePreviewListener />} */}
+      {draft && <LivePreviewListener />}
       <div>
         <Blocks blocks={page.blocks} />
       </div>
