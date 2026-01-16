@@ -11,6 +11,12 @@ const collectionPrefixMap: Partial<Record<CollectionSlug, string>> = {
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
 
+  const secret = searchParams.get("secret")
+
+  if (secret !== process.env.PAYLOAD_SECRET) {
+    return new Response("Invalid token", { status: 401 })
+  }
+
   const collection = searchParams.get("collection") as CollectionSlug
   const fieldValue = searchParams.get("value")
 
@@ -22,21 +28,6 @@ export async function GET(request: Request) {
     searchParams.get("where") || (collection === "pages" ? "path" : "slug")
 
   const payload = await getPayload({ config })
-
-  // Check the secret and next parameters
-  // This secret should only be known to this Route Handler and the CMS
-  // if (secret !== process.env.PAYLOAD_SECRET || !slug) {
-  //   return new Response("Invalid token", { status: 401 });
-  // }
-
-  // Fetch the headless CMS to check if the provided `slug` exists
-  // getPostBySlug would implement the required fetching logic to the headless CMS
-  // const post = await getPostBySlug(slug);
-
-  // If the slug doesn't exist prevent draft mode from being enabled
-  // if (!post) {
-  // return new Response("Invalid slug", { status: 401 });
-  // }
 
   // Verify the given slug exists
   try {

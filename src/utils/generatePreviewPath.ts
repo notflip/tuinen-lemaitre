@@ -12,6 +12,7 @@ type Props = {
 
 export const generatePreviewPath = ({ collection, value, where }: Props) => {
   const params = {
+    secret: process.env.PAYLOAD_SECRET || "",
     collection,
     value,
     where: where || (collection === "pages" ? "path" : "slug"),
