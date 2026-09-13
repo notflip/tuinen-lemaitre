@@ -41,3 +41,7 @@ yarn-error.log*
 next-env.d.ts
 
 .idea
+# written by `vercel integration add`
+.agents/
+.claude/
+skills-lock.json
