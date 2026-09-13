@@ -7,6 +7,7 @@ import { Settings } from "@/globals/Settings"
 import { NavigationMain } from "@/globals/NavigationMain/NavigationMain"
 import { nodemailerAdapter } from "@payloadcms/email-nodemailer"
 import { nestedDocsPlugin } from "@payloadcms/plugin-nested-docs"
+import { bunnyStorage } from "@seshuk/payload-storage-bunny"
 
 import { seoPlugin } from "@payloadcms/plugin-seo"
 import Media from "@/collections/Media"
@@ -111,25 +112,27 @@ export default buildConfig({
     //   },
     // }),
 
-    // bunnyStorage({
-    //   collections: {
-    //     media: true,
-    //   },
-    //   options: {
-    //     adminThumbnail: {
-    //       appendTimestamp: true,
-    //       queryParams: {
-    //         width: '300',
-    //         height: '300',
-    //       },
-    //     },
-    //     storage: {
-    //       apiKey: process.env.BUNNY_STORAGE_API_KEY!,
-    //       hostname: process.env.BUNNY_STORAGE_HOST!,
-    //       zoneName: process.env.BUNNY_STORAGE_ZONE!,
-    //     },
-    //   },
-    // }),
+    bunnyStorage({
+      collections: {
+        media: {
+          prefix: "media",
+          disablePayloadAccessControl: true, // Use direct CDN access
+        },
+      },
+      adminThumbnail: {
+        appendTimestamp: true,
+        sizeName: "thumbnail",
+      },
+      storage: {
+        apiKey: process.env.BUNNY_STORAGE_API_KEY!,
+        hostname: process.env.BUNNY_HOSTNAME!,
+        zoneName: process.env.BUNNY_ZONE_NAME!,
+      },
+      purge: {
+        apiKey: process.env.BUNNY_API_KEY!,
+        async: false,
+      },
+    }),
 
     // s3Storage({
     //   bucket: process.env.R2_BUCKET!,

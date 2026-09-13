@@ -5,16 +5,15 @@ import { isAnyone } from "@/access/isAnyone"
 
 export const Media: CollectionConfig = {
   slug: "media",
+  folders: true,
   access: {
     create: isAuthenticated,
     delete: isAuthenticated,
     read: isAnyone,
     update: isAuthenticated,
   },
-  admin: {
-    folders: true,
-  },
   upload: {
+    disableLocalStorage: true, // Required - handled by Bunny.net
     staticDir: "media",
     mimeTypes: ["image/*"],
     focalPoint: true,

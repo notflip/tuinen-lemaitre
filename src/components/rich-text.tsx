@@ -15,7 +15,7 @@ import { JsonObject } from "payload"
 import { InlineCardsComponent } from "@/blocks/InlineCards/InlineCardsComponent"
 import { InlineCards } from "@payload-types"
 
-type NodeTypes = DefaultNodeTypes | SerializedEditorState<SerializedBlockNode>
+type NodeTypes = DefaultNodeTypes | SerializedBlockNode<InlineCards>
 
 type BlockNodeProps<TBlock extends JsonObject> = {
   node: SerializedBlockNode<TBlock>

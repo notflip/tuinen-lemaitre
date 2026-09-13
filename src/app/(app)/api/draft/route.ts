@@ -45,7 +45,7 @@ export async function GET(request: Request) {
       return new Response("Document not found", { status: 404 })
     }
   } catch (error) {
-    payload.logger.error("Error verifying token for live preview:", error)
+    payload.logger.error({ err: error }, "Error verifying token for live preview:")
     return new Response("Internal Server Error", { status: 500 })
   }
 

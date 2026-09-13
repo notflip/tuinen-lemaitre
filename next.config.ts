@@ -23,6 +23,16 @@ const nextConfig: NextConfig = {
 
   images: {
     dangerouslyAllowSVG: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: process.env.BUNNY_HOSTNAME!,
+      },
+      {
+        protocol: "https",
+        hostname: "tuinenlemaitre.be",
+      },
+    ],
   },
 
   logging: {

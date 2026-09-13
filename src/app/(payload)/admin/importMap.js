@@ -29,13 +29,16 @@ import { InlineToolbarFeatureClient as InlineToolbarFeatureClient_e70f5e05f09f93
 import { MetaTitleComponent as MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaImageComponent as MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
-import { FolderTableCell as FolderTableCell_ab83ff7e88da8d3530831f296ec4756a } from '@payloadcms/ui/rsc'
-import { FolderEditField as FolderEditField_ab83ff7e88da8d3530831f296ec4756a } from '@payloadcms/ui/rsc'
+import { FolderTableCell as FolderTableCell_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
+import { FolderField as FolderField_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
+import { FolderTypeField as FolderTypeField_2b8867833a34864a02ddf429b0728a40 } from '@payloadcms/next/client'
 import { ArrayRowLabel as ArrayRowLabel_a34117ba03a0e26ff25825aaffeb6215 } from '@/globals/ArrayRowLabel'
 import { ArrayRelationRowLabel as ArrayRelationRowLabel_5ca5034c39015de468c7dfb2117a25cd } from '@/globals/ArrayRelationRowLabel'
 import { ArrayRowTitle as ArrayRowTitle_96492d4250363eb4c3446b2f4058f70f } from '@/globals/ArrayRowTitle'
 import { default as default_9f32ce6f473387f99159899dd857e0af } from '@/components/before-dashboard'
+import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
+/** @type import('payload').ImportMap */
 export const importMap = {
   "@/fields/slug/SlugComponent#SlugComponent": SlugComponent_92cc057d0a2abb4f6cf0307edf59f986,
   "@/fields/message/MessageComponent#MessageComponent": MessageComponent_6839791537c1735ab9119e2e064c85f2,
@@ -68,10 +71,12 @@ export const importMap = {
   "@payloadcms/plugin-seo/client#MetaTitleComponent": MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaDescriptionComponent": MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaImageComponent": MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860,
-  "@payloadcms/ui/rsc#FolderTableCell": FolderTableCell_ab83ff7e88da8d3530831f296ec4756a,
-  "@payloadcms/ui/rsc#FolderEditField": FolderEditField_ab83ff7e88da8d3530831f296ec4756a,
+  "@payloadcms/next/rsc#FolderTableCell": FolderTableCell_f9c02e79a4aed9a3924487c0cd4cafb1,
+  "@payloadcms/next/rsc#FolderField": FolderField_f9c02e79a4aed9a3924487c0cd4cafb1,
+  "@payloadcms/next/client#FolderTypeField": FolderTypeField_2b8867833a34864a02ddf429b0728a40,
   "@/globals/ArrayRowLabel#ArrayRowLabel": ArrayRowLabel_a34117ba03a0e26ff25825aaffeb6215,
   "@/globals/ArrayRelationRowLabel#ArrayRelationRowLabel": ArrayRelationRowLabel_5ca5034c39015de468c7dfb2117a25cd,
   "@/globals/ArrayRowTitle#ArrayRowTitle": ArrayRowTitle_96492d4250363eb4c3446b2f4058f70f,
-  "@/components/before-dashboard#default": default_9f32ce6f473387f99159899dd857e0af
+  "@/components/before-dashboard#default": default_9f32ce6f473387f99159899dd857e0af,
+  "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }
