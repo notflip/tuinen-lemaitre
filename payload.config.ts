@@ -22,6 +22,10 @@ import { Forms } from "@/collections/forms/Forms"
 import { Testimonials } from "@/collections/Testimonials"
 
 export default buildConfig({
+  // Payload builds absolute links from this, the password reset mail among them. Without
+  // it the reset link in that mail starts at "/admin" and no mail client can open it.
+  serverURL: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+
   editor: lexicalEditor(),
 
   admin: {
