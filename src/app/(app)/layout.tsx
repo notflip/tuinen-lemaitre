@@ -1,7 +1,5 @@
 import "./globals.css"
 import { GoogleTagManager } from "@next/third-parties/google"
-import { AdminBar } from "@/components/admin-bar"
-import { draftMode } from "next/headers"
 import { Nav } from "@/components/nav"
 
 import { Footer } from "@/components/footer"
@@ -29,7 +27,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const { isEnabled } = await draftMode()
   const websiteSettings = await getCachedGlobal("settings")()
 
   return (
@@ -39,7 +36,6 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
       >
         <Nav settings={websiteSettings} />
         {children}
-        <AdminBar draft={isEnabled} />
         <Footer />
       </body>
       {process.env.NODE_ENV === "production" && process.env.GTM_ID && (
