@@ -9,7 +9,7 @@ import Cta from "@/blocks/Cta/Cta"
 import pathField from "@/fields/path/path"
 import { SharedBlock } from "@/blocks/SharedBlock/SharedBlock"
 import beforeDuplicate from "@/hooks/beforeDuplicateSlugged"
-import { revalidateDelete, revalidatePage } from "@/hooks/revalidatePage"
+import { recordPageLive, revalidateDelete, revalidatePage } from "@/hooks/revalidatePage"
 import { Hero } from "@/blocks/Hero/Hero"
 import Feature from "@/blocks/Feature/Feature"
 import { Cards } from "@/blocks/Cards/Cards"
@@ -62,6 +62,7 @@ export const Pages: CollectionConfig<"pages"> = {
   },
   hooks: {
     beforeValidate: [beforeDuplicate],
+    beforeChange: [recordPageLive],
     afterChange: [revalidatePage],
     afterDelete: [revalidateDelete],
   },
