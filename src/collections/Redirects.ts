@@ -1,6 +1,5 @@
 import { CollectionConfig } from "payload"
 import { isAuthenticated } from "@/access/isAuthenticated"
-import { isAuthenticatedOrPublished } from "@/access/isAuthenticatedOrPublished"
 import { revalidateRedirects, revalidateRedirectsDelete } from "@/hooks/revalidateRedirects"
 
 export const Redirects: CollectionConfig = {
@@ -12,7 +11,9 @@ export const Redirects: CollectionConfig = {
   access: {
     create: isAuthenticated,
     delete: isAuthenticated,
-    read: isAuthenticatedOrPublished,
+    // Redirects have no drafts, so a "_status" filter breaks the query. The site reads the
+    // redirects with the Local API, so the REST API serves them to editors only.
+    read: isAuthenticated,
     update: isAuthenticated,
   },
   hooks: {

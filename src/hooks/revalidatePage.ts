@@ -6,6 +6,13 @@ import type {
 import type { Page } from "@payload-types"
 import { revalidatePath, revalidateTag } from "next/cache"
 
+// The navigation and the footer link to pages by reference, so they show the page path and title.
+const revalidatePageTags = () => {
+  revalidateTag("pages")
+  revalidateTag("global_navigation_main")
+  revalidateTag("global_footer")
+}
+
 export const revalidatePage: CollectionAfterChangeHook<Page> = ({
   doc,
   previousDoc,
@@ -17,7 +24,7 @@ export const revalidatePage: CollectionAfterChangeHook<Page> = ({
       const path = doc.path === "/home" ? "/" : `${doc.path}`
       payload.logger.info(`Revalidating page at path: ${path}`)
       revalidatePath(path)
-      revalidateTag("pages")
+      revalidatePageTags()
     }
 
     // If the page was previously published, we need to revalidate the old path
@@ -25,7 +32,7 @@ export const revalidatePage: CollectionAfterChangeHook<Page> = ({
       const oldPath = previousDoc.path === "/home" ? "/" : `${previousDoc.path}`
       payload.logger.info(`Revalidating old page at path: ${oldPath}`)
       revalidatePath(oldPath)
-      revalidateTag("pages")
+      revalidatePageTags()
     }
   }
   return doc
@@ -38,7 +45,7 @@ export const revalidateDelete: CollectionAfterDeleteHook<Page> = ({
   if (!context.disableRevalidate) {
     const path = doc?.path === "/home" ? "/" : `${doc?.path}`
     revalidatePath(path)
-    revalidateTag("pages")
+    revalidatePageTags()
   }
 
   return doc

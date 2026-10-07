@@ -62,8 +62,8 @@ export const Media: CollectionConfig = {
   ],
   hooks: {
     beforeValidate: [generateBlurHash],
-    // The pages embed the media.
-    ...revalidateTagHooks("pages"),
+    // The pages and the settings (logo, SEO image) embed the media.
+    ...revalidateTagHooks("pages", "global_settings"),
   },
 }
 

@@ -2,17 +2,17 @@ import type { CollectionAfterDeleteHook } from "payload"
 import { revalidateTag } from "next/cache"
 
 /**
- * Returns the afterChange and afterDelete hooks that clear a cache tag. The public pages read
- * from caches without a time limit, so a save must clear the tag.
+ * Returns the afterChange and afterDelete hooks that clear the cache tags. The public pages read
+ * from caches without a time limit, so a save must clear the tags.
  */
-export const revalidateTagHooks = (tag: string) => {
+export const revalidateTagHooks = (...tags: string[]) => {
   const hook = ({
     doc,
     req: { payload, context },
   }: Pick<Parameters<CollectionAfterDeleteHook>[0], "doc" | "req">) => {
     if (!context.disableRevalidate) {
-      payload.logger.info(`Revalidating tag ${tag}`)
-      revalidateTag(tag)
+      payload.logger.info(`Revalidating tags ${tags.join(", ")}`)
+      tags.forEach((tag) => revalidateTag(tag))
     }
 
     return doc

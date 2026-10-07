@@ -2,6 +2,7 @@ import { draftMode } from "next/headers"
 import { redirect } from "next/navigation"
 import { type CollectionSlug, getPayload } from "payload"
 import config from "@payload-config"
+import { previewToken } from "@/utils/generatePreviewPath"
 
 // Apply collection prefix mapping before redirecting
 const collectionPrefixMap: Partial<Record<CollectionSlug, string>> = {
@@ -11,12 +12,6 @@ const collectionPrefixMap: Partial<Record<CollectionSlug, string>> = {
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
 
-  const secret = searchParams.get("secret")
-
-  if (secret !== process.env.PAYLOAD_SECRET) {
-    return new Response("Invalid token", { status: 401 })
-  }
-
   const collection = searchParams.get("collection") as CollectionSlug
   const fieldValue = searchParams.get("value")
 
@@ -24,10 +19,22 @@ export async function GET(request: Request) {
     return new Response("Missing value for live preview", { status: 400 })
   }
 
-  const whereField =
-    searchParams.get("where") || (collection === "pages" ? "path" : "slug")
+  // Check the token before Payload starts. A request without a valid token does not open a
+  // database connection.
+  if (searchParams.get("token") !== previewToken(collection, fieldValue)) {
+    return new Response("Invalid token", { status: 401 })
+  }
 
   const payload = await getPayload({ config })
+
+  // Only a signed-in editor can turn on draft mode.
+  const { user } = await payload.auth({ headers: request.headers })
+  if (!user) {
+    return new Response("Unauthorized", { status: 401 })
+  }
+
+  const whereField =
+    searchParams.get("where") || (collection === "pages" ? "path" : "slug")
 
   // Verify the given slug exists
   try {
