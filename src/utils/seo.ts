@@ -33,6 +33,9 @@ export function getOgImage(
   }
 
   return {
-    url: `${process.env.NEXT_PUBLIC_SITE_URL}${ogImageUrl}`,
+    // Media URLs on the CDN are absolute. Add the site URL only to a relative path.
+    url: ogImageUrl.startsWith("http")
+      ? ogImageUrl
+      : `${process.env.NEXT_PUBLIC_SITE_URL}${ogImageUrl}`,
   }
 }
