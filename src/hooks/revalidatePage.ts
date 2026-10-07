@@ -4,7 +4,7 @@ import type {
 } from "payload"
 
 import type { Page } from "@payload-types"
-import { revalidatePath } from "next/cache"
+import { revalidatePath, revalidateTag } from "next/cache"
 
 export const revalidatePage: CollectionAfterChangeHook<Page> = ({
   doc,
@@ -17,6 +17,7 @@ export const revalidatePage: CollectionAfterChangeHook<Page> = ({
       const path = doc.path === "/home" ? "/" : `${doc.path}`
       payload.logger.info(`Revalidating page at path: ${path}`)
       revalidatePath(path)
+      revalidateTag("pages")
     }
 
     // If the page was previously published, we need to revalidate the old path
@@ -24,6 +25,7 @@ export const revalidatePage: CollectionAfterChangeHook<Page> = ({
       const oldPath = previousDoc.path === "/home" ? "/" : `${previousDoc.path}`
       payload.logger.info(`Revalidating old page at path: ${oldPath}`)
       revalidatePath(oldPath)
+      revalidateTag("pages")
     }
   }
   return doc
@@ -36,6 +38,7 @@ export const revalidateDelete: CollectionAfterDeleteHook<Page> = ({
   if (!context.disableRevalidate) {
     const path = doc?.path === "/home" ? "/" : `${doc?.path}`
     revalidatePath(path)
+    revalidateTag("pages")
   }
 
   return doc

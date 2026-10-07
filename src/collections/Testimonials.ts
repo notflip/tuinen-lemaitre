@@ -2,6 +2,7 @@ import { isAuthenticated } from "@/access/isAuthenticated"
 import { isAnyone } from "@/access/isAnyone"
 import { CollectionConfig } from "payload"
 import beforeDuplicate from "@/hooks/beforeDuplicateSlugged"
+import { revalidateTagHooks } from "@/hooks/revalidateTagHooks"
 
 export const Testimonials: CollectionConfig = {
   slug: "testimonials",
@@ -16,6 +17,7 @@ export const Testimonials: CollectionConfig = {
   },
   hooks: {
     beforeValidate: [beforeDuplicate],
+    ...revalidateTagHooks("testimonials"),
   },
   fields: [
     {

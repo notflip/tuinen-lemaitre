@@ -1,6 +1,7 @@
 import { Block, CollectionConfig } from "payload"
 import { fields } from "./fields"
 import { BlocksFeature, lexicalEditor } from "@payloadcms/richtext-lexical"
+import { revalidateTagHooks } from "@/hooks/revalidateTagHooks"
 
 export const Forms: CollectionConfig = {
   slug: "forms",
@@ -10,6 +11,10 @@ export const Forms: CollectionConfig = {
   },
   access: {
     read: () => true,
+  },
+  hooks: {
+    // The pages embed the forms.
+    ...revalidateTagHooks("pages"),
   },
   fields: [
     {

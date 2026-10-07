@@ -1,7 +1,7 @@
 import { CollectionConfig } from "payload"
 import { isAuthenticated } from "@/access/isAuthenticated"
 import { isAuthenticatedOrPublished } from "@/access/isAuthenticatedOrPublished"
-import { revalidateRedirects } from "@/hooks/revalidateRedirects"
+import { revalidateRedirects, revalidateRedirectsDelete } from "@/hooks/revalidateRedirects"
 
 export const Redirects: CollectionConfig = {
   slug: "redirects",
@@ -17,6 +17,7 @@ export const Redirects: CollectionConfig = {
   },
   hooks: {
     afterChange: [revalidateRedirects],
+    afterDelete: [revalidateRedirectsDelete],
   },
   fields: [
     {

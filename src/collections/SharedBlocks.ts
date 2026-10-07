@@ -1,5 +1,6 @@
 import { CollectionConfig } from "payload"
 import Cta from "@/blocks/Cta/Cta"
+import { revalidateTagHooks } from "@/hooks/revalidateTagHooks"
 
 export const SharedBlocks: CollectionConfig = {
   slug: "sharedBlocks",
@@ -9,6 +10,10 @@ export const SharedBlocks: CollectionConfig = {
   },
   access: {
     read: () => true,
+  },
+  hooks: {
+    // The pages embed the shared blocks.
+    ...revalidateTagHooks("pages"),
   },
   admin: {
     useAsTitle: "title",

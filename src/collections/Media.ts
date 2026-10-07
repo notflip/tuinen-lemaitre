@@ -1,5 +1,6 @@
 import { CollectionConfig } from "payload"
 import { generateBlurHash } from "@/hooks/generateBlurhash"
+import { revalidateTagHooks } from "@/hooks/revalidateTagHooks"
 import { isAuthenticated } from "@/access/isAuthenticated"
 import { isAnyone } from "@/access/isAnyone"
 
@@ -61,6 +62,8 @@ export const Media: CollectionConfig = {
   ],
   hooks: {
     beforeValidate: [generateBlurHash],
+    // The pages embed the media.
+    ...revalidateTagHooks("pages"),
   },
 }
 

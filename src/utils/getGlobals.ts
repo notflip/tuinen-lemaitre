@@ -8,4 +8,5 @@ export const getCachedGlobal = <S extends keyof Config["globals"]>(
 ) =>
   unstable_cache(() => getGlobal(slug, depth), [slug], {
     tags: [`global_${slug}`],
+    revalidate: false,
   }) as () => Promise<Config["globals"][S]>

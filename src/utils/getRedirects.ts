@@ -23,4 +23,5 @@ export async function getRedirects(depth = 1) {
 export const getCachedRedirects = () =>
   unstable_cache(async () => getRedirects(), ["global_redirects"], {
     tags: ["global_redirects"],
+    revalidate: false,
   })

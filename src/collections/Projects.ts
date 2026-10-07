@@ -3,6 +3,7 @@ import { isAnyone } from "@/access/isAnyone"
 import { CollectionConfig } from "payload"
 import { slugField } from "@/fields/slug"
 import beforeDuplicate from "@/hooks/beforeDuplicateSlugged"
+import { revalidateTagHooks } from "@/hooks/revalidateTagHooks"
 
 export const Projects: CollectionConfig = {
   slug: "projects",
@@ -18,6 +19,8 @@ export const Projects: CollectionConfig = {
   },
   hooks: {
     beforeValidate: [beforeDuplicate],
+    // The pages embed the projects.
+    ...revalidateTagHooks("pages"),
   },
   fields: [
     ...slugField("title"),

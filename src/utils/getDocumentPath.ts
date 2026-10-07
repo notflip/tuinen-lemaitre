@@ -4,6 +4,7 @@ import config from "@payload-config"
 import { draftMode } from "next/headers"
 import { getPayload, type CollectionSlug } from "payload"
 import { cache } from "react"
+import { unstable_cache } from "next/cache"
 import { PATH_UNIQUE_AGINST_COLLECTIONS } from "@/fields/path/path"
 
 type PathUniqueCollection = (typeof PATH_UNIQUE_AGINST_COLLECTIONS)[number]
@@ -31,12 +32,29 @@ export async function getDocumentByPath(
   collection?: CollectionSlug,
 ): Promise<CollectionDocuments | null> {
   const { isEnabled: draft } = await draftMode()
-  const payload = await getPayload({
-    config,
-  })
   const normalizedPath = normalizePath(path, false)
 
   const collectionsToSearch = collection ? [collection] : PATH_UNIQUE_AGINST_COLLECTIONS
+
+  // Draft mode is for editors only. It reads the database directly.
+  if (draft) return findDocumentByPath(normalizedPath, collectionsToSearch, true)
+
+  // Public requests read from the cache. The save hooks clear the collection tags.
+  return unstable_cache(
+    () => findDocumentByPath(normalizedPath, collectionsToSearch, false),
+    ["document_by_path", normalizedPath, ...collectionsToSearch],
+    { tags: [...collectionsToSearch], revalidate: false },
+  )()
+}
+
+async function findDocumentByPath(
+  normalizedPath: string,
+  collectionsToSearch: readonly CollectionSlug[],
+  draft: boolean,
+): Promise<CollectionDocuments | null> {
+  const payload = await getPayload({
+    config,
+  })
 
   const queries = collectionsToSearch.map((collectionSlug) =>
     payload
@@ -54,15 +72,11 @@ export async function getDocumentByPath(
           ...doc,
           _collection: collectionSlug,
         } as CollectionDocuments
-      })
-      .catch(() => null),
+      }),
   )
 
-  const results = (await Promise.allSettled(queries)).filter(
-    (v): v is PromiseFulfilledResult<CollectionDocuments | null> => v.status === "fulfilled",
-  )
-
-  return results.find((result) => result.value !== null)?.value ?? null
+  // Let a failed query throw. The cache must not keep a missing page after a database error.
+  return (await Promise.all(queries)).find((doc) => doc !== null) ?? null
 }
 
 export const getCachedDocumentByPath = cache(getDocumentByPath)

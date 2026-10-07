@@ -3,21 +3,27 @@ import type { Config } from "@payload-types"
 import config from "@payload-config"
 import { draftMode } from "next/headers"
 import { cache } from "react"
+import { unstable_cache } from "next/cache"
 
 // getTestimonials
-export async function getTestimonials() {
-  const payload = await getPayload({
-    config,
-  })
+// The testimonials save hooks clear the tag.
+export const getTestimonials = unstable_cache(
+  async () => {
+    const payload = await getPayload({
+      config,
+    })
 
-  const result = await payload.find({
-    collection: "testimonials",
-    pagination: false,
-    sort: "-publishedAt",
-  })
+    const result = await payload.find({
+      collection: "testimonials",
+      pagination: false,
+      sort: "-publishedAt",
+    })
 
-  return result.docs
-}
+    return result.docs
+  },
+  ["testimonials"],
+  { tags: ["testimonials"], revalidate: false },
+)
 
 // getPageByPath
 export async function getPageByPath(path: string) {

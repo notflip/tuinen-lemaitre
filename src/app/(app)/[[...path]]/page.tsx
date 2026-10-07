@@ -9,7 +9,7 @@ import { getCachedGlobal } from "@/utils/getGlobals"
 import { getDescription, getOgImage, getTitle } from "@/utils/seo"
 import { mergeOpenGraph } from "@/utils/mergeOpenGraph"
 import { PayloadRedirects } from "@/components/payload-redirects"
-import { notFound } from "next/navigation"
+import { notFoundIfUnknownPath } from "@/utils/getRoutes"
 
 interface DocPageProps {
   params: Promise<{
@@ -41,6 +41,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: DocPageProps) {
   const path = (await params).path || "home"
+  await notFoundIfUnknownPath(path)
   const page = await getCachedDocumentByPath(path, "pages")
 
   const pageDescription = getDescription(page)
@@ -64,6 +65,7 @@ export default async function Page({ params }: DocPageProps) {
   const { isEnabled: draft } = await draftMode()
 
   const path = (await params).path || "home"
+  await notFoundIfUnknownPath(path)
   const page = await getCachedDocumentByPath(path, "pages")
 
   if (!page) {
